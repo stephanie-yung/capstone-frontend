@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Logo from './Components/Logo/Logo';
 import './App.css';
-
 function App() {
   return (
     <div className="App">
