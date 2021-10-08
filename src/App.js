@@ -1,30 +1,25 @@
 import React, { Component } from 'react';
-import Logo from './Components/Logo/Logo';
+import HomePage from './Components/HomePage/HomePage';
+import Locations from './Components/Locations/Locations.js';
+import Navbar from './Components/Navbar/Navbar';
+import {BrowserRouter as Router, Switch, Route, Link, Redirect, withRouter} from "react-router-dom";
 import './App.css';
-import Card from './Components/Card/Card';
-function App() {
-  return (
-    <div className="App">
-      <div>
-            <Logo/>
-            <Card/>
+import { render } from '@testing-library/react';
+
+class App extends Component{
+  render(){
+    return (
+      <div className="App">
+        <Router>
+          <Navbar/>
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/locations" component={Locations} />
+          </Switch>
+        </Router>
       </div>
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
-    </div>
-  );
+    );
+  }
 }
 
 export default App;

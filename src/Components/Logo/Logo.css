@@ -1,8 +1,12 @@
-.Tilt{
-    background: linear-gradient(to right, #846faa,#006241);
+img {
+    max-width:70%;
+    height:70%;
 }
 
-img {
-    max-width:100%;
-    height:100%;
+.shrink{
+    margin-left: 0;
+    margin-top: -15px;
+    /* margin-top: 25px; */
+    max-width:80%;
+    height:80%;
 }
