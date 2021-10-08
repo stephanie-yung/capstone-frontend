@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Logo from './Components/Logo/Logo';
-import Card from './Components/Card/Card';
 import HomePage from './Components/HomePage/HomePage';
 import Locations from './Components/Locations/Locations.js';
 import Navbar from './Components/Navbar/Navbar';
