@@ -16,14 +16,9 @@ function Navbar(){
                         Find a location
                     </ul>
                 </Link>
-                <Link to="signin">
+                <Link to="DrinkForm">
                     <ul>
-                        Sign In
-                    </ul>
-                </Link>
-                <Link to="register">
-                    <ul>
-                        Join Now
+                        Create your Own
                     </ul>
                 </Link>
             </div>

@@ -1,14 +1,13 @@
 import React from "react";
+import Tilt from 'react-tilt';
 import './Logo.css';
 import star from './coffee.png';
-import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
-
 const Logo = () => {
     return(
-        <div>
-            <div className="shrink">
-                <img style={{paddingTop:'20px'}} src={star} alt='logo'/>
-            </div>
+        <div className='ma3 mt0'>
+            <Tilt className="Tilt br2 shadow-2" options={{ max : 55 }} style={{ height: 150, width: 150 }} >
+                <div className="Tilt-inner" pa3><img style={{paddingTop:'20px'}} src={star} alt='logo'/> </div>
+            </Tilt>
         </div>
     );
 }
