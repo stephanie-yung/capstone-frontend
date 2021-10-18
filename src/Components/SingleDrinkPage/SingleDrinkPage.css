@@ -1,0 +1,16 @@
+.drinkImg{
+    float: left;
+    max-width: 80%;
+    max-height: 80%;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+
+.floatRight{
+    float:right;
+    margin-left: 100px;
+}
+
+.space100{
+    margin-left: 100px;
+}
