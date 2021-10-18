@@ -32,7 +32,7 @@ class App extends Component{
   render(){
     return (
       <div className="App">
-        <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange}/>
+        {/* <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange}/>
         {this.state.route === 'home' ?
           <div>
             <Logo/>
@@ -43,12 +43,13 @@ class App extends Component{
              <Signin onRouteChange={this.onRouteChange}/>
             :<Register onRouteChange={this.onRouteChange} />
           )
-        }
+        } */}
         <Router>
           <Navbar/>
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/locations" component={Locations} />
+            <Route exact path="/signin" component={Signin} />
           </Switch>
         </Router>
       </div>
