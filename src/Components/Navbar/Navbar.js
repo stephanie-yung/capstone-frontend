@@ -16,7 +16,12 @@ function Navbar(){
                         Find a location
                     </ul>
                 </Link>
-                <Link to="DrinkForm">
+                <Link to="drinkreview">
+                    <ul>
+                        Drink Review
+                    </ul>
+                </Link>
+                <Link to="drinkForm">
                     <ul>
                         Create your Own
                     </ul>

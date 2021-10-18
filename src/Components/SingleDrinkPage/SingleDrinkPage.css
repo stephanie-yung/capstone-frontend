@@ -1,9 +1,14 @@
 .drinkImg{
-    float: left;
-    max-width: 80%;
-    max-height: 80%;
+    /* float: left; */
+    text-align: left;
+    max-width: 100%;
+    max-height: 100%;
     margin-left: 50px;
-    margin-top: 50px;
+    /* margin-top: 50px; */
+}
+
+.centerHeader{
+    text-align: center;
 }
 
 .floatRight{
@@ -16,8 +21,30 @@
 }
 
 .reviewRectangle{
-    width:500px;
+    width:70;
     height:100px;
     border:1px solid #000;
-    margin-left: 100px;
+    /* margin-left: 100px; */
+    margin-bottom: 30px;
+    padding: 1%;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+.left{
+    width: 20%;
+}
+
+.right{
+    width: 75%;
+}
+
+.row:after {
+content: "";
+display: table;
+clear: both;
+}
+
+.column{
+    float:left;
 }
