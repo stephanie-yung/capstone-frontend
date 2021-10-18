@@ -12,6 +12,7 @@ import Register from './Components/Register/Register';
 import Card from './Components/Card/Card';
 import SingleDrinkPage from './Components/SingleDrinkPage/SingleDrinkPage';
 
+
 class App extends Component{
   constructor(){
     super();
@@ -36,8 +37,15 @@ class App extends Component{
         <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange}/>
         {this.state.route === 'home' ?
           <div>
-            <Logo/>
-            <Card/>
+            {/* <Logo/> */}
+            {/* <Card/> */}
+            <Router>
+              <Navbar/>
+                <Switch>
+                  <Route exact path="/" component={HomePage} />
+                  <Route exact path="/locations" component={Locations} />
+                </Switch>
+            </Router>
           </div> : 
           (
             this.state.route ==='signin' ?
@@ -45,16 +53,7 @@ class App extends Component{
             :<Register onRouteChange={this.onRouteChange} />
           )
         }
-        <Router>
-          <Navbar/>
-          <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route exact path="/locations" component={Locations} />
-            <Route exact path="/drinkreview" component={SingleDrinkPage} />
-            {/* <Route exact path="/signin" component={Signin} /> */}
-            {/* <Route exact path="/register" component={Locations} /> */}
-          </Switch>
-        </Router>
+      
       </div>
     );
   }
