@@ -10,6 +10,7 @@ import Logo from './Components/Logo/Logo';
 import Signin from './Components/SignIn/SignIn';
 import Register from './Components/Register/Register';
 import Card from './Components/Card/Card';
+import SingleDrinkPage from './Components/SingleDrinkPage/SingleDrinkPage';
 
 
 class App extends Component{
@@ -43,6 +44,7 @@ class App extends Component{
                 <Switch>
                   <Route exact path="/" component={HomePage} />
                   <Route exact path="/locations" component={Locations} />
+                  <Route exact path="/drinkreview" component={SingleDrinkPage} />
                 </Switch>
             </Router>
           </div> : 
