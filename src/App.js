@@ -11,6 +11,7 @@ import Signin from './Components/SignIn/SignIn';
 import Register from './Components/Register/Register';
 import Card from './Components/Card/Card';
 import SingleDrinkPage from './Components/SingleDrinkPage/SingleDrinkPage';
+import Create from './Components/Create/Create';
 
 
 class App extends Component{
@@ -45,6 +46,7 @@ class App extends Component{
                   <Route exact path="/" component={HomePage} />
                   <Route exact path="/locations" component={Locations} />
                   <Route exact path="/drinkreview" component={SingleDrinkPage} />
+                  <Route exact path="/drinkForm" component={Create} />
                 </Switch>
             </Router>
           </div> : 
