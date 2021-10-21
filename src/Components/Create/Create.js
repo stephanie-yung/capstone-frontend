@@ -37,10 +37,10 @@ function Create() {
         <div style={{width:"90%", justifyContent:"center", display:"flex"}}>
             <div>
                 <h3>Create your own Drink</h3>
-                <Multiselect options={optionsMilk} displayValue={"Milk"} />
-                <Multiselect options={optionsSize} displayValue={"Size"} />
-                <Multiselect options={optionsIce} displayValue={"Ice"} />
-                <Multiselect options={optionsSweet} displayValue={"Sweet"} />
+                <Multiselect options={optionsMilk} singleSelect = {true} displayValue={"Milk"} />
+                <Multiselect options={optionsSize} singleSelect = {true} displayValue={"Size"} />
+                <Multiselect options={optionsIce} singleSelect = {true} displayValue={"Ice"} />
+                <Multiselect options={optionsSweet}  displayValue={"Sweet"} />
             </div>
         </div>
     )

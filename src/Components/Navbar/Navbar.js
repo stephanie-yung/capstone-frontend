@@ -21,6 +21,11 @@ function Navbar(){
                         Drink Review
                     </ul>
                 </Link>
+                <Link to="about">
+                    <ul>
+                        About Us
+                    </ul>
+                </Link>
                 <Link to="drinkForm">
                     <ul>
                         Create your Own
