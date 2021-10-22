@@ -1,39 +1,48 @@
 import React from 'react'
-function About() {
-    return (
-        <div>
-            <div className = "flex ">
-                <article class="mw7 center bg-white br3 pa3 pa5-ns mv5 ba b--black-10">
-                    <div class="tc">
-                        <img src="http://tachyons.io/img/avatar_1.jpg" class="br-100 h4 w4 dib ba b--black-05 pa2" title="Photo of a kitty staring at you"/>
-                        <h1 class="f3 mb2">Steph.</h1>
-                        <h2 class="f5 fw4 gray mt0">CCO (Chief Cat Officer)</h2>
-                    </div>
-                </article>
-                <article class="mw7 center bg-white br3 pa3 pa5-ns mv5 ba b--black-10">
-                    <div class="tc">
-                        <img src="http://tachyons.io/img/avatar_1.jpg" class="br-100 h4 w4 dib ba b--black-05 pa2" title="Photo of a kitty staring at you"/>
-                        <h1 class="f3 mb2">Andy</h1>
-                        <h2 class="f5 fw4 gray mt0">CCO (Chief Cat Officer)</h2>
-                    </div>
-                </article>
-                <article class="mw7 center bg-white br3 pa3 pa5-ns mv5 ba b--black-10">
-                    <div class="tc">
-                        <img src="http://tachyons.io/img/avatar_1.jpg" class="br-100 h4 w4 dib ba b--black-05 pa2" title="Photo of a kitty staring at you"/>
-                        <h1 class="f3 mb2">Jing</h1>
-                        <h2 class="f5 fw4 gray mt0">CCO (Chief Cat Officer)</h2>
-                    </div>
-                </article>
-                <article class="mw7 center bg-white br3 pa3 pa5-ns mv5 ba b--black-10">
-                    <div class="tc">
-                        <img src="http://tachyons.io/img/avatar_1.jpg" class="br-100 h4 w4 dib ba b--black-05 pa2" title="Photo of a kitty staring at you"/>
-                        <h1 class="f3 mb2">Sony</h1>
-                        <h2 class="f5 fw4 gray mt0">CCO (Chief Cat Officer)</h2>
-                    </div>
-                </article>
-            </div>
-        </div>
-    )
+
+import { CardView } from 'react-card-with-image'
+import 'react-card-with-image/dist/index.css'
+//Steph if you're looking at this, https://reactjsexample.com/cool-react-card-component-with-image/ 
+// That link is the library to install to run this
+const About = () => {
+  const items = [
+    {
+      id: 1,
+      header: 'Steph, Front-end',
+      description:
+      "Stephanie Yung: stephanie.yung43@myhunter.cuny.edu\n, Worked on: Navbar, Routing, Single Drink Review Page, Location Page Skeleton, and styling",
+      image: 'https://cdn.discordapp.com/attachments/874712386089672794/901195510633889902/StephanieYung.JPG'
+    },
+    {
+      id: 2,
+      header: 'Jing, Back-end',
+      description:
+        'Jing Wen:  jing.wen04@myhunter.cuny.edu, Worked on: set up review data model,set up drink data model',
+      image: 'https://cdn.discordapp.com/attachments/874712386089672794/901186360885514310/image0.jpg'
+    },
+    {
+      id: 3,
+      header: 'Andy, Back-end',
+      description:
+        'condimentum purus, non sagittis massa faucibus id. Sed finibus convallis lectus eu fringilla. Proin lacinia sem vitae nunc consectetur, a faucibus orci ultricie',
+      image: 'image-src'
+    },
+    {
+      id: 4,
+      header: 'Maninder, Front-end',
+      description:
+        'Maninder Singh: 1sony9905@gmail.com, Worked on: Sign in/Sign out Page, Register, Homepage, Navigation, This current about page and styling',
+      image: 'https://scontent-lga3-1.xx.fbcdn.net/v/t1.6435-9/127213489_1409675942573873_7571362463589927231_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=174925&_nc_ohc=Ar7jEXiBsuQAX_00S_0&_nc_ht=scontent-lga3-1.xx&oh=7d742d23f134f9316157507cfece27a5&oe=619A56C2'
+    }
+  ]
+  return (
+    <CardView
+      items={items}
+      activeColor='#000'
+      imageHeight='70%'
+      imageWidth='70%'
+    />
+  )
 }
 
 export default About
