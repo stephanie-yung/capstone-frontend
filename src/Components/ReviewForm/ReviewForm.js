@@ -9,6 +9,7 @@ const colors = {
 
 function ReviewForm(){
     const stars = Array(10).fill(0);
+    const msg = ""
     const [currentValue, setCurrentValue] = React.useState(0);
     const [hoverValue, setHoverValue] = React.useState(undefined);
     const [msgValue, setMsgValue] = React.useState(msg);
