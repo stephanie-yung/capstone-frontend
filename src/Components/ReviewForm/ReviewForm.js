@@ -11,6 +11,7 @@ function ReviewForm(){
     const stars = Array(10).fill(0);
     const [currentValue, setCurrentValue] = React.useState(0);
     const [hoverValue, setHoverValue] = React.useState(undefined);
+    const [msgValue, setMsgValue] = React.useState(msg);
 
     const handleClick = value =>{
         setCurrentValue(value)
@@ -23,6 +24,14 @@ function ReviewForm(){
     const handleMouseLeave = () =>{
         setHoverValue(undefined)
     };
+
+    const updateMsg = (value)=>{
+        setMsgValue(value);
+    };
+
+    function handleChange(event){
+        console.log(event.target.value);
+    }
 
     return(
         <div style={styles.container}>
@@ -48,8 +57,13 @@ function ReviewForm(){
             <textarea 
                 placeholder="What's your feedback?"
                 style={styles.textarea}
+                onChange={e => setMsgValue(e.target.value)}
             />
             <button className="mousepointer" style={styles.button}>Submit</button>
+            {/* <div>
+                <h3>Star Rating: {currentValue}</h3>
+                <h3>Feedback: {msgValue}</h3>
+            </div> */}
         </div>
     );
 };
