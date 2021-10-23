@@ -36,7 +36,7 @@ const About = () => {
     }
   ]
   return (
-    <CardView
+    <CardView 
       items={items}
       activeColor='#000'
       imageHeight='70%'

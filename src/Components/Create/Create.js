@@ -33,14 +33,21 @@ function Create() {
     const [optionsSize] = useState(sizeData)
     const [optionsIce] = useState(iceData)
     const [optionsSweet] = useState(sweetData)
+    const [Dvalue, getValue] = useState();
+    let DisplayHandle = (selectedList, selectedItem) => {
+        getValue(Object.values(selectedItem))
+        // console.log(selectedList.Milk)
+    }
     return (
         <div style={{width:"90%", justifyContent:"center", display:"flex"}}>
             <div>
                 <h3>Create your own Drink</h3>
-                <Multiselect options={optionsMilk} singleSelect = {true} displayValue={"Milk"} />
-                <Multiselect options={optionsSize} singleSelect = {true} displayValue={"Size"} />
+                <b>Choose a base drink</b>
+                <Multiselect options={optionsMilk} singleSelect = {true} displayValue={"Milk"}  onSelect={DisplayHandle}/>
+                <Multiselect options={optionsSize} singleSelect = {true} displayValue={"Size"}  />
                 <Multiselect options={optionsIce} singleSelect = {true} displayValue={"Ice"} />
                 <Multiselect options={optionsSweet}  displayValue={"Sweet"} />
+                <b>Your Drink is: </b><h3 style = {{color: "red"}}>{Dvalue}</h3>
             </div>
         </div>
     )
