@@ -31,6 +31,10 @@
     font-weight: bold;
 }
 
+.mousepointer{
+    cursor: pointer;
+}
+
 .left{
     width: 20%;
 }

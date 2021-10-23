@@ -13,6 +13,7 @@ import Card from './Components/Card/Card';
 import SingleDrinkPage from './Components/SingleDrinkPage/SingleDrinkPage';
 import Create from './Components/Create/Create';
 import About from './Components/About/About';
+import ReviewForm from "./Components/ReviewForm/ReviewForm";
 
 
 class App extends Component{
@@ -49,6 +50,7 @@ class App extends Component{
                   <Route exact path="/drinkreview" component={SingleDrinkPage} />
                   <Route exact path="/drinkForm" component={Create} />
                   <Route exact path="/about" component={About} />
+                  <Route exact path="/reviewForm" component={ReviewForm} />
                 </Switch>
             </Router>
           </div> : 
