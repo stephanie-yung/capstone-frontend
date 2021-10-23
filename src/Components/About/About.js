@@ -8,7 +8,7 @@ const About = () => {
   const items = [
     {
       id: 1,
-      header: 'Steph, Front-end',
+      header: 'Stephanie, Front-end',
       description:
       "Stephanie Yung: stephanie.yung43@myhunter.cuny.edu\n, Worked on: Navbar, Routing, Single Drink Review Page, Location Page Skeleton, and styling",
       image: 'https://cdn.discordapp.com/attachments/505539333869273116/901215064965668884/SY_headshot2.jpg'
@@ -24,8 +24,8 @@ const About = () => {
       id: 3,
       header: 'Andy, Back-end',
       description:
-        'condimentum purus, non sagittis massa faucibus id. Sed finibus convallis lectus eu fringilla. Proin lacinia sem vitae nunc consectetur, a faucibus orci ultricie',
-      image: 'image-src'
+        'Andy Mina:  Andy.Mina30@myhunter.cuny.edu, Worked on: Outlining the User, Drink, and Review models. Created the User Model. Created the DBdrivevr. Partially implemented drink and review API',
+      image: 'https://cdn.discordapp.com/attachments/874712386089672794/901260722586157056/me.jpeg'
     },
     {
       id: 4,
