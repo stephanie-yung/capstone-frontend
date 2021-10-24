@@ -14,6 +14,7 @@ import SingleDrinkPage from './Components/SingleDrinkPage/SingleDrinkPage';
 import Create from './Components/Create/Create';
 import About from './Components/About/About';
 import ReviewForm from "./Components/ReviewForm/ReviewForm";
+import ReviewBoxComponent from "./Components/SingleDrinkPage/ReviewBoxComponent.js"
 
 
 class App extends Component{
@@ -46,6 +47,7 @@ class App extends Component{
               <Navbar/>
                 <Switch>
                   <Route exact path="/" component={HomePage} />
+                  <Route exact path="/reviewbox" component={ReviewBoxComponent} />
                   <Route exact path="/locations" component={Locations} />
                   <Route exact path="/drinkreview" component={SingleDrinkPage} />
                   <Route exact path="/drinkForm" component={Create} />

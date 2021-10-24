@@ -2,6 +2,9 @@ import React from "react";
 import "./SingleDrinkPage.css";
 import "../../Components/customerReview/customerReview";
 import {BrowserRouter as Router, Switch, Route, Link, Redirect, withRouter} from "react-router-dom";
+import ReviewList from './ReviewDrinkList.js';
+import {ReviewInfo} from "./ReviewMockInfo.js";
+
 
 const SingleDrinkPage = () =>{
     return(
@@ -17,10 +20,11 @@ const SingleDrinkPage = () =>{
                 </div>
                 <div className="column right">
                     <h2 >Reviews: </h2>
-                    <div className="reviewRectangle">As a cold brew fan, I was excited to try it, but I also was concerned it was still going to be too sweet for my taste. Still, I am always up for a fun experiment! It’s not like a total sugar-bomb bright-pink Frappuccino concoction with extra whip</div>
+                    <ReviewList review = {ReviewInfo}/>
+                    {/* <div className="reviewRectangle">As a cold brew fan, I was excited to try it, but I also was concerned it was still going to be too sweet for my taste. Still, I am always up for a fun experiment! It’s not like a total sugar-bomb bright-pink Frappuccino concoction with extra whip</div>
                     <div className="reviewRectangle">I actually LOVED it — and was surprised. At first I just tasted the cold brew, no pumpkin. If your straw is fully in the cup, you don’t taste the pumpkin at all — it’s literally just classic cold brew. Then I just lifted by straw to try the foam alone, and the pumpkin cream was actually so good. REALLY. It was light and creamy, but also rich-tasting, with some good froth and a sweet pumpkin flavor that wasn’t overwhelmingly sweet</div>
                     <div className="reviewRectangle">It's pretty similar to that Vanilla Sweet Cream Cold Brew we all know and love, but with a pumpkin cream foam instead</div>
-                    <div className="reviewRectangle">After a few minutes it kind of all swirls together. You still get that rich, strong cold brew flavor but with a soothing sweet finish</div>
+                    <div className="reviewRectangle">After a few minutes it kind of all swirls together. You still get that rich, strong cold brew flavor but with a soothing sweet finish</div> */}
                 </div>
             </div>
         </div>

@@ -82,7 +82,6 @@ const styles = {
         padding: 10,
         margin: "20px 0",
         minHeight: 100,
-
     },
     button:{
         border: "1px solid #a9a9a9",
