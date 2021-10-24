@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Logo from '../../Components/Logo/Logo';
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import './Navbar.css';
