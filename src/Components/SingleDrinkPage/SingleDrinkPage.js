@@ -38,7 +38,7 @@ const SingleDrinkPage = () =>{
                     <div className="reviewRectangle">It's pretty similar to that Vanilla Sweet Cream Cold Brew we all know and love, but with a pumpkin cream foam instead</div>
                     <div className="reviewRectangle">After a few minutes it kind of all swirls together. You still get that rich, strong cold brew flavor but with a soothing sweet finish</div> */}
                 </div>
-                <button onClick={test_function}>Test</button>
+                {/* <button onClick={test_function}>Test</button> */}
             </div>
         </div>
     );
