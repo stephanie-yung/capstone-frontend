@@ -7,26 +7,26 @@ import './Navbar.css';
 function Navbar(){
     return(
         <nav className="NavbarItems" >
-            <Link to="/">
+            <Link to="/capstone-frontend">
                 <Logo/>
             </Link>
             <div className="rightButtons">
-                <Link to="locations">
+                <Link to="/capstone-frontend/locations">
                     <ul>
                         Find a location
                     </ul>
                 </Link>
-                <Link to="drinkreview">
+                <Link to="/capstone-frontend/drinkreview">
                     <ul>
                         Drink Review
                     </ul>
                 </Link>
-                <Link to="about">
+                <Link to="/capstone-frontend/about">
                     <ul>
                         About Us
                     </ul>
                 </Link>
-                <Link to="drinkForm">
+                <Link to="/capstone-frontend/drinkForm">
                     <ul>
                         Create your Own
                     </ul>
