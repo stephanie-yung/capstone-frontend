@@ -46,13 +46,13 @@ class App extends Component{
             <Router>
               <Navbar/>
                 <Switch>
-                  <Route exact path="/" component={HomePage} />
-                  <Route exact path="/reviewbox" component={ReviewBoxComponent} />
-                  <Route exact path="/locations" component={Locations} />
-                  <Route exact path="/drinkreview" component={SingleDrinkPage} />
-                  <Route exact path="/drinkForm" component={Create} />
-                  <Route exact path="/about" component={About} />
-                  <Route exact path="/reviewForm" component={ReviewForm} />
+                  <Route exact path="/capstone-frontend" component={HomePage} />
+                  <Route exact path="/capstone-frontend/reviewbox" component={ReviewBoxComponent} />
+                  <Route exact path="/capstone-frontend/locations" component={Locations} />
+                  <Route exact path="/capstone-frontend/drinkreview" component={SingleDrinkPage} />
+                  <Route exact path="/capstone-frontend/drinkForm" component={Create} />
+                  <Route exact path="/capstone-frontend/about" component={About} />
+                  <Route exact path="/capstone-frontend/reviewForm" component={ReviewForm} />
                 </Switch>
             </Router>
           </div> : 
