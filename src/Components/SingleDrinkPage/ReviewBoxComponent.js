@@ -21,6 +21,7 @@ class ReviewBoxComponent extends Component{
     
             const {data} = await axios.post("https://brewers-backend.herokuapp.com/add-drink",{user_email:"steph@gmail.com", drink_name:"Pumpkin Spice Latte",ingredients:[["Pumpkin",3]]});
             
+            console.log("POST DRINK");
             console.log(data);
     
         }
@@ -28,6 +29,7 @@ class ReviewBoxComponent extends Component{
             
             const {data} = await axios.post("https://brewers-backend.herokuapp.com/add-review",{user_email:"steph@gmail.com", drink_id:"6175dcfea9a59c84906015db",comment:"This is tasty.",rating:4});
             
+            console.log("POST REVIEW");
             console.log(data);
     
         }
@@ -35,6 +37,7 @@ class ReviewBoxComponent extends Component{
             <div>
                 {/* <ReviewList review = {ReviewInfo}/>
                  */}
+                 <h2>Backend Demo</h2>
                  <button onClick={get_review}>GET REVIEW</button>
                  <button onClick={get_drink}>GET DRINK</button>
                  <button onClick={post_drink}>POST DRINK</button>
