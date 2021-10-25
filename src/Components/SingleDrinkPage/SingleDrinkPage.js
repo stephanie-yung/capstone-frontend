@@ -4,9 +4,15 @@ import "../../Components/customerReview/customerReview";
 import {BrowserRouter as Router, Switch, Route, Link, Redirect, withRouter} from "react-router-dom";
 import ReviewList from './ReviewDrinkList.js';
 import {ReviewInfo} from "./ReviewMockInfo.js";
+import axios from "axios";
 
 
 const SingleDrinkPage = () =>{
+    let test_function = async() => {
+        const {data} = await axios.get("https://brewers-backend.herokuapp.com/review");
+        console.log(data);
+
+    }
     return(
         <div>
             <h1 className="centerHeader">Pumpkin Cream Cold Brew</h1>
@@ -26,6 +32,7 @@ const SingleDrinkPage = () =>{
                     <div className="reviewRectangle">It's pretty similar to that Vanilla Sweet Cream Cold Brew we all know and love, but with a pumpkin cream foam instead</div>
                     <div className="reviewRectangle">After a few minutes it kind of all swirls together. You still get that rich, strong cold brew flavor but with a soothing sweet finish</div> */}
                 </div>
+                <button onClick={test_function}>Test</button>
             </div>
         </div>
     );
