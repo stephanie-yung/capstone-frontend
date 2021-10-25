@@ -9,7 +9,13 @@ import axios from "axios";
 
 const SingleDrinkPage = () =>{
     let test_function = async() => {
-        const {data} = await axios.get("https://brewers-backend.herokuapp.com/review");
+        // const {data} = await axios.get("https://brewers-backend.herokuapp.com/get-review?_id=6175dcfea9a59c84906015df");
+        
+        // const {data} = await axios.get("https://brewers-backend.herokuapp.com/get-drink?review_id=6175dcfea9a59c84906015db");
+
+        // const {data} = await axios.post("https://brewers-backend.herokuapp.com/add-drink",{user_email:"steph@gmail.com", drink_name:"Pumpkin Spice Latte",ingredients:[["Pumpkin",3]]});
+        
+        const {data} = await axios.post("https://brewers-backend.herokuapp.com/add-review",{user_email:"steph@gmail.com", drink_id:"6175dcfea9a59c84906015db",comment:"This is tasty.",rating:4});
         console.log(data);
 
     }
