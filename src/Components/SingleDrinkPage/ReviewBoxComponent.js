@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import ReviewList from './ReviewDrinkList.js';
 import {ReviewInfo} from "./ReviewMockInfo.js";
 import axios from "axios";
-import "./ReviewBoxComponent.js";
+import "./ReviewBoxComponent.css";
 
 const BASE_URL = "https://brewers-backend.herokuapp.com";
 const headers = {
@@ -66,14 +66,14 @@ class ReviewBoxComponent extends Component{
     
         }
         return (
-            <div >
+            <div className="centerContent">
                 {/* <ReviewList review = {ReviewInfo}/>
                  */}
                  <h2>Backend Demo</h2>
-                 <button onClick={get_review}>GET REVIEW</button>
-                 <button onClick={get_drink}>GET DRINK</button>
-                 <button onClick={post_drink}>POST DRINK</button>
-                 <button onClick={post_review}>POST REVIEW</button>
+                 <button className="button3" onClick={get_review}>GET REVIEW</button>
+                 <button className="button3" onClick={get_drink}>GET DRINK</button>
+                 <button className="button3" onClick={post_drink}>POST DRINK</button>
+                 <button className="button3" onClick={post_review}>POST REVIEW</button>
             </div>
         )
     }

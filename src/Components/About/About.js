@@ -11,7 +11,7 @@ const About = () => {
       header: 'Stephanie, Front-end',
       description:
       "Stephanie Yung: stephanie.yung43@myhunter.cuny.edu\n, Worked on: Navbar, Routing, Single Drink Review Page, Location Page Skeleton, Drink Review Form, and styling",
-      image: 'https://cdn.discordapp.com/attachments/505539333869273116/901215064965668884/SY_headshot2.jpg'
+      image: 'https://cdn.discordapp.com/attachments/505539333869273116/902609797587808327/SY_headshot2.jpg'
     },
     {
       id: 2,

@@ -1,10 +1,18 @@
-/* .button{
-    background-color: #4CAF50; 
-    border: none;
-    color: white;
-    padding: 15px 32px;
+.button3{
+    background:#1AAB8A;
+    color:#fff;
+    border:none;
+    position:relative;
+    height:60px;
+    font-size:1.6em;
+    padding:0 2em;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+    margin:10px;
+    
+}
+
+.centerContent{
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-} */
+}
