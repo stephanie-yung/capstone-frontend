@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/capstone-frontend/static/css/main.dccf7202.chunk.css",
-    "main.js": "/capstone-frontend/static/js/main.a20c14c9.chunk.js",
-    "main.js.map": "/capstone-frontend/static/js/main.a20c14c9.chunk.js.map",
+    "main.js": "/capstone-frontend/static/js/main.fba90fc2.chunk.js",
+    "main.js.map": "/capstone-frontend/static/js/main.fba90fc2.chunk.js.map",
     "runtime-main.js": "/capstone-frontend/static/js/runtime-main.3f5adaab.js",
     "runtime-main.js.map": "/capstone-frontend/static/js/runtime-main.3f5adaab.js.map",
     "static/css/2.d7101efc.chunk.css": "/capstone-frontend/static/css/2.d7101efc.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.d7101efc.chunk.css",
     "static/js/2.6afadb69.chunk.js",
     "static/css/main.dccf7202.chunk.css",
-    "static/js/main.a20c14c9.chunk.js"
+    "static/js/main.fba90fc2.chunk.js"
   ]
 }
