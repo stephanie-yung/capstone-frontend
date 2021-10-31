@@ -6,7 +6,7 @@ const CardList = ({c}) => {
         <div>
             {
                 c.map((user, i) => {
-                    return <Card  img={c[i].img} name={c[i].name} username = {c[i].username}/>
+                    return <Card  img={c[i].img} name={c[i].name} username = {c[i].username}  id ={c[i].id} />
                 })
             }
         </div>

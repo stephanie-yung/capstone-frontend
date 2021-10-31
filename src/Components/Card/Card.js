@@ -3,13 +3,15 @@ import { FaCentercode } from 'react-icons/fa';
 import {BrowserRouter as Router, Switch, Route, Link, Redirect, withRouter} from "react-router-dom";
 
 {/* <a href="/drinkreview" className="db link tc"></a> */}
-const Card = ({name, img, username}) => {
+const Card = ({name, img, username, id}) => {
     const myStyle = {
         maxWidth:'50%',
         height: '50%',
     }
     return (
-        <Link to="/capstone-frontend/drinkreview" className="db link tc">
+        <Link to= {{
+            pathname: `/capstone-frontend/drinkreview/${id}`
+        }} className="db link tc">
             <div className ='tc bg-light-blue dib br1 fl w-30 pa2 ma3 grow bw2 shadow-5'>
                 <img src= {img} style = {myStyle}alt=''></img>
                 <div>
