@@ -6,33 +6,33 @@ import './Navbar.css';
 
 function Navbar(){
     return(
-        <nav className="NavbarItems" >
+        <nav className="NavbarItems f4 white pa1 no-underline" >
             <Link to="/capstone-frontend">
                 <Logo/>
             </Link>
-            <div className="rightButtons">
+            <div className="rightButtons no-underline">
                 <Link to="/capstone-frontend/locations">
-                    <ul>
+                    <ul className= "dim">
                         Find a location
                     </ul>
                 </Link>
                 <Link to="/capstone-frontend/drinkreview">
-                    <ul>
+                    <ul className= "dim">
                         Drink Review
                     </ul>
                 </Link>
                 <Link to="/capstone-frontend/about">
-                    <ul>
+                    <ul className= "dim">
                         About Us
                     </ul>
                 </Link>
                 <Link to="/capstone-frontend/drinkForm">
-                    <ul>
+                    <ul className= "dim">
                         Create your Own
                     </ul>
                 </Link>
                 <Link to="/capstone-frontend/reviewbox">
-                    <ul>
+                    <ul className= "dim">
                         Backend Demo
                     </ul>
                 </Link>

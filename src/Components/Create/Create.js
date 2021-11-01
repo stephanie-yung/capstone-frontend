@@ -47,7 +47,7 @@ function Create() {
                 <Multiselect options={optionsSize} singleSelect = {true} displayValue={"Size"}  />
                 <Multiselect options={optionsIce} singleSelect = {true} displayValue={"Ice"} />
                 <Multiselect options={optionsSweet}  displayValue={"Sweet"} />
-                <b>Your Drink is: </b><h3 style = {{color: "red"}}>{Dvalue}</h3>
+                <b>Your Drink is: </b><h3>{Dvalue}</h3>
             </div>
         </div>
     )
