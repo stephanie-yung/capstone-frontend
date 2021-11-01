@@ -1,11 +1,12 @@
 .NavbarItems{
     /* background-color: linear-gradient(90deg, rgb(110,94,254) 0%, rgba(73,63,252, 100%)); */
-    background-color: #b3d1b3;
+    background-color: #96ccff;
     height: 20px;
     display: flex;
     /* justify-content: center; */
     align-items: center;
     font-size: 1.2 rem;
+    color: #96ccff;
 }
 
 .navbar-logo{
