@@ -66,13 +66,13 @@ function ReviewForm(id){
 
     return(
         <div style={styles.container}>
-            <h1> Drink Review Form</h1>
+            <h1 className="white"> Drink Review Form</h1>
             <div className="" style={styles.textareaEmail}>
-                <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
+                <label className="db fw6 white lh-copy f6" htmlFor="email-address">Email</label>
                 <input className="pa2 input-reset ba bg-transparent white w-100" type="email" name="email-address"  id="email-address" onChange={e => setEmailValue(e.target.value)}/>
             </div>
             <div className="" style={styles.textareaEmail}>
-                <label className="db fw6 lh-copy f6" htmlFor="email-address">Drink ID</label>
+                <label className="db fw6 white lh-copy f6" htmlFor="email-address">Drink ID</label>
                 <input className="pa2 input-reset ba bg-transparent white w-100" type="email" name="email-address"  id="email-address" onChange={e => setDrinkIDValue(e.target.value)}/>
             </div>
             <div style = {styles.stars}>
@@ -100,10 +100,10 @@ function ReviewForm(id){
             />
             <button className="mousepointer" style={styles.button} onClick={post_review_submit}>Submit</button>
             <div>
-                <h3>Email: {emailValue}</h3>
-                <h3>ID: {drinkIDValue}</h3>
-                <h3>Star Rating: {currentValue}</h3>
-                <h3>Feedback: {msgValue}</h3>
+                <h3 className="white">Email: {emailValue}</h3>
+                <h3 className="white">ID: {drinkIDValue}</h3>
+                <h3 className="white">Star Rating: {currentValue}</h3>
+                <h3 className="white">Feedback: {msgValue}</h3>
                 {/* <h3>Email: {emailValue}</h3> */}
 
             </div>
