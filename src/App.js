@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import HomePage from './Components/HomePage/HomePage';
 import Locations from './Components/Locations/Locations.js';
 import Navbar from './Components/Navbar/Navbar';
-import {BrowserRouter as Router, Switch, Route, Link, Redirect, withRouter} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route, Link, Redirect, withRouter, useParams} from "react-router-dom";
 import './App.css';
 import { render } from '@testing-library/react';
 import Navigation from './Components/Navigation/Navigation';
@@ -25,7 +25,7 @@ class App extends Component{
       isSignedIn: false
     }
   }
-
+  
 
    onRouteChange = (route) => {
      if (route ==='signout') {
@@ -50,7 +50,8 @@ class App extends Component{
                   <Route exact path="/capstone-frontend/reviewbox" component={ReviewBoxComponent} />
                   <Route exact path="/capstone-frontend/locations" component={Locations} />
                   {/* <Route exact path="/capstone-frontend/drinkreview" component={SingleDrinkPage} /> */}
-                  <Route exact path="/capstone-frontend/drinkreview/:id" component={SingleDrinkPage} />
+                  {/* <Route exact path="/capstone-frontend/drinkreview/:id" component={SingleDrinkPage} /> */}
+                  <Route exact path="/capstone-frontend/drinkreview/:id" component={SingleDrinkPage}/>
                   <Route exact path="/capstone-frontend/drinkForm" component={Create} />
                   <Route exact path="/capstone-frontend/about" component={About} />
                   <Route exact path="/capstone-frontend/reviewForm" component={ReviewForm} />
@@ -69,5 +70,6 @@ class App extends Component{
     );
   }
 }
+
 
 export default App;
