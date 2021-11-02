@@ -56,8 +56,9 @@ function ReviewForm(id){
             drink_id: "6175dcfea9a59c84906015db",
             // drink_id: drinkIDValue,
             comment: msgValue,
-            drink_rating: currentValue
+            rating: currentValue
         };
+        console.log(params)
         const { data } = await axios.post(`${BASE_URL}/add-review`, params, headers);
         console.log("addReview", data.data);
 
