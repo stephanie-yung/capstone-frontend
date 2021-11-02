@@ -43,10 +43,10 @@ function Create() {
             <div>
                 <h3>Create your own Drink</h3>
                 <b>Choose a base drink</b>
-                <Multiselect options={optionsMilk} singleSelect = {true} displayValue={"Milk"}  onSelect={DisplayHandle}/>
-                <Multiselect options={optionsSize} singleSelect = {true} displayValue={"Size"}  />
-                <Multiselect options={optionsIce} singleSelect = {true} displayValue={"Ice"} />
-                <Multiselect options={optionsSweet}  displayValue={"Sweet"} />
+                <Multiselect style={{padding: "20px" }} options={optionsMilk} singleSelect = {true} displayValue={"Milk"}  onSelect={DisplayHandle}/>
+                <Multiselect style={{padding: "20px" }} options={optionsSize} singleSelect = {true} displayValue={"Size"}  />
+                <Multiselect style={{padding: "20px" }} options={optionsIce} singleSelect = {true} displayValue={"Ice"} />
+                <Multiselect style={{padding: "20px" }} options={optionsSweet}  displayValue={"Sweet"} />
                 <b>Your Drink is: </b><h3>{Dvalue}</h3>
             </div>
         </div>
