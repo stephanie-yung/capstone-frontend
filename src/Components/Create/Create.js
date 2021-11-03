@@ -21,9 +21,11 @@ function Create() {
         }
         console.log(new_drink)
         coffeeInfo.push(new_drink)
+        document.getElementById('submitted').textContent="Your drink has been created, go to the homepage to check it out"
     }
     return (
         <div className='create'>
+            <h1 id="submitted"></h1>
             <h2>Create your own drink!</h2>
             <form onSubmit={handleSubmit} action="" method="GET" encType="multipart/form-data">
                 <label>What is the name of your drink?</label>
