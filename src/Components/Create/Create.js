@@ -9,10 +9,20 @@ function Create() {
     const [ice,SetIce] = useState('Regular ice')
     const [type,SetType] = useState('Coffee')
     const [add,SetAdd] = useState('Whipped Cream')
+
+    const handleSubmit = (e) => {
+        const ing = [milk,temp,ice,type,add]
+        e.preventDefault();
+        const new_drink = {
+            name: `${drink}`,
+            ingredients: `${ing}`
+        }
+        console.log(new_drink)
+    }
     return (
         <div className='create'>
             <h2>Create your own drink!</h2>
-            <form action="" method="GET" encType="multipart/form-data">
+            <form onSubmit={handleSubmit} action="" method="GET" encType="multipart/form-data">
                 <label>What is the name of your drink?</label>
                 <input type ="text" required value={drink} onChange={(e) => SetDrink(e.target.value)}></input>
                 <label required>What type of milk?</label>
