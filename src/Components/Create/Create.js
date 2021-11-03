@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './Create.css';
-
+import {coffeeInfo} from '../Coffee/Coffee'
 
 function Create() {
     const [drink,SetDrink] = useState('')
@@ -14,10 +14,13 @@ function Create() {
         const ing = [milk,temp,ice,type,add]
         e.preventDefault();
         const new_drink = {
+            id:1,
+            img: "https://globalassets.starbucks.com/assets/e4d9e996eb64453eb3ac7adb570c9b7b.jpg",
             name: `${drink}`,
-            ingredients: `${ing}`
+            username: `${ing}`
         }
         console.log(new_drink)
+        coffeeInfo.push(new_drink)
     }
     return (
         <div className='create'>
