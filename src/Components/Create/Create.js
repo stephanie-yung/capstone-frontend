@@ -68,8 +68,9 @@ function Create() {
                         <option value="Matcha" >Matcha</option>
                         <option value="Black-tea" >Black-tea</option>
                         <option value="Green-tea" >Green-tea</option>
-                        <option value="Bannans" >Bannans</option>
+                        <option value="Bannans" >Bananas</option>
                         <option value="Whipped Cream" >Whipped Cream</option>
+                        <option value="None" >None</option>
                     </select>
                 <label>Add an image showing off your drink!</label>
                     <input id="file" type="file" name="file"></input>
