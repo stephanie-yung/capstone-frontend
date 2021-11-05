@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 import HomePage from './Components/HomePage/HomePage';
 import Locations from './Components/Locations/Locations.js';
 import Navbar from './Components/Navbar/Navbar';
-import {BrowserRouter as Router, Switch, Route, Link, Redirect, withRouter, useParams} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import './App.css';
 import { render } from '@testing-library/react';
 import Navigation from './Components/Navigation/Navigation';
-import Logo from './Components/Logo/Logo';
 import Signin from './Components/SignIn/SignIn';
 import Register from './Components/Register/Register';
-import Card from './Components/Card/Card';
 import SingleDrinkPage from './Components/SingleDrinkPage/SingleDrinkPage';
 import Create from './Components/Create/Create';
 import About from './Components/About/About';
@@ -49,8 +47,6 @@ class App extends Component{
                   <Route exact path="/capstone-frontend" component={HomePage} />
                   <Route exact path="/capstone-frontend/reviewbox" component={ReviewBoxComponent} />
                   <Route exact path="/capstone-frontend/locations" component={Locations} />
-                  {/* <Route exact path="/capstone-frontend/drinkreview" component={SingleDrinkPage} /> */}
-                  {/* <Route exact path="/capstone-frontend/drinkreview/:id" component={SingleDrinkPage} /> */}
                   <Route exact path="/capstone-frontend/drinkreview/:id" component={SingleDrinkPage}/>
                   <Route exact path="/capstone-frontend/drinkForm" component={Create} />
                   <Route exact path="/capstone-frontend/about" component={About} />

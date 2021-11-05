@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaCentercode } from 'react-icons/fa';
-import {BrowserRouter as Router, Switch, Route, Link, Redirect, withRouter} from "react-router-dom";
+import {BrowserRouter as Link} from "react-router-dom";
 
 {/* <a href="/drinkreview" className="db link tc"></a> */}
 const Card = ({name, img, username, id}) => {
