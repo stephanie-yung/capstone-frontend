@@ -61,6 +61,7 @@ function ReviewForm(id){
         console.log(params)
         const { data } = await axios.post(`${BASE_URL}/add-review`, params, headers);
         console.log("addReview", data.data);
+        document.getElementById('submitted').textContent="Your review has been submitted. Thank you!"
 
     }
 
@@ -100,14 +101,7 @@ function ReviewForm(id){
                 onChange={e => setMsgValue(e.target.value)}
             />
             <button className="mousepointer" style={styles.button} onClick={post_review_submit}>Submit</button>
-            <div>
-                <h3 className="">Email: {emailValue}</h3>
-                <h3 className="">ID: {drinkIDValue}</h3>
-                <h3 className="">Star Rating: {currentValue}</h3>
-                <h3 className="">Feedback: {msgValue}</h3>
-                {/* <h3>Email: {emailValue}</h3> */}
-
-            </div>
+            <h1 id="submitted"></h1>
         </div>
     );
 };
