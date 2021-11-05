@@ -6,6 +6,7 @@ const ReviewList = ({review}) => {
         <div>
             {
                 review.map((drink_id, i) => {
+                    <li key = {review[i].drink_id}></li>
                     return <ReviewBox drink_id={review[i].drink_id} comment={review[i].comment}/>
                 })
             }
