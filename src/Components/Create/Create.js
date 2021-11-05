@@ -43,7 +43,7 @@ function Create() {
                         <option value="Hot" id="hot">Hot</option>
                         <option value="Iced" id="iced">Iced</option>
                     </select>
-                <label>If you chose iced, choose your ice level:</label>
+                <label>If you chose iced, choose your ice level. If you chose hot, leave as "No Ice".</label>
                     <select value={ice} onChange={(e)=> SetIce(e.target.value)}>
                         <option value="No ice" >No ice</option>
                         <option value="Less ice" >Less ice</option>
@@ -74,7 +74,7 @@ function Create() {
                 <label>Add an image showing off your drink!</label>
                     <input id="file" type="file" name="file"></input>
                     <button>Finalize your drink!</button>
-                <p>Your drink is called "{drink}" It is a {temp} {type} made with {milk} and has {add}</p>
+                <p>Your drink is called "{drink}". It is a {temp} {type} made with {milk} and has {add}</p>
             </form>
         </div>
     )
