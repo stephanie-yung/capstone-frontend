@@ -13,14 +13,21 @@ const headers = {
  };
 
 const SingleDrinkPage = ({id}) =>{
-    var validComment;
+    //initialize variables
+    const drink_id = useParams(); //get parameter value 
+
     var reviewsArray  = []; 
+    var drinkComment;
+    var validComment;
+
     const [DrinkData, setDrinkData] = useState(0);
     const [DrinkName, setDrinkName] = useState(0);
     const [DrinkRating, setDrinkRating] = useState(0);
     const [DrinkIngredients, setDrinkIngredients] = useState(0);
     const [DrinkReviewIds, setDrinkReviewIds] = useState(0);
     var IngredientsMap = new Map()
+
+    //get endpoint data and set states. 
     useEffect(async () => {
         // fetch(`${BASE_URL}/get-drink?${params}`)
         //     .then(response => response.json())
@@ -38,86 +45,13 @@ const SingleDrinkPage = ({id}) =>{
 
         setDrinkReviewIds(data.data.review_ids);
 
-
-        for(let i = 0; i < DrinkReviewIds.length;i++){
-            console.log(DrinkReviewIds[i]);
-            validComment = get_review(DrinkReviewIds[i]);
-            console.log("valid comment dudes",validComment);
-            reviewsArray.push(validComment)
-        }
-        console.log("THIS IS THE REVIEWS ARRAY: ", reviewsArray);
-
-        // for (let i = 0; i < DrinkReviewIds.length; i++) {
-            //     // console.log(drinkReviewIds[i])
-            //     // if(drinkReviewIds[i] !== ""){
-            //     //     validComment = get_review(drinkReviewIds[i])
-            //     //     reviewsArray.push(validComment)
-            //     //     console.log("this is the reviewsArray",reviewsArray)
-            //     // }
-                
-            //     validComment = get_review(drinkReviewIds[i])
-            //     reviewsArray.push(validComment)
-            //     console.log("this is the reviewsArray",reviewsArray)
-            // }
-
-
-        // let paramsReview = qs.stringify({ review_id: review_id });
-        // const { dataReview } = await axios.get(`${BASE_URL}/get-review?${paramsReview}`);
-        // console.log("GET REVIEW", dataReview.data);
-        // console.log("GET commment", dataReview.data.comment);
     }, []);
     for(let i = 0; i< DrinkIngredients.length; i++){
         IngredientsMap.set(DrinkIngredients[i][0]+": ", DrinkIngredients[i][1]+". ");
     }
     console.log("Drink Ingredients Map", IngredientsMap);
-    const drink_id = useParams();
 
-    let drinkReviewIds;
-    var reviewsArray  = []; 
-    var drinkComment;
-    var validComment;
-
-
-    //mostlikely will delete get_drink()
-    let get_drink = async() => {
-        var qs = require('qs');
-        let params = qs.stringify({ drink_id: "6175dcfea9a59c84906015db" });
-        // console.log("what is params",params)
-        // console.log("testing this ")
-
-        // fetch(`${BASE_URL}/get-drink?${params}`)
-        //     .then(response => response.json())
-        //     .then(data =>console.log(data.data))
-
-        // var { data } = await axios.get(`${BASE_URL}/get-drink?${params}`);
-        // console.log("testing this 2")
-
-        for(let i = 0; i< DrinkIngredients.length; i++){
-            IngredientsMap.set(DrinkIngredients[i][0]+": ", DrinkIngredients[i][1]+". ");
-        }
-        console.log("Drink Ingredients",IngredientsMap);
-
-
-        // console.log("reviews", data.data.review_ids);
-        // drinkReviewIds = data.data.review_ids
-        // return drinkName
-        // drinkReviewIds.forEach(element => console.log("this is the element",element));
-        // for (let i = 0; i < DrinkReviewIds.length; i++) {
-        //     // console.log(drinkReviewIds[i])
-        //     // if(drinkReviewIds[i] !== ""){
-        //     //     validComment = get_review(drinkReviewIds[i])
-        //     //     reviewsArray.push(validComment)
-        //     //     console.log("this is the reviewsArray",reviewsArray)
-        //     // }
-            
-        //     validComment = get_review(drinkReviewIds[i])
-        //     reviewsArray.push(validComment)
-        //     console.log("this is the reviewsArray",reviewsArray)
-        // }
-
-    }
-
-    //keep get_review()
+    //get_review()
     let get_review = async(review_id) => {
         var qs = require('qs');
         // var comment;
@@ -131,13 +65,21 @@ const SingleDrinkPage = ({id}) =>{
         }
     }
 
+    //push reviews to reviewsArray
+    for(let i = 0; i < DrinkReviewIds.length;i++){
+        console.log(DrinkReviewIds[i]);
+        validComment = get_review(DrinkReviewIds[i]);
+        console.log("valid comment dudes",validComment);
+        reviewsArray.push(validComment)
+    }
+    console.log("THIS IS THE REVIEWS ARRAY: ", reviewsArray);
+
     return(
         <div style={{padding: "20px" }} >
             <div className="right" style={{margin: "80px 50px" }} >
             <h1 className="">{DrinkName}</h1>
             <h3> Ingredients:</h3>
                 <li>{IngredientsMap}</li>
-
 
             {/* <h3 className="">This is the drink ID: {drink_id.id}</h3> */}
             </div>
@@ -158,7 +100,6 @@ const SingleDrinkPage = ({id}) =>{
                     <div className="reviewRectangle">It's pretty similar to that Vanilla Sweet Cream Cold Brew we all know and love, but with a pumpkin cream foam instead</div>
                     <div className="reviewRectangle">After a few minutes it kind of all swirls together. You still get that rich, strong cold brew flavor but with a soothing sweet finish</div> */}
                 </div>
-                {/* <button onClick={get_drink}>Test</button> */}
             </div>
         </div>
     );
