@@ -1,6 +1,6 @@
 import React from "react";
 import "./SingleDrinkPage.css";
-const ReviewBox = ({drink_id, comment}) => {
+const ReviewBox = ({comment}) => {
     const myStyle = {
         border: "1px solid #a9a9a9",
         borderRadius: 5,
