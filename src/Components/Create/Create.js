@@ -9,13 +9,14 @@ function Create() {
     const [ice,SetIce] = useState('Regular ice')
     const [type,SetType] = useState('Coffee')
     const [add,SetAdd] = useState('Whipped Cream')
-
+    const [img,SetImg] = useState('https://globalassets.starbucks.com/assets/e4d9e996eb64453eb3ac7adb570c9b7b.jpg')
+ 
     const handleSubmit = (e) => {
-        const ing = [milk,temp,ice,type,add]
+        const ing = [milk,temp,ice,type,add,img]
         e.preventDefault();
         const new_drink = {
             id:1,
-            img: "https://globalassets.starbucks.com/assets/e4d9e996eb64453eb3ac7adb570c9b7b.jpg",
+            img: `${img}`,
             name: `${drink}`,
             username: `${ing}`
         }
@@ -23,6 +24,13 @@ function Create() {
         coffeeInfo.push(new_drink)
         document.getElementById('submitted').textContent="Your drink has been created, go to the homepage to check it out"
     }
+    const handleChange = e => {
+        if (e.target.files.length) {
+          SetImg(
+            URL.createObjectURL(e.target.files[0])
+          );
+        }
+      };
     return (
         <div className='create'>
             <h1 id="submitted"></h1>
@@ -73,7 +81,7 @@ function Create() {
                         <option value="None" >None</option>
                     </select>
                 <label>Add an image showing off your drink!</label>
-                    <input id="file" type="file" name="file"></input>
+                    <input id="file" type="file" name="file" accept="image/png, image/jpeg" onChange={handleChange}></input>
                     <button>Finalize your drink!</button>
                 <p>Your drink is called "{drink}". It is a {temp} {type} made with {milk} and has {add}</p>
             </form>
