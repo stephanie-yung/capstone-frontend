@@ -16,11 +16,6 @@ function Navbar(){
                         Find a location
                     </ul>
                 </Link>
-                <Link to="/capstone-frontend/drinkreview">
-                    <ul className= "dim">
-                        Drink Review
-                    </ul>
-                </Link>
                 <Link to="/capstone-frontend/about">
                     <ul className= "dim">
                         About Us
@@ -31,9 +26,9 @@ function Navbar(){
                         Create your Own
                     </ul>
                 </Link>
-                <Link to="/capstone-frontend/reviewbox">
+                <Link to="/capstone-frontend/userAccount">
                     <ul className= "dim">
-                        Backend Demo
+                        My Account
                     </ul>
                 </Link>
             </div>

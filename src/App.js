@@ -15,6 +15,7 @@ import Create from './Components/Create/Create';
 import About from './Components/About/About';
 import ReviewForm from "./Components/ReviewForm/ReviewForm";
 import ReviewBoxComponent from "./Components/SingleDrinkPage/ReviewBoxComponent.js"
+import UserAccount from './Components/UserAccount/UserAccountPage';
 
 
 class App extends Component{
@@ -53,7 +54,7 @@ class App extends Component{
                   <Route exact path="/capstone-frontend/drinkForm" component={Create} />
                   <Route exact path="/capstone-frontend/about" component={About} />
                   <Route exact path="/capstone-frontend/reviewForm" component={ReviewForm} />
-                  
+                  <Route exact path="/capstone-frontend/userAccount" component={UserAccount} />
                 </Switch>
             </Router>
           </div> : 

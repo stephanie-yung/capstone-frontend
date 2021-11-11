@@ -58,7 +58,6 @@ const SingleDrinkPage = ({id}) =>{
         let params = qs.stringify({ review_id: review_id });
         const { data } = await axios.get(`${BASE_URL}/get-review?${params}`);
 
-        // console.log("GET commment", data.data.comment);
         if(data.data.comment !== ""){
             drinkComment =data.data.comment;
             return drinkComment;
