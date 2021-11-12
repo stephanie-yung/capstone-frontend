@@ -18,7 +18,7 @@ function Create() {
             id:1,
             img: `${img}`,
             name: `${drink}`,
-            username: `${ing}`
+            user_name: `${ing}`
         }
         console.log(new_drink)
         coffeeInfo.push(new_drink)
