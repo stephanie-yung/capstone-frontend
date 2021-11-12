@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import './Create.css';
 import {coffeeInfo} from '../Coffee/Coffee'
+import axios from "axios";
 
 function Create() {
     const [drink,SetDrink] = useState('')
@@ -21,6 +22,7 @@ function Create() {
             user_name: `${ing}`
         }
         console.log(new_drink)
+        // const res = await axios.post('https://brewers-backend.herokuapp.com/drinks', new_drink)
         coffeeInfo.push(new_drink)
         document.getElementById('submitted').textContent="Your drink has been created, go to the homepage to check it out"
     }
