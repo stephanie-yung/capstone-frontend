@@ -12,6 +12,7 @@ const headers = {
     'Content-Type': 'application/x-www-form-urlencoded'
  };
 
+
 const SingleDrinkPage = ({id}) =>{
     //initialize variables
     const drink_id = useParams(); //get parameter value 
@@ -25,52 +26,135 @@ const SingleDrinkPage = ({id}) =>{
     const [DrinkRating, setDrinkRating] = useState(0);
     const [DrinkIngredients, setDrinkIngredients] = useState(0);
     const [DrinkReviewIds, setDrinkReviewIds] = useState(0);
+    const [DrinkReviewArray, setDrinkReviewArray] = useState(0);
     var IngredientsMap = new Map()
+    var IngredientsList = []
 
     //get endpoint data and set states. 
     useEffect(async () => {
         // fetch(`${BASE_URL}/get-drink?${params}`)
         //     .then(response => response.json())
         //     .then(data => console.log("This is the data.data: ",data.data))
-        var qs = require('qs');
-        let params = qs.stringify({ drink_id: "6177334f07019096b234aac9" });
-        var { data } = await axios.get(`${BASE_URL}/get-drink?${params}`)
-        console.log("dataaaa: ",data.data);
+        let get_drink = async(drink_id) => {
+            var qs = require('qs');
+            let params = qs.stringify({ drink_id: "619063b464aa0703a8fe7584" });
+            var { data } = await axios.get(`${BASE_URL}/get-drink?${params}`)
+            console.log("dataaaa: ",data.data);
 
-        setDrinkName(data.data.name)
-        setDrinkRating(data.data.rating);
-        setDrinkIngredients(data.data.ingredients);
-        console.log("INGREDIENTS: ",data.data.ingredients);
-        // console.log("INGREDIENTS: ",);
+            setDrinkName(data.data.name)
+            setDrinkRating(data.data.rating);
+            setDrinkIngredients(data.data.ingredients);
+            console.log("INGREDIENTS: ",data.data.ingredients);
 
-        setDrinkReviewIds(data.data.review_ids);
+            setDrinkReviewIds(data.data.review_ids);
+        }
+        get_drink();
+
+
+        //single
+        // let get_drink2 = async(drink_id) => {
+
+        //     var { data } = await axios.get(`${BASE_URL}/drinks/${drink_id}`)
+        //     console.log("dataaaa: ",data.data);
+
+        //     setDrinkName(data.data.name)
+        //     setDrinkRating(data.data.rating);
+        //     setDrinkIngredients(data.data.ingredients);
+        //     console.log("INGREDIENTS: ",data.data.ingredients);
+
+        //     setDrinkReviewIds(data.data.review_ids);
+        // }
+        // get_drink2();
+
+        //review_id = array of ids
+        //multiple
+        let get_review2 = async(review_id) => {
+            var qs = require('qs');
+            let params = qs.stringify({ _ids: review_id});
+            const { data } = await axios.get(`${BASE_URL}/reviews?${params}`);
+    
+            if(data.data.comment !== ""){
+                drinkComment =data.data.comment;
+                return drinkComment;
+            }
+        }
+
+        let get_review = async(review_id) => {
+            var qs = require('qs');
+            let params = qs.stringify({ review_id: review_id });
+            const { data } = await axios.get(`${BASE_URL}/get-review?${params}`);
+            // console.log(data)
+    
+            if(data.data.comment !== ""){
+                drinkComment =data.data.comment;
+                // console.log("drink comment:", JSON.stringify(drinkComment));
+                return drinkComment;
+            }
+        }
+        const printReview = async() =>{
+            for(let i = 0; i < DrinkReviewIds.length;i++){
+                console.log(DrinkReviewIds[i]);
+                const validComment = await get_review(DrinkReviewIds[i]);
+                reviewsArray.push(validComment)
+                // console.log("THIS IS THE REVIEWS ARRAY: ", reviewsArray);
+            }
+            console.log("THIS IS THE REVIEWS ARRAY: ", reviewsArray);
+            setDrinkReviewArray(reviewsArray);
+        }
+    
+        printReview()
 
     }, []);
     for(let i = 0; i< DrinkIngredients.length; i++){
-        IngredientsMap.set(DrinkIngredients[i][0]+": ", DrinkIngredients[i][1]+". ");
+        // IngredientsMap.set(DrinkIngredients[i][0]+": ", DrinkIngredients[i][1]+". ");
+        var ingredientsFull = DrinkIngredients[i][0]+": "+ DrinkIngredients[i][1]+". ";
+        // console.log(ingredientsFull)
+        IngredientsList.push(ingredientsFull);
+        console.log(IngredientsList)
     }
     console.log("Drink Ingredients Map", IngredientsMap);
+    const IngredientsItems = IngredientsList.map((ingredient) =>
+        <li>{ingredient}</li>
+        // <div>{ingredient}</div>
+    );
+
+    // const IngredientsItems = IngredientsMap.map((ingredient =>
+    //     <li key =></li>
+    // );
 
     //get_review()
-    let get_review = async(review_id) => {
-        var qs = require('qs');
-        // var comment;
-        let params = qs.stringify({ review_id: review_id });
-        const { data } = await axios.get(`${BASE_URL}/get-review?${params}`);
+    // let get_review = async(review_id) => {
+    //     var qs = require('qs');
+    //     // var comment;
+    //     let params = qs.stringify({ review_id: review_id });
+    //     const { data } = await axios.get(`${BASE_URL}/get-review?${params}`);
 
-        if(data.data.comment !== ""){
-            drinkComment =data.data.comment;
-            return drinkComment;
-        }
-    }
+    //     if(data.data.comment !== ""){
+    //         drinkComment =data.data.comment;
+    //         console.log("drink comment:", JSON.stringify(drinkComment));
+    //         return drinkComment;
+    //     }
+    // }
+    // const printReview = async() =>{
+    //     for(let i = 0; i < DrinkReviewIds.length;i++){
+    //         console.log(DrinkReviewIds[i]);
+    //         const validComment = await get_review(DrinkReviewIds[i]);
+    //         console.log("valid comment!!!!!!",validComment);
+    //         reviewsArray.push(validComment)
+    //         console.log("THIS IS THE REVIEWS ARRAY: ", reviewsArray);
+    //     }
+    // }
+
+    // printReview()
+    
 
     //push reviews to reviewsArray
-    for(let i = 0; i < DrinkReviewIds.length;i++){
-        console.log(DrinkReviewIds[i]);
-        validComment = get_review(DrinkReviewIds[i]);
-        console.log("valid comment dudes",validComment);
-        reviewsArray.push(validComment)
-    }
+    // for(let i = 0; i < DrinkReviewIds.length;i++){
+    //     console.log(DrinkReviewIds[i]);
+    //     validComment = get_review(DrinkReviewIds[i]);
+    //     console.log("valid comment dudes",validComment);
+    //     reviewsArray.push(validComment)
+    // }
     console.log("THIS IS THE REVIEWS ARRAY: ", reviewsArray);
 
     return(
@@ -78,7 +162,8 @@ const SingleDrinkPage = ({id}) =>{
             <div className="right" style={{margin: "80px 50px" }} >
             <h1 className="">{DrinkName}</h1>
             <h3> Ingredients:</h3>
-                <li>{IngredientsMap}</li>
+                <div>{IngredientsItems}</div>
+            
 
             {/* <h3 className="">This is the drink ID: {drink_id.id}</h3> */}
             </div>
@@ -93,8 +178,9 @@ const SingleDrinkPage = ({id}) =>{
                 </div>
                 <div className="column right">
                     <h2 >Reviews: </h2>
-                    <ReviewList review = {ReviewInfo}/>
-                    {/* <ReviewList review = {validComment}/> */}
+                    {/* <ReviewList review = {ReviewInfo}/> */}
+                    {/* <ReviewList review = {reviewsArray}/> */}
+                    {/* <ReviewList review = {DrinkReviewArray}/> */}
                     {/* <div className="reviewRectangle">As a cold brew fan, I was excited to try it, but I also was concerned it was still going to be too sweet for my taste. Still, I am always up for a fun experiment! It’s not like a total sugar-bomb bright-pink Frappuccino concoction with extra whip</div>
                     <div className="reviewRectangle">I actually LOVED it — and was surprised. At first I just tasted the cold brew, no pumpkin. If your straw is fully in the cup, you don’t taste the pumpkin at all — it’s literally just classic cold brew. Then I just lifted by straw to try the foam alone, and the pumpkin cream was actually so good. REALLY. It was light and creamy, but also rich-tasting, with some good froth and a sweet pumpkin flavor that wasn’t overwhelmingly sweet</div>
                     <div className="reviewRectangle">It's pretty similar to that Vanilla Sweet Cream Cold Brew we all know and love, but with a pumpkin cream foam instead</div>

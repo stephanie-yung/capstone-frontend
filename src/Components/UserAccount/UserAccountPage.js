@@ -2,8 +2,44 @@ import React from 'react'
 import { FaCentercode } from 'react-icons/fa';
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import "./UserAccountPage.css";
+import axios from 'axios';
+
+
+const BASE_URL = "https://brewers-backend.herokuapp.com";
+const headers = {
+    'Content-Type': 'application/x-www-form-urlencoded'
+ };
+
 
 const UserAccount = () => {
+
+    let get_user = async(email) =>{
+        const { data } = await axios.get(`${BASE_URL}/users/${email}`);
+        // console.log(data);
+    }
+
+    // let post_user = async() =>{
+    //     let params = {
+    //         fname: ,
+    //         lname: ,
+    //         email: email,
+    //         pw:
+    //     };
+  
+    //     const { data } = await axios.post(`${BASE_URL}/users`, params, headers);
+
+    // }
+
+    let delete_drink = async(drink_id) => {
+        var { data } = await axios.delete(`${BASE_URL}/drinks`, {data: {_ids: [drink_id]}})
+
+    }
+    // delete_drink();
+    let delete_review = async(review_id) => {
+        var { data } = await axios.delete(`${BASE_URL}/reviews`, {data: {_ids: [review_id]}})
+
+    }
+    //delete_review()
 
     return (
        <div className="margin2">
