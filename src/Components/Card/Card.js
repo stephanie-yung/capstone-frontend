@@ -3,7 +3,7 @@ import { FaCentercode } from 'react-icons/fa';
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 
 {/* <a href="/drinkreview" className="db link tc"></a> */}
-const Card = ({name, img, username, id}) => {
+const Card = ({name, img, user_name, id}) => {
     const myStyle = {
         maxWidth:'50%',
         height: '50%',
@@ -16,7 +16,7 @@ const Card = ({name, img, username, id}) => {
                 <img src= {img} style = {myStyle}alt=''></img>
                 <div>
                     <h2>{name}</h2>
-                    <p>{username}</p>
+                    <p>{user_name}</p>
                 </div>
             </div>
         </Link>

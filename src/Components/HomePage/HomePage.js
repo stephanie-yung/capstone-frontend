@@ -4,6 +4,7 @@ import { render } from '@testing-library/react';
 import CardList from '../Card/CardList';
 import {coffeeInfo} from '../Coffee/Coffee'
 import SearchBox from '../Searchbox/SearchBox';
+import axios from 'axios';
 function HomePage(){
   const [search,SetSearch] = useState('') 
   const onSearchChange = (event) => {
