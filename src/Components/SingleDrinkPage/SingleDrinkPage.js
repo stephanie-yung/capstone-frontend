@@ -28,6 +28,7 @@ const SingleDrinkPage = ({id}) =>{
     const [DrinkReviewIds, setDrinkReviewIds] = useState(0);
     const [DrinkReviewArray, setDrinkReviewArray] = useState(0);
     var IngredientsMap = new Map()
+    var IngredientsList = []
 
     //get endpoint data and set states. 
     useEffect(async () => {
@@ -36,7 +37,7 @@ const SingleDrinkPage = ({id}) =>{
         //     .then(data => console.log("This is the data.data: ",data.data))
         let get_drink = async(drink_id) => {
             var qs = require('qs');
-            let params = qs.stringify({ drink_id: "6177334f07019096b234aac9" });
+            let params = qs.stringify({ drink_id: "619063b464aa0703a8fe7584" });
             var { data } = await axios.get(`${BASE_URL}/get-drink?${params}`)
             console.log("dataaaa: ",data.data);
 
@@ -105,9 +106,21 @@ const SingleDrinkPage = ({id}) =>{
 
     }, []);
     for(let i = 0; i< DrinkIngredients.length; i++){
-        IngredientsMap.set(DrinkIngredients[i][0]+": ", DrinkIngredients[i][1]+". ");
+        // IngredientsMap.set(DrinkIngredients[i][0]+": ", DrinkIngredients[i][1]+". ");
+        var ingredientsFull = DrinkIngredients[i][0]+": "+ DrinkIngredients[i][1]+". ";
+        // console.log(ingredientsFull)
+        IngredientsList.push(ingredientsFull);
+        console.log(IngredientsList)
     }
     console.log("Drink Ingredients Map", IngredientsMap);
+    const IngredientsItems = IngredientsList.map((ingredient) =>
+        <li>{ingredient}</li>
+        // <div>{ingredient}</div>
+    );
+
+    // const IngredientsItems = IngredientsMap.map((ingredient =>
+    //     <li key =></li>
+    // );
 
     //get_review()
     // let get_review = async(review_id) => {
@@ -149,7 +162,8 @@ const SingleDrinkPage = ({id}) =>{
             <div className="right" style={{margin: "80px 50px" }} >
             <h1 className="">{DrinkName}</h1>
             <h3> Ingredients:</h3>
-                <li>{IngredientsMap}</li>
+                <div>{IngredientsItems}</div>
+            
 
             {/* <h3 className="">This is the drink ID: {drink_id.id}</h3> */}
             </div>
@@ -166,7 +180,7 @@ const SingleDrinkPage = ({id}) =>{
                     <h2 >Reviews: </h2>
                     {/* <ReviewList review = {ReviewInfo}/> */}
                     {/* <ReviewList review = {reviewsArray}/> */}
-                    <ReviewList review = {DrinkReviewArray}/>
+                    {/* <ReviewList review = {DrinkReviewArray}/> */}
                     {/* <div className="reviewRectangle">As a cold brew fan, I was excited to try it, but I also was concerned it was still going to be too sweet for my taste. Still, I am always up for a fun experiment! It’s not like a total sugar-bomb bright-pink Frappuccino concoction with extra whip</div>
                     <div className="reviewRectangle">I actually LOVED it — and was surprised. At first I just tasted the cold brew, no pumpkin. If your straw is fully in the cup, you don’t taste the pumpkin at all — it’s literally just classic cold brew. Then I just lifted by straw to try the foam alone, and the pumpkin cream was actually so good. REALLY. It was light and creamy, but also rich-tasting, with some good froth and a sweet pumpkin flavor that wasn’t overwhelmingly sweet</div>
                     <div className="reviewRectangle">It's pretty similar to that Vanilla Sweet Cream Cold Brew we all know and love, but with a pumpkin cream foam instead</div>
