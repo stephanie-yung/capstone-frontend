@@ -65,6 +65,21 @@ function ReviewForm(id){
 
     }
 
+    // let post_review_submit2 = async() => {
+    //     let params = {
+    //         user_email: emailValue,
+    //         drink_id: "6177334f07019096b234aac9",
+    //         // drink_id: drinkIDValue,
+    //         comment: msgValue,
+    //         rating: currentValue
+    //     };
+    //     console.log(params)
+    //     const { data } = await axios.post(`${BASE_URL}/reviews`, params, headers);
+    //     console.log("addReview", data.data);
+    //     document.getElementById('submitted').textContent="Your review has been submitted. Thank you!"
+
+    // }
+
 
     return(
         <div style={styles.container}>
