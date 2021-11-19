@@ -1,4 +1,4 @@
-import React from 'react'
+import React ,{useState, useEffect}from 'react'
 import { FaCentercode } from 'react-icons/fa';
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import "./UserAccountPage.css";
@@ -12,11 +12,21 @@ const headers = {
 
 
 const UserAccount = () => {
+    const [FirstName, setFirstName] = useState(0);
+    const [LastName, setLastName] = useState(0);
+    const [Email, setEmail] = useState(0);
 
     let get_user = async(email) =>{
+        email = "andy@gmail.com";
         const { data } = await axios.get(`${BASE_URL}/users/${email}`);
-        // console.log(data);
+        console.log("USER DATAAAAA.DATAAAAA",data.data);
+        // console.log("USER INFO",data.data.fname);
+        setFirstName(data.data.fname);
+        setLastName(data.data.lname);
+        setEmail(data.data.email);
+
     }
+    get_user();
 
     // let post_user = async() =>{
     //     let params = {
@@ -43,8 +53,8 @@ const UserAccount = () => {
 
     return (
        <div className="margin2">
-           <h1>Joe Smith</h1>
-           <h3>joesmith@gmail.com</h3>
+           <h1>{FirstName} {LastName}</h1>
+           <h3>{Email}</h3>
            <br></br>
            <br></br>
 

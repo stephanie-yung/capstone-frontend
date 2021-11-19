@@ -15,8 +15,8 @@ const headers = {
 
 const SingleDrinkPage = ({id}) =>{
     //initialize variables
-    const drink_id = useParams(); //get parameter value 
-
+    const params = useParams(); //get parameter value 
+    const drink_id = params.id;
     var reviewsArray  = []; 
     var drinkComment;
     var validComment;
@@ -35,38 +35,21 @@ const SingleDrinkPage = ({id}) =>{
     
     //get endpoint data and set states. 
     useEffect(async () => {
-        // NOT IN USE: GET_DRINK()
-        let get_drink = async(drink_id) => {
-            var qs = require('qs');
-            let params = qs.stringify({ drink_id: "619063b464aa0703a8fe7584" });
-            // drink_id = "619062bf64aa0703a8fe7572"
-            var { data } = await axios.get(`${BASE_URL}/get-drink?${params}`)
-            console.log("dataaaa: ",data.data);
-
-            setDrinkName(data.data.name)
-            setDrinkRating(data.data.rating);
-            setDrinkIngredients(data.data.ingredients);
-            console.log("INGREDIENTS: ",data.data.ingredients);
-
-            setDrinkReviewIds(data.data.review_ids);
-        }
-        // get_drink();
-
-
         //get single drink
-        let get_drink2 = async(drink_id) => {
+        let get_drink = async(drink_id) => {
             // drink_id = "619063b464aa0703a8fe7584";
-            drink_id = "619062bf64aa0703a8fe7572"
-            var { data } = await axios.get(`${BASE_URL}/drinks/${drink_id}`)
-            console.log("dataaaa: ",data.data);
+            // drink_id = "619062bf64aa0703a8fe7572"
+            const { data } = await axios.get(`${BASE_URL}/drinks/${drink_id}`)
+            const drink = data.data
 
+            setDrinkName(drink.name)
+            setDrinkRating(drink.rating);
+            setDrinkIngredients(drink.ingredients);
+            console.log("THIS IS THE REVIEW_IDSSSS: ",drink.review_ids)
+            get_reviews(drink.review_ids)
+            // console.log("INGREDIENTS: ",drink.ingredients);
 
-            setDrinkName(data.data.name)
-            setDrinkRating(data.data.rating);
-            setDrinkIngredients(data.data.ingredients);
-            console.log("INGREDIENTS: ",data.data.ingredients);
-
-            setDrinkReviewIds(data.data.review_ids);
+            // setDrinkReviewIds(data.data.review_ids);
 
             // for(let i = 0; i< DrinkIngredients.length; i++){
             //     var ingredientsFull = DrinkIngredients[i][0]+": "+ DrinkIngredients[i][1]+". ";
@@ -78,58 +61,23 @@ const SingleDrinkPage = ({id}) =>{
             //     <li>{ingredient}</li>
             // );
         }
-        get_drink2();
 
-        //get reviews for drink
-        // let get_review2 = async(review_id) => {
-        //     var qs = require('qs');
-        //     // let params = qs.stringify({ _ids: review_id});
-        //     // // let params = qs.stringify({ _ids: 619062bf64aa0703a8fe7572});
-        //     // const { data } = await axios.get(`${BASE_URL}/reviews?${params}`);
+        console.log("DRINK IDDDDDDD",drink_id);
+        get_drink(drink_id);
 
-        //     for(let i = 0; i < DrinkReviewIds.length ;i++){
-        //         console.log("review id: ", DrinkReviewIds[i]); 
+        let get_reviews = async (review_ids) => {
+            for(let i = 0; i < review_ids.length ;i++) {
+                const { data } = await axios.get(`${BASE_URL}/reviews/${review_ids[i]}`);
+                const review = data.data;
+                reviewsArray.push(review.comment);
+            }
 
-
-        //         // let params = qs.stringify({ review_id: DrinkReviewIds[i] })
-        //         let params = "619062c064aa0703a8fe7574";
-        //         const { data } = await axios.get(`${BASE_URL}/reviews/${params}`);
-        //         drinkComment = data.data.comment;;
-        //         reviewsArray.push(drinkComment)
-        //         console.log("THIS IS THE REVIEWS ARRAY INSIDER FUNC2: ", reviewsArray);
-        //     }
-        //     setDrinkReviewArray(reviewsArray);
-        //     setReviewsLoaded(true);
-        // }
-        // get_review2();
-
-
-        //review_id = array of ids
-        //multiple
-        // let get_review2 = async(review_id) => {
-        //     var qs = require('qs');
-        //     let params = qs.stringify({ _ids: review_id});
-        //     const { data } = await axios.get(`${BASE_URL}/reviews?${params}`);
-    
-        // }
-
-        //NOT IN USE GET_REVIEW
-        // let get_review = async() => {
-        //     var qs = require('qs');
-
-        //     for(let i = 0; i < DrinkReviewIds.length;i++){
-        //         // console.log(DrinkReviewIds[i]); 
-
-        //         let params = qs.stringify({ review_id: DrinkReviewIds[i] });
-        //         const { data } = await axios.get(`${BASE_URL}/get-review?${params}`);
-        //         drinkComment = data.data.comment;;
-        //         reviewsArray.push(drinkComment)
-        //         console.log("THIS IS THE REVIEWS ARRAY INSIDER FUNC: ", reviewsArray);
-        //     }
-        // }
-        // get_review();
-
+            console.log("THIS IS THE REVIEWS ARRAY INSIDER FUNC2: ", reviewsArray);
+            setDrinkReviewArray(reviewsArray);
+            setReviewsLoaded(true);
+        }
     }, []);
+
     for(let i = 0; i< DrinkIngredients.length; i++){
         var ingredientsFull = DrinkIngredients[i][0]+": "+ DrinkIngredients[i][1]+". ";
         IngredientsList.push(ingredientsFull);
@@ -139,62 +87,9 @@ const SingleDrinkPage = ({id}) =>{
     const IngredientsItems = IngredientsList.map((ingredient) =>
         <li>{ingredient}</li>
     );
-
     
+    // useEffect(() =>{
 
-    // let IngredientsItems = [["whipped cream", "2oz"]];
-    
-    useEffect(() =>{
-        // let get_review = async() => {
-        //     var qs = require('qs');
-        //     for(let i = 0; i < DrinkReviewIds.length;i++){
-        //         // console.log(DrinkReviewIds[i]); 
-
-        //         let params = qs.stringify({ review_id: DrinkReviewIds[i] });
-        //         const { data } = await axios.get(`${BASE_URL}/get-review?${params}`);
-        //         drinkComment = data.data.comment;;
-        //         reviewsArray.push(drinkComment)
-        //         console.log("THIS IS THE REVIEWS ARRAY INSIDER FUNC: ", reviewsArray);
-        //     }
-        //     // let params = qs.stringify({ review_id: review_id });
-        //     // const { data } = await axios.get(`${BASE_URL}/get-review?${params}`);
-        //     // console.log("REVIEWSLOADED BEFORE",ReviewsLoaded);
-        //     // setReviewsLoaded(true);
-        //     // console.log("REVIEWSLOADED AFTER",ReviewsLoaded);
-        //     // // console.log(data)
-
-        //     // drinkComment = data.data.comment;
-        //     // // console.log("drink comment:", JSON.stringify(drinkComment));
-        //     // console.log("DRINKCOMMENTNTTT",drinkComment);
-        //     // return drinkComment;
-        //     setDrinkReviewArray(reviewsArray);
-        //     setReviewsLoaded(true);
-
-        // }
-        // get_review();
-
-        
-        let get_review2 = async(review_id) => {
-            var qs = require('qs');
-            // let params = qs.stringify({ _ids: review_id});
-            // // let params = qs.stringify({ _ids: 619062bf64aa0703a8fe7572});
-            // const { data } = await axios.get(`${BASE_URL}/reviews?${params}`);
-
-            for(let i = 0; i < DrinkReviewIds.length ;i++){
-                console.log("review id: ", DrinkReviewIds[i]); 
-
-                // let params = qs.stringify({ review_id: DrinkReviewIds[i] })
-                let params = DrinkReviewIds[i];
-                const { data } = await axios.get(`${BASE_URL}/reviews/${params}`);
-                // const { data } = await axios.get(`${BASE_URL}/reviews?${params}`);
-                drinkComment = data.data.comment;;
-                reviewsArray.push(drinkComment)
-                console.log("THIS IS THE REVIEWS ARRAY INSIDER FUNC2: ", reviewsArray);
-            }
-            setDrinkReviewArray(reviewsArray);
-            setReviewsLoaded(true);
-        }
-        get_review2();
         
         // let get_review2 = async(review_id) => {
         //     var qs = require('qs');
@@ -222,39 +117,15 @@ const SingleDrinkPage = ({id}) =>{
         // }
         // get_review2();
 
-        }
+        // }
     
-    ,[]);
+    // ,[]);
+    
     // setDrinkReviewArray(reviewsArray);
     // setReviewsLoaded(true);
     
 
     // console.log("THIS IS THE REVIEWS ARRAY OUTSIDE: ", DrinkReviewArray);
-
-    //get_review()
-    // let get_review = async(review_id) => {
-    //     var qs = require('qs');
-    //     // var comment;
-    //     let params = qs.stringify({ review_id: review_id });
-    //     const { data } = await axios.get(`${BASE_URL}/get-review?${params}`);
-
-    //     if(data.data.comment !== ""){
-    //         drinkComment =data.data.comment;
-    //         console.log("drink comment:", JSON.stringify(drinkComment));
-    //         return drinkComment;
-    //     }
-    // }
-    // const printReview = async() =>{
-    //     for(let i = 0; i < DrinkReviewIds.length;i++){
-    //         console.log(DrinkReviewIds[i]);
-    //         const validComment = await get_review(DrinkReviewIds[i]);
-    //         console.log("valid comment!!!!!!",validComment);
-    //         reviewsArray.push(validComment)
-    //         console.log("THIS IS THE REVIEWS ARRAY: ", reviewsArray);
-    //     }
-    // }
-
-    // printReview()
     
 
     return(
@@ -280,7 +151,7 @@ const SingleDrinkPage = ({id}) =>{
                     {/* <ReviewList review = {ReviewInfo}/> */}
                     {/* <ReviewList review = {reviewsArray}/> */}
                     {
-                        ReviewsLoaded ? <ReviewList review = {DrinkReviewArray}/> : <div>No reviews</div>
+                        ReviewsLoaded ? <ReviewList review = {DrinkReviewArray}/> : <div>LOADING...</div>
 
                     }
 
