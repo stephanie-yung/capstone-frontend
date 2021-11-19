@@ -1,10 +1,14 @@
 import React, {useState} from 'react';
 import { GoogleMap, withScriptjs, withGoogleMap, Marker } from 'react-google-maps';
-import * as starbucks from "./starbucks.json"
+import starbucks from "./starbucks.json"
+// console.log(starbucks)
 function Map() {
     return (
-        <GoogleMap defaultZoom={10}
+        <GoogleMap defaultZoom={16}
         defaultCenter= {{ lat: 40.768538, lng :-73.964741}}>
+            {starbucks.map((store)=> (
+                <Marker key={store.id} position={{lat:store.location.latitude, lng:store.location.longitude}}/>
+            ))}
             <Marker key={'Hunter College'} position={{lat: 40.768538, lng: -73.964741}}/>
         </GoogleMap>
     );
