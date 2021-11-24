@@ -33,7 +33,7 @@ const UserAccount = () => {
         setLastName(data.data.lname);
         setEmail(data.data.email);
         get_drinks(data.data.drink_ids);
-        get_reviews(data.data.review_ids);
+        // get_reviews(data.data.review_ids);
     }
     get_user();
 
@@ -112,7 +112,7 @@ const UserAccount = () => {
                     <button className="deleteButton">
                         Delete
                     </button>
-                    <h2>Drink Name: </h2>
+                    <h2>Drink Name: {DrinkName} </h2>
                 </div>
                 <h3>Ingredients: </h3>
 
