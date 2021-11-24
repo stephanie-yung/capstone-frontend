@@ -26,9 +26,6 @@ const UserAccount = () => {
     let get_user = async(email) =>{
         email = "andy@gmail.com";
         const { data } = await axios.get(`${BASE_URL}/users/${email}`);
-        console.log("USER DATAAAAA.DATAAAAA",data.data);
-        console.log("USER DATAAAAA.DATAAAAA.Drink-ids",data.data.drink_ids);
-        // console.log("USER INFO",data.data.fname);
         setFirstName(data.data.fname);
         setLastName(data.data.lname);
         setEmail(data.data.email);
@@ -40,14 +37,12 @@ const UserAccount = () => {
     let get_drinks = async(drink_ids) => {
         for(let i = 0; i < drink_ids.length ;i++) {
             const { data } = await axios.get(`${BASE_URL}/drinks/${drink_ids[i]}`);
-            console.log(data);
             const drinks = data.data;
             setDrinkName(data.data.name);
             setDrinkIngredients(data.data.ingredients);
             // drinksArray.push(drinks);
         }
 
-        console.log("/THIS IS THE DINRKS ARRAY INSIDER FUNC2: ", drinksArray);
         // setDrinkReviewArray(reviewsArray);
         // setReviewsLoaded(true);
     }
@@ -72,20 +67,6 @@ const UserAccount = () => {
 
         setReviewsArray(reviewsArray)
     }
-
-
-
-    // let post_user = async() =>{
-    //     let params = {
-    //         fname: ,
-    //         lname: ,
-    //         email: email,
-    //         pw:
-    //     };
-  
-    //     const { data } = await axios.post(`${BASE_URL}/users`, params, headers);
-
-    // }
 
     let delete_drink = async(drink_id) => {
         var { data } = await axios.delete(`${BASE_URL}/drinks`, {data: {_ids: [drink_id]}})

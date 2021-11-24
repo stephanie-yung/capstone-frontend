@@ -14,7 +14,6 @@ const ReviewBox = ({comment}) => {
         <div>
             <div className="reviewRectangle">
                 <div>{comment}</div>
-                {/* <h2>{drink_id}</h2> */}
             </div>
         </div>
     )

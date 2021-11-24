@@ -121,11 +121,8 @@ const styles = {
         minHeight: 100,
     },
     textareaEmail:{
-        // border: "1px solid #a9a9a9",
         borderRadius: 5,
         width: 500,
-        // padding: 10,
-        // margin: "20px 0",
         minHeight: 75,
     },
     button:{

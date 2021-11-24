@@ -18,11 +18,10 @@ function HomePage(){
   const onSearchChange = (event) => {
     SetSearch(event.target.value)
   }
-  let filtered2;
+
   useEffect(async () => {
     let get_drink = async() => {
       var { data } = await axios.get(`${BASE_URL}/drinks`)
-      console.log("dataaaa: ",data.data);
       SetDrink(data.data);
       return data.data;
 
