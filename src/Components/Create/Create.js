@@ -19,17 +19,17 @@ function Create() {
     const [add,SetAdd] = useState('Whipped Cream')
     const [img,SetImg] = useState('https://globalassets.starbucks.com/assets/e4d9e996eb64453eb3ac7adb570c9b7b.jpg')
  
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         const ing = [size,milk,temp,ice,type,[syrup,num1],[syrup2,num2],[syrup3,num3],add]
         e.preventDefault();
         const new_drink = {
-            id: 'andy@gmail.com',
-            img: `${img}`,
+            user_email: 'andy@gmail.com',
+            // img: `${img}`,
             name: `${drink}`,
             ingredients: ing
         }
         console.log(new_drink)
-        // const res = await axios.post('https://brewers-backend.herokuapp.com/drinks', new_drink)
+        await axios.post('https://brewers-backend.herokuapp.com/drinks', new_drink)
         coffeeInfo.push(new_drink)
         document.getElementById('submitted').textContent="Your drink has been created, go to the homepage to check it out"
     }
