@@ -5,6 +5,7 @@ import axios from "axios";
 
 function Create() {
     const [drink,SetDrink] = useState('')
+    const [size,SetSize] = useState('')
     const [milk,SetMilk] = useState('Whole Milk')
     const [temp,SetTemp] = useState('Iced')
     const [ice,SetIce] = useState('Regular ice')
@@ -18,17 +19,17 @@ function Create() {
     const [add,SetAdd] = useState('Whipped Cream')
     const [img,SetImg] = useState('https://globalassets.starbucks.com/assets/e4d9e996eb64453eb3ac7adb570c9b7b.jpg')
  
-    const handleSubmit = (e) => {
-        const ing = [milk,temp,ice,type,syrup,add]
+    const handleSubmit = async (e) => {
+        const ing = [size,milk,temp,ice,type,[syrup,num1],[syrup2,num2],[syrup3,num3],add]
         e.preventDefault();
         const new_drink = {
-            id: 'test@gmail.com',
-            img: `${img}`,
+            user_email: 'andy@gmail.com',
+            // img: `${img}`,
             name: `${drink}`,
-            ingredients: `${ing}`
+            ingredients: ing
         }
         console.log(new_drink)
-        // const res = await axios.post('https://brewers-backend.herokuapp.com/drinks', new_drink)
+        await axios.post('https://brewers-backend.herokuapp.com/drinks', new_drink)
         coffeeInfo.push(new_drink)
         document.getElementById('submitted').textContent="Your drink has been created, go to the homepage to check it out"
     }
@@ -46,6 +47,12 @@ function Create() {
             <form onSubmit={handleSubmit} action="" method="GET" encType="multipart/form-data">
                 <label>What is the name of your drink?</label>
                 <input type ="text" required value={drink} onChange={(e) => SetDrink(e.target.value)}></input>
+                <label required>What size?</label>
+                    <select value={size} onChange={(e)=> SetSize(e.target.value)}>
+                        <option value="Small">Small</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Large">Large</option>
+                    </select>
                 <label required>What type of milk?</label>
                     <select value={milk} onChange={(e)=> SetMilk(e.target.value)}>
                         <option value="Whole milk">Whole Milk</option>
