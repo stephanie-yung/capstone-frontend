@@ -12,10 +12,6 @@ const headers = {
     'Content-Type': 'application/x-www-form-urlencoded'
  };
 
-//  const filtered = coffeeInfo.filter(coffeeInfo => {
-//   return coffeeInfo.name.toLowerCase().includes(search.toLowerCase());
-// })
-
 function HomePage(){
   const [search,SetSearch] = useState('') ;
   const [drinks,SetDrink] = useState([]) ;
