@@ -38,24 +38,15 @@ const UserAccount = () => {
         for(let i = 0; i < drink_ids.length ;i++) {
             const { data } = await axios.get(`${BASE_URL}/drinks/${drink_ids[i]}`);
             const drinks = data.data;
-            setDrinkName(data.data.name);
-            setDrinkIngredients(data.data.ingredients);
+
+            setDrinkName(drinks.name);
+            setDrinkIngredients(drinks.ingredients);
             // drinksArray.push(drinks);
         }
 
         // setDrinkReviewArray(reviewsArray);
         // setReviewsLoaded(true);
     }
-    
-    // for(let i = 0; i< DrinkIngredients.length; i++){
-    //     var ingredientsFull = DrinkIngredients[i][0]+": "+ DrinkIngredients[i][1]+". ";
-    //     IngredientsList.push(ingredientsFull);
-    //     console.log(IngredientsList)
-    // }
-    // console.log("Drink Ingredients Map", IngredientsMap);
-    // const IngredientsItems = IngredientsList.map((ingredient) =>
-    //     <li>{ingredient}</li>
-    // );
 
     let get_reviews = async (review_ids) => {
         let reviewsArray = [];
@@ -80,6 +71,15 @@ const UserAccount = () => {
     //delete_review()
     }, []);
 
+    for(let i = 0; i< DrinkIngredients.length; i++){
+        var ingredientsFull = DrinkIngredients[i][0]+": "+ DrinkIngredients[i][1]+". ";
+        IngredientsList.push(ingredientsFull);
+        console.log(IngredientsList)
+    }
+    const IngredientsItems = IngredientsList.map((ingredient) =>
+        <li>{ingredient}</li>
+    );
+
     return (
        <div className="margin2">
            <h1>{FirstName} {LastName}</h1>
@@ -95,7 +95,8 @@ const UserAccount = () => {
                     </button>
                     <h2>Drink Name: {DrinkName} </h2>
                 </div>
-                <h3>Ingredients: </h3>
+                <h3>Ingredients:</h3>
+                    <div>{IngredientsItems}</div>
 
            </div>
 
