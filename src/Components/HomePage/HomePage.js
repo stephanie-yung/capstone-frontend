@@ -39,7 +39,6 @@ function HomePage(){
 
   return (
     <div className = "tc">
-      <h1>what is happening</h1>
       <SearchBox  searchChange={onSearchChange}/>
       <CardList c = {drinks}/>
     </div>
