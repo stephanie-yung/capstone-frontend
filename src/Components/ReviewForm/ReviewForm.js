@@ -50,35 +50,20 @@ function ReviewForm(id){
         console.log(event.target.value);
     }
 
-    let post_review_submit = async() => {
+    let post_review_submit2 = async() => {
         let params = {
             user_email: emailValue,
-            drink_id: "6177334f07019096b234aac9",
-            // drink_id: drinkIDValue,
+            // drink_id: "6190678855e104fa42e3e4f7",
+            drink_id: drinkIDValue,
             comment: msgValue,
             rating: currentValue
         };
         console.log(params)
-        const { data } = await axios.post(`${BASE_URL}/add-review`, params, headers);
+        const { data } = await axios.post(`${BASE_URL}/reviews`, params, headers);
         console.log("addReview", data.data);
         document.getElementById('submitted').textContent="Your review has been submitted. Thank you!"
 
     }
-
-    // let post_review_submit2 = async() => {
-    //     let params = {
-    //         user_email: emailValue,
-    //         drink_id: "6177334f07019096b234aac9",
-    //         // drink_id: drinkIDValue,
-    //         comment: msgValue,
-    //         rating: currentValue
-    //     };
-    //     console.log(params)
-    //     const { data } = await axios.post(`${BASE_URL}/reviews`, params, headers);
-    //     console.log("addReview", data.data);
-    //     document.getElementById('submitted').textContent="Your review has been submitted. Thank you!"
-
-    // }
 
 
     return(
@@ -115,7 +100,7 @@ function ReviewForm(id){
                 style={styles.textarea}
                 onChange={e => setMsgValue(e.target.value)}
             />
-            <button className="mousepointer" style={styles.button} onClick={post_review_submit}>Submit</button>
+            <button className="mousepointer" style={styles.button} onClick={post_review_submit2}>Submit</button>
             <h1 id="submitted"></h1>
         </div>
     );
@@ -136,11 +121,8 @@ const styles = {
         minHeight: 100,
     },
     textareaEmail:{
-        // border: "1px solid #a9a9a9",
         borderRadius: 5,
         width: 500,
-        // padding: 10,
-        // margin: "20px 0",
         minHeight: 75,
     },
     button:{
