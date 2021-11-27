@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import './Create.css';
 import {coffeeInfo} from '../Coffee/Coffee'
 import axios from "axios";
-
+//using react hooks, this is how all the input data is saved and stored and placed into a object called "ing"
 function Create() {
     const [drink,SetDrink] = useState('')
     const [size,SetSize] = useState('')

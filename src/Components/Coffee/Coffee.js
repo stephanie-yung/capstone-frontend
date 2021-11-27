@@ -1,3 +1,4 @@
+// Just a list of dummy data
 export const coffeeInfo = [
     {
       id: 1,

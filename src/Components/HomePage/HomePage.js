@@ -34,8 +34,10 @@ function HomePage(){
 
   return (
     <div className = "tc">
-      <SearchBox  searchChange={onSearchChange}/>
-      <CardList c = {drinks}/>
+      <SearchBox  searchChange={onSearchChange}/>  SearchBox 
+      {/* SearchBox takes in a searchChange function described above which can be used to filter drinks */}
+      <CardList c = {drinks}/> 
+      {/* Cardlists takes the card componenet and information to put in those cards, right now using dummy data */}
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-
+//using the tachyons library, set up a simple form with onClick functions that is linked back to the homepage to direct users to the given page
 const Register = ({onRouteChange}) => {
     return(
         <article style={{border: "1px solid #212121"}} className="br3 ba b--white-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">

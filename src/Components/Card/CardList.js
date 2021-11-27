@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "./Card";
-
+//The cardlist takes in data and outputs a card component, so you don't have to manually keep creating a card, but just add a new card to the backend
 const CardList = ({c}) => {
     return (
         <div>

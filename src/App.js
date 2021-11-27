@@ -24,10 +24,11 @@ class App extends Component{
     this.state = {
       route: 'signin',
       isSignedIn: false
+      //This state function has no functionality at the moment besides checking which page the suer is on, will use this for user auth
     }
   }
   
-
+//Below is the function to determine the page
    onRouteChange = (route) => {
      if (route ==='signout') {
        this.setState({isSignedIn : false})

@@ -1,6 +1,6 @@
 import React from "react";
 
-
+//The search box that just takes in a function
 const SearchBox = ({searchChange}) => {
     return (
         <div className ='pa2'>
