@@ -2,11 +2,13 @@ import React from "react";
 import ReviewBox from "./ReviewDrinkBox"
 
 const ReviewList = ({review}) => {
-    console.log("REVIEWLIST PAGE COMPONENT: ",review);
+    //push reviews to reviewList to map
     var reviewList = []
     for (let i = 0; i< review.length ; i++){
         reviewList.push(review[i]);
     }
+
+    //map reviewList into each reviewbox.
     return(
         <div>
             {

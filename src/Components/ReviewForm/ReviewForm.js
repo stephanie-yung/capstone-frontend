@@ -13,9 +13,12 @@ const colors = {
     grey: "a9a9a9"
 }
 
+//reviewform component
 function ReviewForm(id){
     const stars = Array(5).fill(0);
     const msg = ""
+
+    //set states
     const [currentValue, setCurrentValue] = React.useState(0);
     const [hoverValue, setHoverValue] = React.useState(undefined);
     const [msgValue, setMsgValue] = React.useState(msg);
@@ -50,7 +53,9 @@ function ReviewForm(id){
         console.log(event.target.value);
     }
 
-    let post_review_submit2 = async() => {
+    //post review to DB
+    let post_review_submit = async() => {
+        //params to be passed
         let params = {
             user_email: emailValue,
             // drink_id: "6190678855e104fa42e3e4f7",
@@ -58,9 +63,10 @@ function ReviewForm(id){
             comment: msgValue,
             rating: currentValue
         };
-        console.log(params)
+
         const { data } = await axios.post(`${BASE_URL}/reviews`, params, headers);
         console.log("addReview", data.data);
+        //submitted confirmation
         document.getElementById('submitted').textContent="Your review has been submitted. Thank you!"
 
     }
@@ -69,14 +75,17 @@ function ReviewForm(id){
     return(
         <div style={styles.container}>
             <h1 className=""> Drink Review Form</h1>
+            {/* email section */}
             <div className="" style={styles.textareaEmail}>
                 <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
                 <input className="pa2 input-reset ba bg-transparent w-100" type="email" name="email-address"  id="email-address" onChange={e => setEmailValue(e.target.value)}/>
             </div>
+            {/* drink id section */}
             <div className="" style={styles.textareaEmail}>
                 <label className="db fw6 lh-copy f6" htmlFor="email-address">Drink ID</label>
                 <input className="pa2 input-reset ba bg-transparent w-100" type="email" name="email-address"  id="email-address" onChange={e => setDrinkIDValue(e.target.value)}/>
             </div>
+            {/* star rating section */}
             <div style = {styles.stars}>
                 {stars.map((_, index) =>{
                     return(
@@ -95,12 +104,14 @@ function ReviewForm(id){
                     )
                 })}
             </div>
+            {/* review comment section */}
             <textarea 
                 placeholder="What's your feedback?"
                 style={styles.textarea}
                 onChange={e => setMsgValue(e.target.value)}
             />
-            <button className="mousepointer" style={styles.button} onClick={post_review_submit2}>Submit</button>
+            {/* submit button */}
+            <button className="mousepointer" style={styles.button} onClick={post_review_submit}>Submit</button>
             <h1 id="submitted"></h1>
         </div>
     );

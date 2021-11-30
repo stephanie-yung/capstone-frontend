@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from 'react-google-maps';
 import starbucks from "./starbucks.json"
 // console.log(starbucks)
-//using google maps api and react hooks, I simply found a json file with locations of all starbucks within Manhatten and mapped over the json file to create a mark at the starbucks with a info window displaying the store ID
+//using google maps api and react hooks, I simply found a json file with locations of all starbucks within Manhattan and mapped over the json file to create a mark at the starbucks with a info window displaying the store ID
 function Map() {
     const [selectedStore, setSelectedStore] = useState()
     return (
@@ -45,7 +45,7 @@ export default function Location() {
                                 mapElement={<div style={{ height: `100%` }} />}/>
                 </div>
                 <div>
-                    <h2>Only Displaying Manhatten locations</h2>
+                    <h2>Only Displaying Manhattan locations</h2>
                 </div>
             </div>
         );

@@ -15,11 +15,9 @@ const headers = {
 
 const SingleDrinkPage = ({id}) =>{
     //initialize variables
-    const params = useParams(); //get parameter value 
+    const params = useParams(); //get parameter (drink id)value 
     const drink_id = params.id;
     var reviewsArray  = []; 
-    var drinkComment;
-    var validComment;
 
     const [DrinkData, setDrinkData] = useState(0);
     const [DrinkName, setDrinkName] = useState(0);
@@ -28,19 +26,19 @@ const SingleDrinkPage = ({id}) =>{
     const [DrinkReviewIds, setDrinkReviewIds] = useState(0);
     const [DrinkReviewArray, setDrinkReviewArray] = useState(0);
     const [ReviewsLoaded , setReviewsLoaded] = useState(false);
-    var IngredientsMap = new Map()
     var IngredientsList = []
 
     
     //get endpoint data and set states. 
     useEffect(async () => {
-        //get single drink
+        //get single drink data
         let get_drink = async(drink_id) => {
             // drink_id = "619063b464aa0703a8fe7584";
-            // drink_id = "619062bf64aa0703a8fe7572"
+            // drink_id = "619062bf64aa0703a8fe7572";
             const { data } = await axios.get(`${BASE_URL}/drinks/${drink_id}`)
             const drink = data.data
 
+            //set drink states
             setDrinkName(drink.name)
             setDrinkRating(drink.rating);
             setDrinkIngredients(drink.ingredients);
@@ -49,27 +47,31 @@ const SingleDrinkPage = ({id}) =>{
 
         get_drink(drink_id);
 
+        // get reviews for passed in drink id
         let get_reviews = async (review_ids) => {
+            // retrieve review comment per review_id
             for(let i = 0; i < review_ids.length ;i++) {
                 const { data } = await axios.get(`${BASE_URL}/reviews/${review_ids[i]}`);
                 const review = data.data;
-                reviewsArray.push(review.comment);
+                reviewsArray.push(review.comment); //push review comment to arrray
             }
 
-            setDrinkReviewArray(reviewsArray);
-            setReviewsLoaded(true);
+            setDrinkReviewArray(reviewsArray); //set DrinkReviewArray state
+            setReviewsLoaded(true); //set loaded reviews to true
         }
     }, []);
 
+    // Add ingredients to list 
     for(let i = 0; i< DrinkIngredients.length; i++){
         var ingredientsFull = DrinkIngredients[i][0]+": "+ DrinkIngredients[i][1]+". ";
         IngredientsList.push(ingredientsFull);
     }
+    // map ingredients to <li>
     const IngredientsItems = IngredientsList.map((ingredient) =>
         <li>{ingredient}</li>
     );
 
-
+    // Display retrieved drink data
     return(
         <div style={{padding: "20px" }} >
             <div className="right" style={{margin: "80px 50px" }} >
@@ -99,7 +101,6 @@ const SingleDrinkPage = ({id}) =>{
 }
 
 const styles = {
-
     button:{
         border: "1px solid #a9a9a9",
         borderRadius: 5,

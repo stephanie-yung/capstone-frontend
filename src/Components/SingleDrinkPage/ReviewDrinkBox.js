@@ -1,5 +1,7 @@
 import React from "react";
 import "./SingleDrinkPage.css";
+
+//reviewBox component -- passed in comment
 const ReviewBox = ({comment}) => {
     const myStyle = {
         border: "1px solid #a9a9a9",
@@ -10,6 +12,7 @@ const ReviewBox = ({comment}) => {
         minHeight: 100,
     }
 
+    //display comment into reviewRectangle.
     return(
         <div>
             <div className="reviewRectangle">

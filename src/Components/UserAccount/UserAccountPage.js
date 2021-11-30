@@ -11,63 +11,73 @@ const headers = {
  };
 
 
+ //userAccount component
 const UserAccount = () => {
+
+    //states
     const [FirstName, setFirstName] = useState(0);
     const [LastName, setLastName] = useState(0);
     const [Email, setEmail] = useState(0);
     const [ReviewsArray, setReviewsArray] = useState([])
     const [DrinkName, setDrinkName] = useState(0);
     const [DrinkIngredients, setDrinkIngredients] = useState(0);
-    var IngredientsMap = new Map();
     var IngredientsList = [];
 
     let drinksArray;
-    useEffect(async () => {
-    let get_user = async(email) =>{
-        email = "andy@gmail.com";
-        const { data } = await axios.get(`${BASE_URL}/users/${email}`);
-        setFirstName(data.data.fname);
-        setLastName(data.data.lname);
-        setEmail(data.data.email);
-        get_drinks(data.data.drink_ids);
-        // get_reviews(data.data.review_ids);
-    }
-    get_user();
 
-    let get_drinks = async(drink_ids) => {
-        for(let i = 0; i < drink_ids.length ;i++) {
-            const { data } = await axios.get(`${BASE_URL}/drinks/${drink_ids[i]}`);
-            const drinks = data.data;
+    useEffect(async () => { 
 
-            setDrinkName(drinks.name);
-            setDrinkIngredients(drinks.ingredients);
-            // drinksArray.push(drinks);
+        //get user data
+        let get_user = async(email) =>{
+            email = "andy@gmail.com";
+            const { data } = await axios.get(`${BASE_URL}/users/${email}`);
+            setFirstName(data.data.fname);
+            setLastName(data.data.lname);
+            setEmail(data.data.email);
+            get_drinks(data.data.drink_ids);
+            // get_reviews(data.data.review_ids);
+        }
+        get_user();
+
+        //get user drinks
+        let get_drinks = async(drink_ids) => {
+            for(let i = 0; i < drink_ids.length ;i++) {
+                const { data } = await axios.get(`${BASE_URL}/drinks/${drink_ids[i]}`);
+                const drinks = data.data;
+
+                setDrinkName(drinks.name);
+                setDrinkIngredients(drinks.ingredients);
+                // drinksArray.push(drinks);
+            }
+
+            // setDrinkReviewArray(reviewsArray);
+            // setReviewsLoaded(true);
         }
 
-        // setDrinkReviewArray(reviewsArray);
-        // setReviewsLoaded(true);
-    }
+        //get user reviews
+        let get_reviews = async (review_ids) => {
+            let reviewsArray = [];
+            for (let i = 0; i < review_ids.length; i++) {
+                const { data } = await axios.get(`${BASE_URL}/reviews/${review_ids[i]}`)
+                const review = data.data;
+                reviewsArray.push(review)
+            }
 
-    let get_reviews = async (review_ids) => {
-        let reviewsArray = [];
-        for (let i = 0; i < review_ids.length; i++) {
-            const { data } = await axios.get(`${BASE_URL}/reviews/${review_ids[i]}`)
-            const review = data.data;
-            reviewsArray.push(review)
+            setReviewsArray(reviewsArray)
         }
 
-        setReviewsArray(reviewsArray)
-    }
+        //delete a drink
+        let delete_drink = async(drink_id) => {
+            var { data } = await axios.delete(`${BASE_URL}/drinks`, {data: {_ids: [drink_id]}})
 
-    let delete_drink = async(drink_id) => {
-        var { data } = await axios.delete(`${BASE_URL}/drinks`, {data: {_ids: [drink_id]}})
+        }
+        // delete_drink();
 
-    }
-    // delete_drink();
-    let delete_review = async(review_id) => {
-        var { data } = await axios.delete(`${BASE_URL}/reviews`, {data: {_ids: [review_id]}})
+        //delete a review
+        let delete_review = async(review_id) => {
+            var { data } = await axios.delete(`${BASE_URL}/reviews`, {data: {_ids: [review_id]}})
 
-    }
+        }
     //delete_review()
     }, []);
 

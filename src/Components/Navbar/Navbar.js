@@ -7,9 +7,11 @@ import './Navbar.css';
 function Navbar(){
     return(
         <nav className="NavbarItems f4 white pa1 no-underline" >
+            {/* Logo on the NavBar, linking to the homepage */}
             <Link to="/capstone-frontend">
                 <Logo/>
             </Link>
+            {/* Links to tabs on NavBar */}
             <div className="rightButtons no-underline">
                 <Link to="/capstone-frontend/locations">
                     <ul className= "dim">

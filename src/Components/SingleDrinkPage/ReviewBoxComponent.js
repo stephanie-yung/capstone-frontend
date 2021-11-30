@@ -9,6 +9,8 @@ const headers = {
     'Content-Type': 'application/x-www-form-urlencoded'
  };
 
+
+//testing DB endpoints.
 class ReviewBoxComponent extends Component{
     render(){
         let get_review = async() => {
@@ -42,10 +44,6 @@ class ReviewBoxComponent extends Component{
             const { data } = await axios.post(`${BASE_URL}/add-drink`, params, headers);
             console.log("addDrink", data.data);
     
-            // const {data} = await axios.post("https://brewers-backend.herokuapp.com/add-drink",{user_email:"steph@gmail.com", drink_name:"Pumpkin Spice Latte",ingredients:[["Pumpkin",3]]});
-            
-            // console.log("POST DRINK");
-            // console.log(data);
     
         }
         let post_review = async() => {
