@@ -1,5 +1,5 @@
 import React from 'react';
-
+// using function made on app.js, just switches through the pages with user auth atm
 const Navigation = ({ onRouteChange, isSignedIn }) => {
     if (isSignedIn) {
       return (
