@@ -23,7 +23,7 @@ function Create() {
         const ing = [size,milk,temp,ice,type,[syrup,num1],[syrup2,num2],[syrup3,num3],add]
         e.preventDefault();
         const new_drink = {
-            user_email: 'sony@gmail.com',
+            user_email: 'andy@gmail.com',
             // img: `${img}`,
             name: `${drink}`,
             ingredients: ing

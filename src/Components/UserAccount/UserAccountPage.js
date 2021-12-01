@@ -46,7 +46,7 @@ const UserAccount = () => {
             setFirstName(data.data.fname);
             setLastName(data.data.lname);
             setEmail(data.data.email);
-            console.log(data.data.drink_ids);
+            console.log("DRINK IDDSSS RETRIEVVEEDD:",data.data.drink_ids);
             get_drinks(data.data.drink_ids);
             console.log("RREVIEW IDS RETRIEVED::::",data.data.review_ids);
             setReviewsArray(data.data.review_ids);
@@ -105,13 +105,6 @@ const UserAccount = () => {
             setReviewsLoaded(true);
         }
         // get_reviews(ReviewsArray);
-
-        //delete a drink
-        let delete_drink = async(drink_id) => {
-            var { data } = await axios.delete(`${BASE_URL}/drinks`, {data: {_ids: [drink_id]}})
-
-        }
-        // delete_drink();
 
         //delete a review
         let delete_review = async(review_id) => {
