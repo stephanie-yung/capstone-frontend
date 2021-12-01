@@ -3,8 +3,8 @@ import { FaCentercode } from 'react-icons/fa';
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import "./UserAccountPage.css";
 import axios from 'axios';
-import UserDrinkList from "./UserAccountDrinkList"
-import UserDrinkBox from './UserAccountDrinkBox';
+import UserDrinkList from "./UserAccountDrinkList";
+import UserReviewList from './UserAccountReviewList';
 
 
 const BASE_URL = "https://brewers-backend.herokuapp.com";
@@ -23,14 +23,19 @@ const UserAccount = () => {
     const [ReviewsArray, setReviewsArray] = useState([])
     const [DrinkName, setDrinkName] = useState(0);
     const [DrinkIngredients, setDrinkIngredients] = useState(0);
+    const [Reviews2DArray, setReviews2DArray] = useState(0);
     const [Drink2DArray, setDrink2DArray] = useState(0);
     const [DrinksLoaded, setDrinksLoaded] = useState(0);
+
+    const [ReviewsLoaded, setReviewsLoaded] = useState(0);
     var IngredientsList = [];
 
     let drinksArray = [];
+    let reviewsArray = [];
     let drinks2DArray = [[]];
+    let reviews2DArray = [[]];
     drinks2DArray.pop();
-    let dInfo;
+    reviews2DArray.pop();
 
     useEffect(async () => { 
 
@@ -43,8 +48,10 @@ const UserAccount = () => {
             setEmail(data.data.email);
             console.log(data.data.drink_ids);
             get_drinks(data.data.drink_ids);
-            
-            // get_reviews(data.data.review_ids);
+            console.log("RREVIEW IDS RETRIEVED::::",data.data.review_ids);
+            setReviewsArray(data.data.review_ids);
+            get_reviews(data.data.review_ids);
+            // setReviewsLoaded(true);
         }
         get_user();
 
@@ -67,58 +74,35 @@ const UserAccount = () => {
                 }
                 
                 console.log("non state 2d arrayyyyyyyy",drinks2DArray);
-                // setDrink2DArray(drinks2DArray);
                 drinksArray = [];
                 console.log("DRNK 2D Aarrraayayyyy",Drink2DArray);
 
 
             }
             console.log("drinks2darray outside of func", drinks2DArray);
-            // displayDrinks(drinks2DArray);
-            
+
             setDrink2DArray(drinks2DArray);
             setDrinksLoaded(true);
             // console.log("Drink2DArrayyyyyyyyyyyyyy",Drink2DArray);
         }
 
-        let displayDrinks = (drinks) =>{
-            console.log("DISPLAY DRINKS FUNC",drinks);
-            for (let i = 1; i < drinks.length; i++){
-                console.log("FOR LOOOPPP DISPLAYYY DRINKSSKSKSKSSSK",drinks[i]);
-                let dName = drinks[i][0];
-                let dIngredients = drinks[i][1];
-                for(let i = 0; i< dIngredients.length; i++){
-                    var ingredientsFull = dIngredients[i][0]+": "+ dIngredients[i][1]+". ";
-                    IngredientsList.push(ingredientsFull);
-                    console.log("DIPSLAY DRINKS FOR LOOP  INGREDIENTSLIST",IngredientsList)
-                }
-                const dInfoIngredients = IngredientsList.map((ingredient) =>
-                    <li>{ingredient}</li>
-                );
-                dInfo = drinks.map((d) =>
-                    <div>
-                        <h5>Drink Name: {d.name}</h5>
-                        <div>
-                            {dInfoIngredients}
-                        </div>
-                    </div>
-
-                );
-            }
-
-        }
-
         //get user reviews
         let get_reviews = async (review_ids) => {
-            let reviewsArray = [];
             for (let i = 0; i < review_ids.length; i++) {
                 const { data } = await axios.get(`${BASE_URL}/reviews/${review_ids[i]}`)
                 const review = data.data;
-                reviewsArray.push(review)
+                reviewsArray.push(review.drink_id);
+                reviewsArray.push(review.comment);
+                reviews2DArray.push(reviewsArray);
+                reviewsArray = [];
             }
-
-            setReviewsArray(reviewsArray)
+            
+            setReviews2DArray(reviews2DArray);
+            console.log("USER ACOUNTTT  REVIEWSSSARRAYYYYY NON STATE",reviews2DArray);
+            console.log("USER ACOUNTTT  REVIEWSSSARRAYYYYY",Reviews2DArray);
+            setReviewsLoaded(true);
         }
+        // get_reviews(ReviewsArray);
 
         //delete a drink
         let delete_drink = async(drink_id) => {
@@ -134,16 +118,7 @@ const UserAccount = () => {
         }
     //delete_review()
     }, []);
-
-    for(let i = 0; i< DrinkIngredients.length; i++){
-        var ingredientsFull = DrinkIngredients[i][0]+": "+ DrinkIngredients[i][1]+". ";
-        IngredientsList.push(ingredientsFull);
-        // console.log(IngredientsList)
-    }
-    const IngredientsItems = IngredientsList.map((ingredient) =>
-        <li>{ingredient}</li>
-    );
-    // for (let i = 1; i < D)
+    console.log("USER ACOUNTTT  REVIEWSSSARRAYYYYY NON STATE!!!!!!!!!!!!",Reviews2DArray);
 
     return (
        <div className="margin2">
@@ -153,9 +128,6 @@ const UserAccount = () => {
            <br></br>
 
            <h1>My Drinks:</h1>
-           <h1>
-               {dInfo}
-           </h1>
            <div >
                 {/* <div>
                     <button className="deleteButton">
@@ -172,21 +144,26 @@ const UserAccount = () => {
                 </div> */}
                 {
                     DrinksLoaded ? <UserDrinkList drink = {Drink2DArray}/> : <div>LOADING...</div>
-
                 }
+
 
            </div>
 
            <br></br>
            <h1>My Reviews:</h1>
-           <div className="contentBox"> 
-                <div>
+           <div> 
+                {/* <div>
                     <button className="deleteButton">
                         Delete
                     </button>
                     <h2>Drink Name: </h2>
                 </div>
-                <h3>Review: </h3>
+                <h3>Review: </h3> */}
+
+                {
+                    ReviewsLoaded ? <UserReviewList review = {Reviews2DArray}/> : <div>LOADING...</div>
+                }
+                {/* <UserReviewList review = {reviews2DArray}/> */}
 
            </div>
 

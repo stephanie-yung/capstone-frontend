@@ -2,22 +2,15 @@ import React from "react";
 import "./UserAccountPage.css";
 
 const UserDrinkBox = ({d}) => {
-    const myStyle = {
-        border: "1px solid #a9a9a9",
-        borderRadius: 5,
-        width: 500,
-        padding: 10,
-        margin: "20px 0",
-        minHeight: 100,
-    }
-    console.log("USER DINRK BOXXXXXXX", d)
+    // console.log("USER DINRK BOXXXXXXX", d);
+    console.log("ACCESSINGV USERDRINKBOX");
+
     let dName = d[0];
     let dIngredients = d[1];
     var dIngredientsList = [];
     for(let i = 0; i< dIngredients.length; i++){
         var ingredientsFull = dIngredients[i][0]+": "+ dIngredients[i][1]+". ";
         dIngredientsList.push(ingredientsFull);
-        // console.log(IngredientsList)
     }
     const IngredientsItems = dIngredientsList.map((ingredient) =>
         <li>{ingredient}</li>
