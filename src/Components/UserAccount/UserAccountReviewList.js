@@ -2,14 +2,13 @@ import React from "react";
 import UserReviewBox from "./UserAccountReviewBox";
 
 const UserReviewList = ({review}) =>{
-    console.log("THIS IS RVEVIWW??????",review)
     var reviewList = [[]];
     reviewList.pop();
 
+    //push each review comment to list
     for (let i = 0; i < review.length ; i++){
         reviewList.push(review[i]);
     }
-    console.log("this is review listt???????",reviewList);
     
     return(
         <div>

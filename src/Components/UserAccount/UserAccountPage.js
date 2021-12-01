@@ -6,12 +6,10 @@ import axios from 'axios';
 import UserDrinkList from "./UserAccountDrinkList";
 import UserReviewList from './UserAccountReviewList';
 
-
 const BASE_URL = "https://brewers-backend.herokuapp.com";
 const headers = {
     'Content-Type': 'application/x-www-form-urlencoded'
  };
-
 
  //userAccount component
 const UserAccount = () => {
@@ -20,16 +18,15 @@ const UserAccount = () => {
     const [FirstName, setFirstName] = useState(0);
     const [LastName, setLastName] = useState(0);
     const [Email, setEmail] = useState(0);
-    const [ReviewsArray, setReviewsArray] = useState([])
-    const [DrinkName, setDrinkName] = useState(0);
-    const [DrinkIngredients, setDrinkIngredients] = useState(0);
+
     const [Reviews2DArray, setReviews2DArray] = useState(0);
     const [Drink2DArray, setDrink2DArray] = useState(0);
+
+    //wait for drinks and reviews to be loaded
     const [DrinksLoaded, setDrinksLoaded] = useState(0);
-
     const [ReviewsLoaded, setReviewsLoaded] = useState(0);
-    var IngredientsList = [];
 
+    //drinks and review arrays
     let drinksArray = [];
     let reviewsArray = [];
     let drinks2DArray = [[]];
@@ -46,12 +43,8 @@ const UserAccount = () => {
             setFirstName(data.data.fname);
             setLastName(data.data.lname);
             setEmail(data.data.email);
-            console.log("DRINK IDDSSS RETRIEVVEEDD:",data.data.drink_ids);
             get_drinks(data.data.drink_ids);
-            console.log("RREVIEW IDS RETRIEVED::::",data.data.review_ids);
-            setReviewsArray(data.data.review_ids);
             get_reviews(data.data.review_ids);
-            // setReviewsLoaded(true);
         }
         get_user();
 
@@ -60,32 +53,17 @@ const UserAccount = () => {
             for(let i = 0; i < drink_ids.length ;i++) {
                 const { data } = await axios.get(`${BASE_URL}/drinks/${drink_ids[i]}`);
                 const drinks = data.data;
-                console.log(drinks);
-                console.log("DRINK NAMEMEMEMEE",drinks.name)
-                console.log("THERE IS AN IDDDDDDDDD", drinks._id)
 
-                setDrinkName(drinks.name);
-                setDrinkIngredients(drinks.ingredients);
+                //push drink keys to arr
                 drinksArray.push(drinks.name);
                 drinksArray.push(drinks.ingredients);
                 drinksArray.push(drinks._id);
-                console.log("DRINKSARRAYYY",drinksArray.length);
 
-                if(drinksArray.length !== 0){
-                    drinks2DArray.push(drinksArray);
-                }
-                
-                console.log("non state 2d arrayyyyyyyy",drinks2DArray);
+                drinks2DArray.push(drinksArray);
                 drinksArray = [];
-                console.log("DRNK 2D Aarrraayayyyy",Drink2DArray);
-
-
             }
-            console.log("drinks2darray outside of func", drinks2DArray);
-
-            setDrink2DArray(drinks2DArray);
-            setDrinksLoaded(true);
-            // console.log("Drink2DArrayyyyyyyyyyyyyy",Drink2DArray);
+            setDrink2DArray(drinks2DArray); //set 2D Drink array
+            setDrinksLoaded(true); //drinks array loaded
         }
 
         //get user reviews
@@ -93,23 +71,19 @@ const UserAccount = () => {
             for (let i = 0; i < review_ids.length; i++) {
                 const { data } = await axios.get(`${BASE_URL}/reviews/${review_ids[i]}`)
                 const review = data.data;
+
+                //push review objects to arr
                 reviewsArray.push(review.drink_id);
                 reviewsArray.push(review.comment);
                 reviewsArray.push(review._id);
+                
                 reviews2DArray.push(reviewsArray);
                 reviewsArray = [];
             }
-            
-            setReviews2DArray(reviews2DArray);
-            console.log("USER ACOUNTTT  REVIEWSSSARRAYYYYY NON STATE",reviews2DArray);
-            console.log("USER ACOUNTTT  REVIEWSSSARRAYYYYY",Reviews2DArray);
-            setReviewsLoaded(true);
+            setReviews2DArray(reviews2DArray); //set 2D review array
+            setReviewsLoaded(true); //reviews array loaded
         }
-        // get_reviews(ReviewsArray);
-
-
     }, []);
-    console.log("USER ACOUNTTT  REVIEWSSSARRAYYYYY NON STATE!!!!!!!!!!!!",Reviews2DArray);
 
     return (
        <div className="margin2">
@@ -120,44 +94,19 @@ const UserAccount = () => {
 
            <h1>My Drinks:</h1>
            <div >
-                {/* <div>
-                    <button className="deleteButton">
-                        Delete
-                    </button>
-                    <h2>Drink Name: {DrinkName} </h2>
-                </div>
-                <h3>Ingredients:</h3>
-                    <div>{IngredientsItems}</div> */}
-                {/* <div>
-                    <button className="deleteButton">
-                        Delete
-                    </button>
-                </div> */}
                 {
                     DrinksLoaded ? <UserDrinkList drink = {Drink2DArray}/> : <div>LOADING...</div>
                 }
-
-
            </div>
 
            <br></br>
+
            <h1>My Reviews:</h1>
            <div> 
-                {/* <div>
-                    <button className="deleteButton">
-                        Delete
-                    </button>
-                    <h2>Drink Name: </h2>
-                </div>
-                <h3>Review: </h3> */}
-
                 {
                     ReviewsLoaded ? <UserReviewList review = {Reviews2DArray}/> : <div>LOADING...</div>
                 }
-                {/* <UserReviewList review = {reviews2DArray}/> */}
-
            </div>
-
 
        </div>
     )

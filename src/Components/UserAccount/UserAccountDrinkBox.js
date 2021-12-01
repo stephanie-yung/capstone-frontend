@@ -8,18 +8,19 @@ const headers = {
  };
 
 const UserDrinkBox = ({d}) => {
-    // console.log("USER DINRK BOXXXXXXX", d);
-    console.log("ACCESSINGV USERDRINKBOX");
-
+    //get drink keys: name, ingredients
     let dName = d[0];
     let dIngredients = d[1];
-    var dIngredientsList = [];
     const dID = d[2];
 
+    //push and format drink ingredients to list
+    var dIngredientsList = [];
     for(let i = 0; i< dIngredients.length; i++){
         var ingredientsFull = dIngredients[i][0]+": "+ dIngredients[i][1]+". ";
         dIngredientsList.push(ingredientsFull);
     }
+
+    //map items w/ li tag
     const IngredientsItems = dIngredientsList.map((ingredient) =>
         <li>{ingredient}</li>
     );
@@ -27,13 +28,8 @@ const UserDrinkBox = ({d}) => {
 
     //delete a drink
     let delete_drink = async(drink_id) => {
-        console.log("DRINK ID TO BE DELETED",drink_id);
         var { data } = await axios.delete(`${BASE_URL}/drinks`, {data: {_ids: [drink_id]}})
-        console.log("drink deelted!!!!!!!!");
-
     }
-    // delete_drink();
-
 
     return(
         <div>
@@ -44,9 +40,7 @@ const UserDrinkBox = ({d}) => {
                     </button>
                     <h1>Drink Name: {dName}</h1>
                 </div>
-                {/* <h1>Testing Drink Name: {dName}</h1> */}
                 <div> {IngredientsItems} </div>
-                {/* <div>testing</div> */}
             </div>
         </div>
     )

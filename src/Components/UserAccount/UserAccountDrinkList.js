@@ -2,16 +2,15 @@ import React from "react";
 import UserDrinkBox from "./UserAccountDrinkBox"
 
 const UserDrinkList = ({drink}) => {
+
+    //push drinks to list
     var drinkList = [[]];
     drinkList.pop();
-
     for (let i = 0; i< drink.length ; i++){
         if(drink[i] !== []){
             drinkList.push(drink[i]);
         }
-        // drinkList.push(drink[i]);
     }
-    console.log("user account drinrkkninknrnknLSOISISIITTT33333333",drinkList);
 
     return(
         <div>

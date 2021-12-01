@@ -9,17 +9,16 @@ const headers = {
 
 
 const UserReviewBox = ({r}) =>{
-    console.log("USERRRRRREVVIEWWWWEBOXXXXX",r)
+
+    //get review keys: drink name, review comment, and review id.
     let dName = r[0];
-    let rID = r[2];
     let reviewComment = r[1];
+    let rID = r[2];
+
     //delete a review
     let delete_review = async(review_id) => {
-        console.log("REVIEW ID TO BE DELETED", review_id);
         var { data } = await axios.delete(`${BASE_URL}/reviews`, {data: {_ids: [review_id]}})
-
     }
-    //delete_review()
     
     return(
         <div>
