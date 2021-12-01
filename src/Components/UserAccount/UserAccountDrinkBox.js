@@ -8,6 +8,7 @@ const UserDrinkBox = ({d}) => {
     let dName = d[0];
     let dIngredients = d[1];
     var dIngredientsList = [];
+    const dID = d[2];
     for(let i = 0; i< dIngredients.length; i++){
         var ingredientsFull = dIngredients[i][0]+": "+ dIngredients[i][1]+". ";
         dIngredientsList.push(ingredientsFull);

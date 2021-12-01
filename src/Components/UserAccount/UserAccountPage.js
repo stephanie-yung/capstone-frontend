@@ -62,11 +62,13 @@ const UserAccount = () => {
                 const drinks = data.data;
                 console.log(drinks);
                 console.log("DRINK NAMEMEMEMEE",drinks.name)
+                console.log("THERE IS AN IDDDDDDDDD", drinks._id)
 
                 setDrinkName(drinks.name);
                 setDrinkIngredients(drinks.ingredients);
                 drinksArray.push(drinks.name);
                 drinksArray.push(drinks.ingredients);
+                drinksArray.push(drinks._id);
                 console.log("DRINKSARRAYYY",drinksArray.length);
 
                 if(drinksArray.length !== 0){
