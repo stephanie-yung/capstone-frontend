@@ -3,7 +3,7 @@ import { FaCentercode } from 'react-icons/fa';
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 
 // Card Component -- params passed in to display drinks on cards.
-const Card = ({name, img, ingredients, id}) => {
+const Card = ({name, img, id}) => {
     const myStyle = {
         maxWidth:'50%',
         height: '50%',
@@ -16,7 +16,7 @@ const Card = ({name, img, ingredients, id}) => {
                 <img src= {img} style = {myStyle}alt=''></img>
                 <div>
                     <h2>{name}</h2>
-                    <p>{ingredients}</p>
+                    {/* <p>{ingredients}</p> */}
                 </div>
             </div>
         </Link>
