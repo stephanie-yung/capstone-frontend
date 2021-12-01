@@ -95,6 +95,7 @@ const UserAccount = () => {
                 const review = data.data;
                 reviewsArray.push(review.drink_id);
                 reviewsArray.push(review.comment);
+                reviewsArray.push(review._id);
                 reviews2DArray.push(reviewsArray);
                 reviewsArray = [];
             }
@@ -106,12 +107,7 @@ const UserAccount = () => {
         }
         // get_reviews(ReviewsArray);
 
-        //delete a review
-        let delete_review = async(review_id) => {
-            var { data } = await axios.delete(`${BASE_URL}/reviews`, {data: {_ids: [review_id]}})
 
-        }
-    //delete_review()
     }, []);
     console.log("USER ACOUNTTT  REVIEWSSSARRAYYYYY NON STATE!!!!!!!!!!!!",Reviews2DArray);
 
