@@ -1,5 +1,5 @@
 import React from "react";
-import UserReviewBox from "./UserAccountDrinkBox";
+import UserReviewBox from "./UserAccountReviewBox";
 
 const UserReviewList = ({review}) =>{
     console.log("THIS IS RVEVIWW??????",review)

@@ -37,7 +37,7 @@ const UserAccount = () => {
     drinks2DArray.pop();
     reviews2DArray.pop();
 
-    useEffect(async () => { 
+    useEffect( () => { 
 
         //get user data
         let get_user = async(email) =>{
