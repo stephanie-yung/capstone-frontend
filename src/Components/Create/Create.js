@@ -31,6 +31,8 @@ function Create() {
         console.log(new_drink)
         await axios.post('https://brewers-backend.herokuapp.com/drinks', new_drink)
         coffeeInfo.push(new_drink)
+        // const {data} = await axios.post('https://brewers-backend.herokuapp.com/drinks', new_drink)
+        // console.log("CREATED NEW DRINK",data.data);
         document.getElementById('submitted').textContent="Your drink has been created, go to the homepage to check it out"
     }
     // const handleChange = e => {
