@@ -17,14 +17,14 @@ function Create() {
     const [syrup3, SetSyrup3] = useState('None')
     const [num3, SetNum3] = useState('0')
     const [add,SetAdd] = useState('Whipped Cream')
-    const [img,SetImg] = useState('https://globalassets.starbucks.com/assets/e4d9e996eb64453eb3ac7adb570c9b7b.jpg')
+    const [img,SetImg] = useState('')
  
     const handleSubmit = async (e) => {
         const ing = [size,milk,temp,ice,type,[syrup,num1],[syrup2,num2],[syrup3,num3],add]
         e.preventDefault();
         const new_drink = {
             user_email: 'sony@gmail.com',
-            img: img,
+            // img: img,
             name: `${drink}`,
             ingredients: ing
         }
@@ -143,20 +143,24 @@ function Create() {
                         <option value="None" >None</option>
                     </select>
                 <label>Add an image showing off your drink! Use any of the preselected images to display your drink</label>
-                    <select value={add} onChange={(e)=> SetImg(e.target.value)}>
+                    <select value={img} onChange={(e)=> SetImg(e.target.value)}>
                         <option value="https://globalassets.starbucks.com/assets/d51e67249b7c4d5383fc68b3be1d62eb.jpg?impolicy=1by1_wide_topcrop_630">Hot White Chocolate</option>
-                        <option value="https://globalassets.starbucks.com/assets/d39650cf…a0f311581e3491.jpg?impolicy=1by1_wide_topcrop_630" >Hot Chocolate</option>
-                        <option value="https://globalassets.starbucks.com/assets/d39650cf…a0f311581e3491.jpg?impolicy=1by1_wide_topcrop_630" >Cold Brew Cold Foam</option>
-                        <option value="https://globalassets.starbucks.com/assets/65fc074f…3db6981c600ce7.jpg?impolicy=1by1_wide_topcrop_630" >Black Cold Brew</option>
-                        <option value="https://globalassets.starbucks.com/assets/65fc074f…3db6981c600ce7.jpg?impolicy=1by1_wide_topcrop_630" >Black Ice Coffee</option>
-                        <option value="https://globalassets.starbucks.com/assets/b583bccc…37e2ad21d7be7b.jpg?impolicy=1by1_wide_topcrop_630" >Dark Ice Coffee</option>
-                        <option value="https://globalassets.starbucks.com/assets/15c21fdd…dec5fb40201012.jpg?impolicy=1by1_wide_topcrop_630" >Macchiato</option>
-                        <option value="https://globalassets.starbucks.com/assets/56ea95b0…86e52a23ea21c4.jpg?impolicy=1by1_wide_topcrop_630" >Hot Latte</option>
-                        <option value="https://globalassets.starbucks.com/assets/49bf4333…59a5a2b958165f.jpg?impolicy=1by1_wide_topcrop_630" >Hot Tea</option>
-                        <option value="https://globalassets.starbucks.com/assets/8b1b6d80…d2b30cf8dd5676.jpg?impolicy=1by1_wide_topcrop_630" >Hot Matcha</option>
-                        <option value="https://globalassets.starbucks.com/assets/7b51b01b…f9df4ef9f3be3c.jpg?impolicy=1by1_wide_topcrop_630" >Iced Chai</option>
-                        <option value="https://globalassets.starbucks.com/assets/edd9729b…b99aaa1646b4c4.jpg?impolicy=1by1_wide_topcrop_630" >Iced Matcha</option>
-                        <option value="https://globalassets.starbucks.com/assets/666d227f…4721b757f9d7bd.jpg?impolicy=1by1_wide_topcrop_630" >Iced Tea</option>
+                        <option value="https://globalassets.starbucks.com/assets/d39650cf28d44aa283a0f311581e3491.jpg?impolicy=1by1_wide_topcrop_630" >Hot Chocolate</option>
+                        <option value="https://globalassets.starbucks.com/assets/d4e07c5c1f744157b7d460e25b00a384.jpg?impolicy=1by1_wide_topcrop_630" >Cold Brew Cold Foam</option>
+                        <option value="https://globalassets.starbucks.com/assets/83617bbfa2264197b745a1c2db04fa92.jpg?impolicy=1by1_wide_topcrop_630" >Black Cold Brew</option>
+                        <option value="https://globalassets.starbucks.com/assets/2c626225a4804e5abd8e93e7fd59a0a2.jpg?impolicy=1by1_wide_topcrop_630" >Black Ice Coffee</option>
+                        <option value="https://globalassets.starbucks.com/assets/cc9b573f8c1b43cd89cdab08ae5b9ec7.jpg?impolicy=1by1_wide_topcrop_630" >Dark Ice Coffee</option>
+                        <option value="https://globalassets.starbucks.com/assets/363835b1db024636adeb4089ebb96291.jpg?impolicy=1by1_wide_topcrop_630" >Iced Macchiato</option>
+                        <option value="https://globalassets.starbucks.com/assets/b635f407bbcd49e7b8dd9119ce33f76e.jpg?impolicy=1by1_wide_topcrop_630" >Hot Latte</option>
+                        <option value="https://globalassets.starbucks.com/assets/49bf4333e9d048498a59a5a2b958165f.jpg?impolicy=1by1_wide_topcrop_630" >Hot Tea</option>
+                        <option value="https://globalassets.starbucks.com/assets/8b1b6d808cca4787afd2b30cf8dd5676.jpg?impolicy=1by1_wide_topcrop_630" >Hot Matcha</option>
+                        <option value="https://globalassets.starbucks.com/assets/7b51b01b4a394a829ff9df4ef9f3be3c.jpg?impolicy=1by1_wide_topcrop_630" >Iced Chai</option>
+                        <option value="https://globalassets.starbucks.com/assets/edd9729b27284845abb99aaa1646b4c4.jpg?impolicy=1by1_wide_topcrop_630" >Iced Matcha</option>
+                        <option value="https://globalassets.starbucks.com/assets/666d227f9924451da54721b757f9d7bd.jpg?impolicy=1by1_wide_topcrop_630" >Iced Tea</option>
+                        <option value="https://globalassets.starbucks.com/assets/363835b1db024636adeb4089ebb96291.jpg?impolicy=1by1_wide_topcrop_630" >Iced Macchiato</option>
+                        <option value="https://globalassets.starbucks.com/assets/3fee4c21a1cb4ad294e32c727aec0cdd.jpg?impolicy=1by1_wide_topcrop_630" >Pink Drink</option>
+                        <option value="https://globalassets.starbucks.com/assets/7fe2123728f844849ae4f9ea01473468.jpg?impolicy=1by1_wide_topcrop_630" >Dragon Drink</option>
+                        <option value="https://globalassets.starbucks.com/assets/77334c4087314c518f842c2f77cfaec1.jpg?impolicy=1by1_wide_topcrop_630" >Star Drink</option>
                     </select>
                     <button>Finalize your drink!</button>
                 <p>Your drink is called "{drink}". It is a {temp} {type} made with {milk} and has {syrup} with {num1} pumps, and {add} {img}</p>
