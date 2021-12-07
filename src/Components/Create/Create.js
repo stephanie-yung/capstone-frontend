@@ -16,15 +16,16 @@ function Create() {
     const [num2, SetNum2] = useState('0')
     const [syrup3, SetSyrup3] = useState('None')
     const [num3, SetNum3] = useState('0')
-    const [add,SetAdd] = useState('Whipped Cream')
+    const [add,SetAdd] = useState('None')
     const [img,SetImg] = useState('')
  
     const handleSubmit = async (e) => {
-        const ing = [size,milk,temp,ice,type,[syrup,num1],[syrup2,num2],[syrup3,num3],add]
+        const ing = [["Size", size],["Milk", milk],["Hot/Iced", temp],["Ice", ice],["Type", type],["Syrup", syrup],["Pumps", num1],["Syrup", syrup2],["Pumps", num2],
+        ["Syrup", syrup3],["Pumps", num3],["Topping", add]]
         e.preventDefault();
         const new_drink = {
             user_email: 'sony@gmail.com',
-            // img: img,
+            img: img,
             name: `${drink}`,
             ingredients: ing
         }
@@ -150,7 +151,7 @@ function Create() {
                         <option value="https://globalassets.starbucks.com/assets/83617bbfa2264197b745a1c2db04fa92.jpg?impolicy=1by1_wide_topcrop_630" >Black Cold Brew</option>
                         <option value="https://globalassets.starbucks.com/assets/2c626225a4804e5abd8e93e7fd59a0a2.jpg?impolicy=1by1_wide_topcrop_630" >Black Ice Coffee</option>
                         <option value="https://globalassets.starbucks.com/assets/cc9b573f8c1b43cd89cdab08ae5b9ec7.jpg?impolicy=1by1_wide_topcrop_630" >Dark Ice Coffee</option>
-                        <option value="https://globalassets.starbucks.com/assets/363835b1db024636adeb4089ebb96291.jpg?impolicy=1by1_wide_topcrop_630" >Iced Macchiato</option>
+                        <option value="https://globalassets.starbucks.com/assets/363835b1db024636adeb4089ebb96291.jpg?impolicy=1by1_wide_topcrop_630" >Iced Latte</option>
                         <option value="https://globalassets.starbucks.com/assets/b635f407bbcd49e7b8dd9119ce33f76e.jpg?impolicy=1by1_wide_topcrop_630" >Hot Latte</option>
                         <option value="https://globalassets.starbucks.com/assets/49bf4333e9d048498a59a5a2b958165f.jpg?impolicy=1by1_wide_topcrop_630" >Hot Tea</option>
                         <option value="https://globalassets.starbucks.com/assets/8b1b6d808cca4787afd2b30cf8dd5676.jpg?impolicy=1by1_wide_topcrop_630" >Hot Matcha</option>
