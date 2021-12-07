@@ -12,12 +12,14 @@ const headers = {
     'Content-Type': 'application/x-www-form-urlencoded'
  };
 
-function HomePage(){
+function HomePage(props){
   const [search,SetSearch] = useState('') ;
   const [drinks,SetDrink] = useState([]) ;
   const onSearchChange = (event) => {
     SetSearch(event.target.value)
   }
+
+  console.log("THIS IS FROM HOME PAGE", props)
 
   useEffect(async () => {
     let get_drink = async() => {
