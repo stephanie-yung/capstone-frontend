@@ -3,9 +3,12 @@ import "./ReviewForm.css";
 import {FaStar} from "react-icons/fa";
 import axios from "axios";
 
+let token = "Random token value"
+
 const BASE_URL = "https://brewers-backend.herokuapp.com";
 const headers = {
-    'Content-Type': 'application/x-www-form-urlencoded'
+    'Content-Type': 'application/x-www-form-urlencoded',
+    // 'Authorization': `Bearer ${token}`
  };
 
 const colors = {
