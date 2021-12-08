@@ -23,13 +23,19 @@ class App extends Component{
     super();
     this.state = {
       route: 'signin',
-      isSignedIn: false
+      isSignedIn: false,
+      token: "",
+      user: {}
       //This state function has no functionality at the moment besides checking which page the suer is on, will use this for user auth
     }
   }
   
 //Below is the function to determine the page
-   onRouteChange = (route) => {
+   onRouteChange = (route, token, user) => {
+    this.setState({
+      token: token,
+      user: user
+    });
      if (route ==='signout') {
        this.setState({isSignedIn : false})
      }else if (route === 'home') {
@@ -38,6 +44,7 @@ class App extends Component{
     this.setState({route: route});
    }
   render(){
+    const { token, user } = this.state;
     return (
       <div className="App">
         <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange}/>
@@ -52,7 +59,7 @@ class App extends Component{
                   <Route exact path="/capstone-frontend/reviewbox" component={ReviewBoxComponent} />
                   <Route exact path="/capstone-frontend/locations" component={Locations} />
                   <Route exact path="/capstone-frontend/drinkreview/:id" component={SingleDrinkPage}/>
-                  <Route exact path="/capstone-frontend/drinkForm" component={Create} />
+                  <Route exact path="/capstone-frontend/drinkForm" render={(props) => (<Create token={this.state.token} user={this.state.user}/>)}/>
                   <Route exact path="/capstone-frontend/about" component={About} />
                   <Route exact path="/capstone-frontend/reviewForm" component={ReviewForm} />
                   <Route exact path="/capstone-frontend/userAccount" component={UserAccount} />

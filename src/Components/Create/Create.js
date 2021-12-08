@@ -3,7 +3,7 @@ import './Create.css';
 import {coffeeInfo} from '../Coffee/Coffee'
 import axios from "axios";
 //using react hooks, this is how all the input data is saved and stored and placed into a object called "ing"
-function Create() {
+function Create(props) {
     const [drink,SetDrink] = useState('')
     const [size,SetSize] = useState('Medium')
     const [milk,SetMilk] = useState('Whole Milk')
@@ -18,29 +18,24 @@ function Create() {
     const [num3, SetNum3] = useState('0')
     const [add,SetAdd] = useState('None')
     const [img,SetImg] = useState('')
- 
     const handleSubmit = async (e) => {
         const ing = [["Size", size],["Milk", milk],["Hot/Iced", temp],["Ice", ice],["Type", type],["Syrup", syrup],["Pumps", num1],["Syrup", syrup2],["Pumps", num2],
         ["Syrup", syrup3],["Pumps", num3],["Topping", add]]
         e.preventDefault();
         const new_drink = {
-            user_email: 'sony@gmail.com',
+            user_email: props.user.email,
             img: img,
             name: `${drink}`,
             ingredients: ing
         }
+        const headers = {
+            Authorization: `Bearer ${props.token}`
+        }
         console.log(new_drink)
-        await axios.post('https://brewers-backend.herokuapp.com/drinks', new_drink)
+        await axios.post('https://brewers-backend.herokuapp.com/drinks', new_drink, headers)
         coffeeInfo.push(new_drink)
         document.getElementById('submitted').textContent="Your drink has been created, go to the homepage to check it out"
     }
-    // const handleChange = e => {
-    //     if (e.target.files.length) {
-    //       SetImg(
-    //         URL.createObjectURL(e.target.files[0])
-    //       );
-    //     }
-    //   };
     return (
         <div className='create'>
             <h1 id="submitted"></h1>
