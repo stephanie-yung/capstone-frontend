@@ -18,8 +18,6 @@ const Signin = ({onRouteChange}) => {
 
     let postUserInformation = async() =>{
         let params = {
-            // email: "steph@gmail.com",
-            // pw: "testpassword"
             email: UserEmail,
             pw: UserPassword
         }
@@ -31,9 +29,7 @@ const Signin = ({onRouteChange}) => {
         catch(error){
             console.log(error.response.data.data)
             var errorData = error.response.data.data;
-            // console.log("errorData!!", errorData);
-            // setErrorData(errorData);
-            
+
             if("email" in errorData){
                 setReceivedErrorEmail(errorData["email"]);
                 console.log("received error email",ReceivedErrorEmail)
@@ -41,7 +37,7 @@ const Signin = ({onRouteChange}) => {
             if("pw" in errorData){
                 setReceivedErrorPW(errorData["pw"]);
             }
-            // setErrorData(error.response.data.data)
+
             setReceivedError(1);
         }
     }
@@ -61,8 +57,8 @@ const Signin = ({onRouteChange}) => {
                 </div>
                 <div className="mv3">
                     <label className="db fw6 lh-copy f6" style={{color: "#212121"}} htmlFor="password">Password</label>
-                    {ReceivedErrorPW !== "" ? <label>{ReceivedErrorPW}</label> : null}
                     <input className="b pa2 input-reset ba bg-transparent  hover-black w-100" type="password" name="password"  id="password" onChange={e => setUserPassword(e.target.value)}/>
+                    {ReceivedErrorPW !== "" ? <label>{ReceivedErrorPW}</label> : null}
                 </div>
                 </fieldset>
                 <div className="">
