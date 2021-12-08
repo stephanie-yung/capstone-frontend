@@ -1,6 +1,8 @@
 import React from "react";
 import "./SingleDrinkPage.css";
-const ReviewBox = ({drink_id, comment}) => {
+
+//reviewBox component -- passed in comment
+const ReviewBox = ({comment}) => {
     const myStyle = {
         border: "1px solid #a9a9a9",
         borderRadius: 5,
@@ -10,11 +12,11 @@ const ReviewBox = ({drink_id, comment}) => {
         minHeight: 100,
     }
 
+    //display comment into reviewRectangle.
     return(
         <div>
             <div className="reviewRectangle">
                 <div>{comment}</div>
-                {/* <h2>{drink_id}</h2> */}
             </div>
         </div>
     )

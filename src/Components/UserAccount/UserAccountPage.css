@@ -1,0 +1,20 @@
+.margin2{
+    margin: 2%;
+}
+
+.contentBox{
+    background-color: lightgrey;
+    width: 95%;
+    padding: 50px;
+    margin: 20px;
+}
+
+.deleteButton {
+    background-color: white;
+    color: black;
+    border: 2px solid red;
+    border-radius: 4px;
+    float:right;
+    
+
+  }
