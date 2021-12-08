@@ -31,8 +31,9 @@ function Create(props) {
         const headers = {
             Authorization: `Bearer ${props.token}`
         }
+        console.log(props.token)
         console.log(new_drink)
-        await axios.post('https://brewers-backend.herokuapp.com/drinks', new_drink, headers)
+        await axios.post('https://brewers-backend.herokuapp.com/drinks', new_drink, {headers : headers})
         coffeeInfo.push(new_drink)
         document.getElementById('submitted').textContent="Your drink has been created, go to the homepage to check it out"
     }
