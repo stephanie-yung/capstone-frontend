@@ -12,7 +12,9 @@ const headers = {
  };
 
  //userAccount component
-const UserAccount = () => {
+const UserAccount = (props) => {
+    console.log("props",props.user.email);
+
 
     //states
     const [FirstName, setFirstName] = useState(0);
@@ -26,6 +28,9 @@ const UserAccount = () => {
     const [DrinksLoaded, setDrinksLoaded] = useState(0);
     const [ReviewsLoaded, setReviewsLoaded] = useState(0);
 
+    const [PropsEmail, setPropsEmail] = useState("");
+    // setPropsEmail(props.user.email);
+
     //drinks and review arrays
     let drinksArray = [];
     let reviewsArray = [];
@@ -38,7 +43,7 @@ const UserAccount = () => {
 
         //get user data
         let get_user = async(email) =>{
-            email = "andy@gmail.com";
+            email = "andy@gmail.com"; //remove and replace 
             const { data } = await axios.get(`${BASE_URL}/users/${email}`);
             setFirstName(data.data.fname);
             setLastName(data.data.lname);
@@ -47,6 +52,7 @@ const UserAccount = () => {
             get_reviews(data.data.review_ids);
         }
         get_user();
+        // get_user(PropsEmail);
 
         //get user drinks
         let get_drinks = async(drink_ids) => {

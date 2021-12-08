@@ -61,8 +61,10 @@ class App extends Component{
                   <Route exact path="/capstone-frontend/drinkreview/:id" component={SingleDrinkPage}/>
                   <Route exact path="/capstone-frontend/drinkForm" render={(props) => (<Create token={this.state.token} user={this.state.user}/>)}/>
                   <Route exact path="/capstone-frontend/about" component={About} />
-                  <Route exact path="/capstone-frontend/reviewForm" component={ReviewForm} />
-                  <Route exact path="/capstone-frontend/userAccount" component={UserAccount} />
+                  {/* <Route exact path="/capstone-frontend/reviewForm" component={ReviewForm} /> */}
+                  <Route exact path="/capstone-frontend/reviewForm" render={(props) => (<ReviewForm token={this.state.token} user={this.state.user}/>)}/>
+                  {/* <Route exact path="/capstone-frontend/userAccount" component={UserAccount} /> */}
+                  <Route exact path="/capstone-frontend/userAccount" render={(props) => (<UserAccount token={this.state.token} user={this.state.user}/>)} />
                 </Switch>
             </Router>
           </div> : 

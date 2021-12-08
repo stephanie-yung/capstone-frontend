@@ -24,7 +24,7 @@ const Signin = ({onRouteChange}) => {
         try{
             const { data } = await axios.post(`${BASE_URL}/users/login`, params);
             console.log("posted user info: ", data)
-            onRouteChange('home');
+            onRouteChange('home', data.data.token , data.data.user);
         }
         catch(error){
             console.log(error.response.data.data)
