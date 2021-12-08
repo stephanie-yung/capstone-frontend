@@ -18,6 +18,8 @@ function Create(props) {
     const [num3, SetNum3] = useState('0')
     const [add,SetAdd] = useState('None')
     const [img,SetImg] = useState('')
+    const [des,SetDes] = useState('')
+
     const handleSubmit = async (e) => {
         const ing = [["Size", size],["Milk", milk],["Hot/Iced", temp],["Ice", ice],["Type", type],["Syrup", syrup],["Pumps", num1],["Syrup", syrup2],["Pumps", num2],
         ["Syrup", syrup3],["Pumps", num3],["Topping", add]]
@@ -26,7 +28,8 @@ function Create(props) {
             user_email: props.user.email,
             img: img,
             name: `${drink}`,
-            ingredients: ing
+            ingredients: ing,
+            des: des
         }
         const headers = {
             Authorization: `Bearer ${props.token}`
@@ -57,6 +60,7 @@ function Create(props) {
                         <option value="Skim milk">Skim Milk</option>
                         <option value="Oat milk">Oat Milk</option>
                         <option value="Soy milk">Soy Milk</option>
+                        <option value="No milk">No Milk</option>
                     </select>
                 <label required>Is this drink hot or iced?</label>
                     <select value={temp} onChange={(e)=> SetTemp(e.target.value)}>
@@ -139,6 +143,8 @@ function Create(props) {
                         <option value="Whipped Cream" >Whipped Cream</option>
                         <option value="None" >None</option>
                     </select>
+                <label>Why should people try your Drink? (Keep it short and sweet!)</label>
+                <input type ="text" maxlength="75" required value={des} onChange={(e) => SetDes(e.target.value)}></input>
                 <label>Add an image showing off your drink! Use any of the preselected images to display your drink</label>
                     <select value={img} onChange={(e)=> SetImg(e.target.value)}>
                         <option value="https://globalassets.starbucks.com/assets/d51e67249b7c4d5383fc68b3be1d62eb.jpg?impolicy=1by1_wide_topcrop_630">Hot White Chocolate</option>
@@ -160,7 +166,7 @@ function Create(props) {
                         <option value="https://globalassets.starbucks.com/assets/77334c4087314c518f842c2f77cfaec1.jpg?impolicy=1by1_wide_topcrop_630" >Star Drink</option>
                     </select>
                     <button>Finalize your drink!</button>
-                <p>Your drink is called "{drink}". It is a {temp} {type} made with {milk} and has {syrup} with {num1} pumps, and {add} {img}</p>
+                <p>Your drink is called "{drink}". It is a {temp} {type} made with {milk} and has {syrup} with {num1} pumps, and {add} {img} {des}</p>
             </form>
         </div>
     )
