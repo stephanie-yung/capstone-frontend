@@ -28,7 +28,7 @@ const UserAccount = (props) => {
     const [DrinksLoaded, setDrinksLoaded] = useState(0);
     const [ReviewsLoaded, setReviewsLoaded] = useState(0);
 
-    const [PropsEmail, setPropsEmail] = useState("");
+    // const [PropsEmail, setPropsEmail] = useState("");
     // setPropsEmail(props.user.email);
 
     //drinks and review arrays
@@ -39,57 +39,63 @@ const UserAccount = (props) => {
     drinks2DArray.pop();
     reviews2DArray.pop();
 
-    useEffect( () => { 
+    //get user data
+    let get_user = async(email) =>{
+        // email = "andy@gmail.com"; //remove and replace 
+        const { data } = await axios.get(`${BASE_URL}/users/${email}`);
+        setFirstName(data.data.fname);
+        setLastName(data.data.lname);
+        setEmail(data.data.email);
+        get_drinks(data.data.drink_ids);
+        get_reviews(data.data.review_ids);
+    }
 
-        //get user data
-        let get_user = async(email) =>{
-            email = "andy@gmail.com"; //remove and replace 
-            const { data } = await axios.get(`${BASE_URL}/users/${email}`);
-            setFirstName(data.data.fname);
-            setLastName(data.data.lname);
-            setEmail(data.data.email);
-            get_drinks(data.data.drink_ids);
-            get_reviews(data.data.review_ids);
+    //get user drinks
+    let get_drinks = async(drink_ids) => {
+        for(let i = 0; i < drink_ids.length ;i++) {
+            const { data } = await axios.get(`${BASE_URL}/drinks/${drink_ids[i]}`);
+            const drinks = data.data;
+
+            //push drink keys to arr
+            drinksArray.push(drinks.name);
+            drinksArray.push(drinks.ingredients);
+            drinksArray.push(drinks._id);
+            console.log("drink idd", drinks._id)
+
+            drinks2DArray.push(drinksArray);
+            drinksArray = [];
         }
-        get_user();
-        // get_user(PropsEmail);
+        setDrink2DArray(drinks2DArray); //set 2D Drink array
+        setDrinksLoaded(true); //drinks array loaded
+    }
 
-        //get user drinks
-        let get_drinks = async(drink_ids) => {
-            for(let i = 0; i < drink_ids.length ;i++) {
-                const { data } = await axios.get(`${BASE_URL}/drinks/${drink_ids[i]}`);
-                const drinks = data.data;
+    //get user reviews
+    let get_reviews = async (review_ids) => {
+        for (let i = 0; i < review_ids.length; i++) {
+            const { data } = await axios.get(`${BASE_URL}/reviews/${review_ids[i]}`)
+            const review = data.data;
 
-                //push drink keys to arr
-                drinksArray.push(drinks.name);
-                drinksArray.push(drinks.ingredients);
-                drinksArray.push(drinks._id);
-
-                drinks2DArray.push(drinksArray);
-                drinksArray = [];
-            }
-            setDrink2DArray(drinks2DArray); //set 2D Drink array
-            setDrinksLoaded(true); //drinks array loaded
+            //push review objects to arr
+            reviewsArray.push(review.drink_id);
+            reviewsArray.push(review.comment);
+            reviewsArray.push(review._id);
+            
+            reviews2DArray.push(reviewsArray);
+            reviewsArray = [];
         }
+        setReviews2DArray(reviews2DArray); //set 2D review array
+        setReviewsLoaded(true); //reviews array loaded
+    }
 
-        //get user reviews
-        let get_reviews = async (review_ids) => {
-            for (let i = 0; i < review_ids.length; i++) {
-                const { data } = await axios.get(`${BASE_URL}/reviews/${review_ids[i]}`)
-                const review = data.data;
+    useEffect(() => { 
+        // setPropsEmail(props.user.email);
+        
+        console.log(props.user)
 
-                //push review objects to arr
-                reviewsArray.push(review.drink_id);
-                reviewsArray.push(review.comment);
-                reviewsArray.push(review._id);
-                
-                reviews2DArray.push(reviewsArray);
-                reviewsArray = [];
-            }
-            setReviews2DArray(reviews2DArray); //set 2D review array
-            setReviewsLoaded(true); //reviews array loaded
-        }
-    }, []);
+        // get_user();
+        // console.log("PropsEmail", PropsEmail);
+        get_user(props.user.email);
+    }, [props]);
 
     return (
        <div className="margin2">

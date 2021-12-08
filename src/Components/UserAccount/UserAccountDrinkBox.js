@@ -39,6 +39,7 @@ const UserDrinkBox = ({d}) => {
                         Delete
                     </button>
                     <h1>Drink Name: {dName}</h1>
+                    {/* <h2>Drink ID: {dID}</h2> */}
                 </div>
                 <div> {IngredientsItems} </div>
             </div>
