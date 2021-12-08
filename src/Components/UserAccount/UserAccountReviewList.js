@@ -1,7 +1,8 @@
 import React from "react";
 import UserReviewBox from "./UserAccountReviewBox";
 
-const UserReviewList = ({review}) =>{
+const UserReviewList = ({review, propsToken}) =>{
+    console.log(propsToken);
     var reviewList = [[]];
     reviewList.pop();
 
@@ -14,7 +15,7 @@ const UserReviewList = ({review}) =>{
         <div>
             {
                 reviewList.map((review1, i) =>{
-                    return <UserReviewBox key={i} r={review1} />
+                    return <UserReviewBox key={i} r={review1} propsToken={propsToken} />
                 })
             }
         </div>

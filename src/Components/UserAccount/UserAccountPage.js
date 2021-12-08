@@ -14,7 +14,7 @@ const headers = {
  //userAccount component
 const UserAccount = (props) => {
     console.log("props",props.user.email);
-
+    console.log("props",props.token);
 
     //states
     const [FirstName, setFirstName] = useState(0);
@@ -28,8 +28,7 @@ const UserAccount = (props) => {
     const [DrinksLoaded, setDrinksLoaded] = useState(0);
     const [ReviewsLoaded, setReviewsLoaded] = useState(0);
 
-    // const [PropsEmail, setPropsEmail] = useState("");
-    // setPropsEmail(props.user.email);
+    const [PropsToken, setPropsToken] = useState("");
 
     //drinks and review arrays
     let drinksArray = [];
@@ -88,15 +87,16 @@ const UserAccount = (props) => {
     }
 
     useEffect(() => { 
-        // setPropsEmail(props.user.email);
+        setPropsToken(props.token);
         
         console.log(props.user)
 
         // get_user();
         // console.log("PropsEmail", PropsEmail);
         get_user(props.user.email);
+    
     }, [props]);
-
+    console.log("PropsToken", PropsToken)
     return (
        <div className="margin2">
            <h1>{FirstName} {LastName}</h1>
@@ -107,7 +107,7 @@ const UserAccount = (props) => {
            <h1>My Drinks:</h1>
            <div >
                 {
-                    DrinksLoaded ? <UserDrinkList drink = {Drink2DArray}/> : <div>LOADING...</div>
+                    DrinksLoaded ? <UserDrinkList drink = {Drink2DArray} propsToken = {PropsToken}/> : <div>LOADING...</div>
                 }
            </div>
 
@@ -116,7 +116,7 @@ const UserAccount = (props) => {
            <h1>My Reviews:</h1>
            <div> 
                 {
-                    ReviewsLoaded ? <UserReviewList review = {Reviews2DArray}/> : <div>LOADING...</div>
+                    ReviewsLoaded ? <UserReviewList review = {Reviews2DArray} propsToken = {PropsToken}/> : <div>LOADING...</div>
                 }
            </div>
 

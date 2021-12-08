@@ -7,7 +7,8 @@ const headers = {
     'Content-Type': 'application/x-www-form-urlencoded'
  };
 
-const UserDrinkBox = ({d}) => {
+const UserDrinkBox = ({d, propsToken}) => {
+    console.log("USER DRINK BOX",propsToken)
     //get drink keys: name, ingredients
     let dName = d[0];
     let dIngredients = d[1];
@@ -26,9 +27,12 @@ const UserDrinkBox = ({d}) => {
     );
 
 
+    const headers = {
+        Authorization: `Bearer ${propsToken}`
+    }
     //delete a drink
     let delete_drink = async(drink_id) => {
-        var { data } = await axios.delete(`${BASE_URL}/drinks`, {data: {_ids: [drink_id]}})
+        var { data } = await axios.delete(`${BASE_URL}/drinks`, {data: {_ids: [drink_id]}, }, {headers: headers})
     }
 
     return(
