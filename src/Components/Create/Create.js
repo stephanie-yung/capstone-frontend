@@ -126,7 +126,7 @@ function Create(props) {
                         <option value="Matcha" >Matcha</option>
                         <option value="Black-tea" >Black-tea</option>
                         <option value="Green-tea" >Green-tea</option>
-                        <option value="Bannans" >Bananas</option>
+                        <option value="Bananas" >Bananas</option>
                         <option value="Whipped Cream" >Whipped Cream</option>
                         <option value="None" >None</option>
                     </select>
