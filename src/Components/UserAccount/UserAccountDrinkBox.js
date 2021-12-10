@@ -17,8 +17,10 @@ const UserDrinkBox = ({d, propsToken}) => {
     //push and format drink ingredients to list
     var dIngredientsList = [];
     for(let i = 0; i< dIngredients.length; i++){
-        var ingredientsFull = dIngredients[i][0]+": "+ dIngredients[i][1]+". ";
-        dIngredientsList.push(ingredientsFull);
+        if(!(dIngredients[i][1] == "None" || dIngredients[i][1] == "0")){
+            var ingredientsFull = dIngredients[i][0]+": "+ dIngredients[i][1]+". ";
+            dIngredientsList.push(ingredientsFull);
+        }
     }
 
     //map items w/ li tag

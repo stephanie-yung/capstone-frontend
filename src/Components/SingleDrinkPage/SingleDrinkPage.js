@@ -66,8 +66,15 @@ const SingleDrinkPage = (props, image) =>{
 
     // Add ingredients to list 
     for(let i = 0; i< DrinkIngredients.length; i++){
-        var ingredientsFull = DrinkIngredients[i][0]+": "+ DrinkIngredients[i][1]+". ";
-        IngredientsList.push(ingredientsFull);
+        if( !(DrinkIngredients[i][1] == "None" || DrinkIngredients[i][1] == "0")){
+            // console.log("drink has none or 0", DrinkIngredients[i][1]);
+            var ingredientsFull = DrinkIngredients[i][0]+": "+ DrinkIngredients[i][1]+". ";
+            IngredientsList.push(ingredientsFull);
+        }
+        // else{
+        //     var ingredientsFull = DrinkIngredients[i][0]+": "+ DrinkIngredients[i][1]+". ";
+        //     IngredientsList.push(ingredientsFull);
+        // }
     }
     // map ingredients to <li>
     const IngredientsItems = IngredientsList.map((ingredient) =>

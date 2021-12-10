@@ -71,7 +71,7 @@ const UserAccount = (props) => {
             const review = data.data;
 
             //push review objects to arr
-            reviewsArray.push(review.drink_id);
+            reviewsArray.push(review.drink_name);
             reviewsArray.push(review.comment);
             reviewsArray.push(review._id);
             
