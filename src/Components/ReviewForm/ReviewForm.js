@@ -66,8 +66,7 @@ function ReviewForm(props){
 
         //set drink states
         setDrinkName(drink.name);
-        // TODO: replace with drink.des
-        setDrinkDesc("")
+        setDrinkDesc(drink.des);
         setCreatorEmail(drink.user_email);
     }
 
@@ -104,6 +103,7 @@ function ReviewForm(props){
             <h1 className=""> Drink Review Form</h1>
             {/* drink id section */}
             <h1>Review for {drinkName} by {creatorEmail}</h1>
+            <h2>{drinkDesc}</h2>
             {/* <div className="" style={styles.textareaEmail}>
                 <label className="db fw6 lh-copy f6" htmlFor="email-address">Drink ID</label>
                 <input className="pa2 input-reset ba bg-transparent w-100" onChange={e => setDrinkIDValue(e.target.value)}/>

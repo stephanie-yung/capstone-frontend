@@ -31,8 +31,7 @@ function Create(props) {
         const headers = {
             Authorization: `Bearer ${props.token}`
         }
-        console.log(props.token)
-        console.log(new_drink)
+
         await axios.post('https://brewers-backend.herokuapp.com/drinks', new_drink, {headers : headers})
         coffeeInfo.push(new_drink)
         document.getElementById('submitted').textContent="Your drink has been created, go to the homepage to check it out"
@@ -117,6 +116,7 @@ function Create(props) {
                 <label>Add your add-ons</label>
                     <select value={add} onChange={(e)=> SetAdd(e.target.value)}>
                         <option value="Extra shot of expresso" >Extra shot of expresso</option>
+                        <option value="Vanilla Sweet Cream Cold Foam" >Vanilla Sweet Cream Cold Foam</option>
                         <option value="Strawberries" >Strawberries</option>
                         <option value="Peach-passion fruit" >Peach-passion fruit</option>
                         <option value="Pink Drink" >Pink Drink</option>
@@ -136,7 +136,7 @@ function Create(props) {
                     <select value={img} onChange={(e)=> SetImg(e.target.value)}>
                         <option value="https://globalassets.starbucks.com/assets/d51e67249b7c4d5383fc68b3be1d62eb.jpg?impolicy=1by1_wide_topcrop_630">Hot White Chocolate</option>
                         <option value="https://globalassets.starbucks.com/assets/d39650cf28d44aa283a0f311581e3491.jpg?impolicy=1by1_wide_topcrop_630" >Hot Chocolate</option>
-                        <option value="https://globalassets.starbucks.com/assets/d4e07c5c1f744157b7d460e25b00a384.jpg?impolicy=1by1_wide_topcrop_630" >Cold Brew Cold Foam</option>
+                        <option value="https://globalassets.starbucks.com/assets/d4e07c5c1f744157b7d460e25b00a384.jpg?impolicy=1by1_wide_topcrop_630" >Cold Brew</option>
                         <option value="https://globalassets.starbucks.com/assets/83617bbfa2264197b745a1c2db04fa92.jpg?impolicy=1by1_wide_topcrop_630" >Black Cold Brew</option>
                         <option value="https://globalassets.starbucks.com/assets/2c626225a4804e5abd8e93e7fd59a0a2.jpg?impolicy=1by1_wide_topcrop_630" >Black Ice Coffee</option>
                         <option value="https://globalassets.starbucks.com/assets/cc9b573f8c1b43cd89cdab08ae5b9ec7.jpg?impolicy=1by1_wide_topcrop_630" >Dark Ice Coffee</option>

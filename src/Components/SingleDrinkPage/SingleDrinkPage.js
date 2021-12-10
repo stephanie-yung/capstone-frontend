@@ -68,7 +68,7 @@ const SingleDrinkPage = (props, image) =>{
     for(let i = 0; i< DrinkIngredients.length; i++){
         if( !(DrinkIngredients[i][1] == "None" || DrinkIngredients[i][1] == "0")){
             // console.log("drink has none or 0", DrinkIngredients[i][1]);
-            var ingredientsFull = DrinkIngredients[i][0]+": "+ DrinkIngredients[i][1]+". ";
+            var ingredientsFull = DrinkIngredients[i][0]+": "+ DrinkIngredients[i][1];
             IngredientsList.push(ingredientsFull);
         }
         // else{
@@ -106,7 +106,8 @@ const SingleDrinkPage = (props, image) =>{
                       <div className="line"></div>
 
                       {
-                          reviewsArray.length === 0? <h2> No reviews yet!</h2> : ReviewsLoaded ? <ReviewList review = {DrinkReviewArray}/> : <div>LOADING...</div>
+                        //   reviewsArray.length === 0? <h2 className = "marginleft20"> No reviews yet!</h2> : ReviewsLoaded ? <ReviewList review = {DrinkReviewArray}/> : <div>LOADING...</div>
+                        ReviewsLoaded ? <ReviewList review = {DrinkReviewArray}/> : <div>LOADING...</div>
 
                       }
                 </div>
