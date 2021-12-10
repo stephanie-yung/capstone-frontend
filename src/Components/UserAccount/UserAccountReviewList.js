@@ -2,7 +2,6 @@ import React from "react";
 import UserReviewBox from "./UserAccountReviewBox";
 
 const UserReviewList = ({review, propsToken}) =>{
-    console.log(propsToken);
     var reviewList = [[]];
     reviewList.pop();
 

@@ -13,8 +13,6 @@ const headers = {
 
  //userAccount component
 const UserAccount = (props) => {
-    console.log("props",props.user.email);
-    console.log("props",props.token);
 
     //states
     const [FirstName, setFirstName] = useState(0);
@@ -59,8 +57,6 @@ const UserAccount = (props) => {
             drinksArray.push(drinks.name);
             drinksArray.push(drinks.ingredients);
             drinksArray.push(drinks._id);
-            console.log("drink idd", drinks._id)
-
             drinks2DArray.push(drinksArray);
             drinksArray = [];
         }
@@ -88,15 +84,10 @@ const UserAccount = (props) => {
 
     useEffect(() => { 
         setPropsToken(props.token);
-        
-        console.log(props.user)
-
-        // get_user();
-        // console.log("PropsEmail", PropsEmail);
         get_user(props.user.email);
     
     }, [props]);
-    console.log("PropsToken", PropsToken)
+
     return (
        <div className="margin2">
            <h1>{FirstName} {LastName}</h1>

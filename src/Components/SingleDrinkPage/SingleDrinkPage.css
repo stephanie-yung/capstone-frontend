@@ -33,7 +33,7 @@
 }
 
 
-.margin20{
+.marginleft20{
   margin-left: 20px;
 }
 
@@ -70,3 +70,4 @@
   min-width: 200px;
   list-style: revert;
 }
+

@@ -8,7 +8,7 @@ const headers = {
  };
 
 const UserDrinkBox = ({d, propsToken}) => {
-    console.log("USER DRINK BOX",propsToken)
+    // console.log("USER DRINK BOX",propsToken)
     //get drink keys: name, ingredients
     let dName = d[0];
     let dIngredients = d[1];
@@ -32,15 +32,17 @@ const UserDrinkBox = ({d, propsToken}) => {
     }
     //delete a drink
     let delete_drink = async(drink_id) => {
-        console.log(propsToken)
         const { data } = await axios.delete(`${BASE_URL}/drinks/${drink_id}`, {headers: headers})
+        console.log("Drink has been successfully deleted: ",data);
+        // window.location.href="/capstone-frontend/userAccount";
+        window.location.reload(false);
     }
 
     return(
         <div>
             <div className="contentBox">
                 <div>
-                    <button className="deleteButton" onClick={() => delete_drink(dID)}>
+                    <button className="deleteButton" onClick={() => {delete_drink(dID)}}>
                         Delete
                     </button>
                     <h1>Drink Name: {dName}</h1>
