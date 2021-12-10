@@ -17,7 +17,7 @@ import ReviewForm from "./Components/ReviewForm/ReviewForm";
 import ReviewBoxComponent from "./Components/SingleDrinkPage/ReviewBoxComponent.js"
 import UserAccount from './Components/UserAccount/UserAccountPage';
 import jwtDecode from 'jwt-decode';
-
+// npm i jwt-decode
 
 class App extends Component{
   constructor(){
