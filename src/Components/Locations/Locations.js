@@ -10,7 +10,7 @@ function Map() {
                 <GoogleMap defaultZoom={16}
                     defaultCenter= {{ lat: 40.768538, lng :-73.964741}}>
                         {starbucks.map((store)=> (
-                            <Marker key={store.id} position={{lat:store.location.latitude, lng:store.location.longitude}} 
+                            <Marker key={store.id} position={{lat:store.Latitude, lng:store.Longitude}} 
                                 onClick ={()=> {
                                     setSelectedStore(store);
                                 }}
@@ -21,10 +21,10 @@ function Map() {
                             />
                         ))}
                         {selectedStore != null ? 
-                            <InfoWindow position={{lat:selectedStore.location.latitude, lng:selectedStore.location.longitude}} onCloseClick={()=>{setSelectedStore(null);}}>
+                            <InfoWindow position={{lat:selectedStore.Latitude, lng:selectedStore.Longitude}} onCloseClick={()=>{setSelectedStore(null);}}>
                                 <div>
-                                    <h2>{selectedStore.id}</h2>
-                                    <h3>{selectedStore.street}</h3>
+                                    <h2>{selectedStore["Store Number"]}</h2>
+                                    <h3>{selectedStore.Postcode}</h3>
                                 </div>
                             </InfoWindow> 
                             : console.log("no info")
@@ -44,8 +44,8 @@ export default function Location() {
                                 mapElement={<div style={{ height: `100%` }} />}/>
                 </div>
                 <div>
-                    <h2 className="ma3">Currently displaying Starbucks only in Manhattan</h2>
-                    <h2 className="ma3">You can zoom in/out to view any Starbucks location within the city!</h2>
+                    <h2 className="ma3">This Map shows all cuurent Starbucks Location in New York!</h2>
+                    <h2 className="ma3">Not just New York City!</h2>
                 </div>
             </div>
         );
