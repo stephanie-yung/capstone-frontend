@@ -53,3 +53,15 @@
 .column {
   float: left;
 }
+
+.drinkpage-list {
+  display: flex;
+  align-content: space-evenly;
+  flex-flow: wrap;
+  height: 100px;
+}
+
+.drinkpage-list li {
+  min-width: 200px;
+  list-style: revert;
+}

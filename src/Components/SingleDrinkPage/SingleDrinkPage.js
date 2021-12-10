@@ -77,7 +77,7 @@ const SingleDrinkPage = (props) =>{
             <div className="right" style={{margin: "80px 50px" }} >
             <h1 className="">{DrinkName}</h1>
             <h3> Ingredients:</h3>
-                <div>{IngredientsItems}</div>
+                <div className="drinkpage-list">{IngredientsItems}</div>
             </div>
             
             <div className="row">
