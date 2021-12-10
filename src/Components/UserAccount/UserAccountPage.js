@@ -13,8 +13,6 @@ const headers = {
 
  //userAccount component
 const UserAccount = (props) => {
-    console.log("props",props.user.email);
-    console.log("props",props.token);
 
     //states
     const [FirstName, setFirstName] = useState(0);
@@ -59,8 +57,6 @@ const UserAccount = (props) => {
             drinksArray.push(drinks.name);
             drinksArray.push(drinks.ingredients);
             drinksArray.push(drinks._id);
-            console.log("drink idd", drinks._id)
-
             drinks2DArray.push(drinksArray);
             drinksArray = [];
         }
@@ -75,7 +71,7 @@ const UserAccount = (props) => {
             const review = data.data;
 
             //push review objects to arr
-            reviewsArray.push(review.drink_id);
+            reviewsArray.push(review.drink_name);
             reviewsArray.push(review.comment);
             reviewsArray.push(review._id);
             
@@ -88,15 +84,10 @@ const UserAccount = (props) => {
 
     useEffect(() => { 
         setPropsToken(props.token);
-        
-        console.log(props.user)
-
-        // get_user();
-        // console.log("PropsEmail", PropsEmail);
         get_user(props.user.email);
     
     }, [props]);
-    console.log("PropsToken", PropsToken)
+
     return (
        <div className="margin2">
            <h1>{FirstName} {LastName}</h1>
@@ -107,7 +98,7 @@ const UserAccount = (props) => {
            <h1>My Drinks:</h1>
            <div >
                 {
-                    DrinksLoaded ? <UserDrinkList drink = {Drink2DArray} propsToken = {PropsToken}/> : <div>LOADING...</div>
+                    DrinksLoaded ? <UserDrinkList drink = {Drink2DArray} propsToken = {PropsToken}/> : drinksArray.length === 0? <h2> No drinks yet!</h2>  : <div></div>
                 }
            </div>
 
@@ -116,7 +107,7 @@ const UserAccount = (props) => {
            <h1>My Reviews:</h1>
            <div> 
                 {
-                    ReviewsLoaded ? <UserReviewList review = {Reviews2DArray} propsToken = {PropsToken}/> : <div>LOADING...</div>
+                    ReviewsLoaded ? <UserReviewList review = {Reviews2DArray} propsToken = {PropsToken}/> : reviewsArray.length === 0? <h2> No reviews yet!</h2> : <div></div>
                 }
            </div>
 

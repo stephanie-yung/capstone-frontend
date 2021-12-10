@@ -14,15 +14,12 @@ function Create(props) {
     const [num1, SetNum1] = useState('0')
     const [syrup2, SetSyrup2] = useState('None')
     const [num2, SetNum2] = useState('0')
-    const [syrup3, SetSyrup3] = useState('None')
-    const [num3, SetNum3] = useState('0')
     const [add,SetAdd] = useState('None')
-    const [img,SetImg] = useState('')
+    const [img,SetImg] = useState("https://globalassets.starbucks.com/assets/d51e67249b7c4d5383fc68b3be1d62eb.jpg?impolicy=1by1_wide_topcrop_630")
     const [des,SetDes] = useState('')
 
     const handleSubmit = async (e) => {
-        const ing = [["Size", size],["Milk", milk],["Hot/Iced", temp],["Ice", ice],["Type", type],["Syrup", syrup],["Pumps", num1],["Syrup", syrup2],["Pumps", num2],
-        ["Syrup", syrup3],["Pumps", num3],["Topping", add]]
+        const ing = [["Size", size],["Milk", milk],["Hot/Iced", temp],["Ice", ice],["Type", type],["Syrup", syrup],["Pumps", num1],["Syrup", syrup2],["Pumps", num2],["Topping", add]]
         e.preventDefault();
         const new_drink = {
             user_email: props.user.email,
@@ -34,8 +31,7 @@ function Create(props) {
         const headers = {
             Authorization: `Bearer ${props.token}`
         }
-        console.log(props.token)
-        console.log(new_drink)
+
         await axios.post('https://brewers-backend.herokuapp.com/drinks', new_drink, {headers : headers})
         coffeeInfo.push(new_drink)
         document.getElementById('submitted').textContent="Your drink has been created, go to the homepage to check it out"
@@ -52,6 +48,7 @@ function Create(props) {
                         <option value="Tall">Tall</option>
                         <option value="Grande">Grande</option>
                         <option value="Venti">Venti</option>
+                        <option value="Trenta">Trenta</option>
                     </select>
                 <label required>What type of milk?</label>
                     <select value={milk} onChange={(e)=> SetMilk(e.target.value)}>
@@ -116,30 +113,20 @@ function Create(props) {
                         <option value="None" >None</option>
                     </select>
                     <input type="number" min="0" value={num2} max="15" onChange={(e) => SetNum2(e.target.value)}></input>
-                    <select value={syrup3} onChange={(e)=> SetSyrup3(e.target.value)}>
-                        <option value="Caramel Syrup" >Caramel Syrup</option>
-                        <option value="Chestnut Praline Syrup" >Chestnut Praline Syrup</option>
-                        <option value="Cinnamon Dolce Syrup" >Cinnamon Dolce Syrup</option>
-                        <option value="Hazelnut Syrup" >Hazelnut Syrup</option>
-                        <option value="Irish Cream Syrup" >Irish Cream Syrup</option>
-                        <option value="Peppermint Syrup" >Peppermint Syrup</option>
-                        <option value="Raspberry Syrup" >Raspberry Syrup</option>
-                        <option value="Sugar Cookie Syrup" >Sugar Cookie Syrup</option>
-                        <option value="Toffee Nut Syrup" >Toffee Nut Syrup</option>
-                        <option value="Vanilla Syrup" >Vanilla Syrup</option>
-                        <option value="Sugar Free Vanilla Syrup" >Sugar Free Vanilla Syrup</option>
-                        <option value="None" >None</option>
-                    </select>
-                    <input type="number" min="0" value={num3} max="15" onChange={(e) => SetNum3(e.target.value)}></input>
                 <label>Add your add-ons</label>
                     <select value={add} onChange={(e)=> SetAdd(e.target.value)}>
                         <option value="Extra shot of expresso" >Extra shot of expresso</option>
+                        <option value="Vanilla Sweet Cream Cold Foam" >Vanilla Sweet Cream Cold Foam</option>
                         <option value="Strawberries" >Strawberries</option>
                         <option value="Peach-passion fruit" >Peach-passion fruit</option>
+                        <option value="Pink Drink" >Pink Drink</option>
+                        <option value="Star Drink" >Star Drink</option>
+                        <option value="Dragonfruit Drink" >Dragonfruit Drink</option>
+                        <option value="Cinnamon Powder" >Cinnamon Powder</option>
                         <option value="Matcha" >Matcha</option>
                         <option value="Black-tea" >Black-tea</option>
                         <option value="Green-tea" >Green-tea</option>
-                        <option value="Bannans" >Bananas</option>
+                        <option value="Bananas" >Bananas</option>
                         <option value="Whipped Cream" >Whipped Cream</option>
                         <option value="None" >None</option>
                     </select>
@@ -149,7 +136,7 @@ function Create(props) {
                     <select value={img} onChange={(e)=> SetImg(e.target.value)}>
                         <option value="https://globalassets.starbucks.com/assets/d51e67249b7c4d5383fc68b3be1d62eb.jpg?impolicy=1by1_wide_topcrop_630">Hot White Chocolate</option>
                         <option value="https://globalassets.starbucks.com/assets/d39650cf28d44aa283a0f311581e3491.jpg?impolicy=1by1_wide_topcrop_630" >Hot Chocolate</option>
-                        <option value="https://globalassets.starbucks.com/assets/d4e07c5c1f744157b7d460e25b00a384.jpg?impolicy=1by1_wide_topcrop_630" >Cold Brew Cold Foam</option>
+                        <option value="https://globalassets.starbucks.com/assets/d4e07c5c1f744157b7d460e25b00a384.jpg?impolicy=1by1_wide_topcrop_630" >Cold Brew</option>
                         <option value="https://globalassets.starbucks.com/assets/83617bbfa2264197b745a1c2db04fa92.jpg?impolicy=1by1_wide_topcrop_630" >Black Cold Brew</option>
                         <option value="https://globalassets.starbucks.com/assets/2c626225a4804e5abd8e93e7fd59a0a2.jpg?impolicy=1by1_wide_topcrop_630" >Black Ice Coffee</option>
                         <option value="https://globalassets.starbucks.com/assets/cc9b573f8c1b43cd89cdab08ae5b9ec7.jpg?impolicy=1by1_wide_topcrop_630" >Dark Ice Coffee</option>
@@ -166,10 +153,8 @@ function Create(props) {
                         <option value="https://globalassets.starbucks.com/assets/77334c4087314c518f842c2f77cfaec1.jpg?impolicy=1by1_wide_topcrop_630" >Star Drink</option>
                     </select>
                     <button>Finalize your drink!</button>
-                <p>Your drink is called "{drink}". It is a {temp} {type} made with {milk} and has {syrup} with {num1} pumps, and {add} {img} {des}</p>
             </form>
         </div>
     )
 }
-
 export default Create;

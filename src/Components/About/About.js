@@ -32,7 +32,7 @@ const About = () => {
       header: 'Maninder, Front-end',
       description:
         'Maninder Singh: 1sony9905@gmail.com, Worked on: Sign in/Sign out Page, Register, Homepage, Navigation, This current about page and styling',
-      image: 'https://scontent-lga3-1.xx.fbcdn.net/v/t1.6435-9/127213489_1409675942573873_7571362463589927231_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=174925&_nc_ohc=Ar7jEXiBsuQAX_00S_0&_nc_ht=scontent-lga3-1.xx&oh=7d742d23f134f9316157507cfece27a5&oe=619A56C2'
+      image: 'https://scontent-lga3-1.xx.fbcdn.net/v/t39.30808-6/241111864_1604014356473363_647782192182097292_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=y6ySG0ONxYIAX-vsbZ4&tn=2NQ5Te1UIAe1Ia7s&_nc_ht=scontent-lga3-1.xx&oh=1ecf0c2badf167032791f78225b8b1a8&oe=61B7CAD1'
     }
   ]
   return (

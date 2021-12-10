@@ -32,6 +32,11 @@
   font-weight: bold;
 }
 
+
+.marginleft20{
+  margin-left: 20px;
+}
+
 .mousepointer {
   cursor: pointer;
 }
@@ -65,3 +70,4 @@
   min-width: 200px;
   list-style: revert;
 }
+

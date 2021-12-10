@@ -2,7 +2,7 @@ import React from "react";
 import UserDrinkBox from "./UserAccountDrinkBox"
 
 const UserDrinkList = ({drink, propsToken}) => {
-    console.log("USER DRINK LIST",propsToken)
+    // console.log("USER DRINK LIST",propsToken)
     //push drinks to list
     var drinkList = [[]];
     drinkList.pop();

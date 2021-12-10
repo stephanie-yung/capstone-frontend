@@ -3,13 +3,13 @@ import { FaCentercode } from 'react-icons/fa';
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 
 // Card Component -- params passed in to display drinks on cards.
-const Card = ({name, img, id , des}) => {
+const Card = ({name, img, id , description}) => {
     const myStyle = {
         maxWidth:'50%',
         height: '50%',
     }
     return (
-      
+ 
         <Link to= {{
             pathname: `/capstone-frontend/drinkreview/${id}`
         }} className="db link tc">
@@ -17,10 +17,11 @@ const Card = ({name, img, id , des}) => {
                 <img src= {img} style = {myStyle}alt=''></img>
                 <div>
                     <h2>{name}</h2>
-                    <p>{des}</p>
+                    <p>{description}</p>
                 </div>
             </div>
         </Link>
+
     )
 }
 
