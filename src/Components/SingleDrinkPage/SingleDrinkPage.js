@@ -13,7 +13,7 @@ const headers = {
  };
 
 
-const SingleDrinkPage = (props) =>{
+const SingleDrinkPage = (props, image) =>{
     //initialize variables
     const params = useParams(); //get parameter (drink id)value 
     const drink_id = params.id;
@@ -26,6 +26,7 @@ const SingleDrinkPage = (props) =>{
     const [DrinkReviewIds, setDrinkReviewIds] = useState(0);
     const [DrinkReviewArray, setDrinkReviewArray] = useState(0);
     const [ReviewsLoaded , setReviewsLoaded] = useState(false);
+    const [DrinkImg, setDrinkImg] = useState("");
     var IngredientsList = []
 
     
@@ -42,7 +43,9 @@ const SingleDrinkPage = (props) =>{
             setDrinkName(drink.name)
             setDrinkRating(drink.rating);
             setDrinkIngredients(drink.ingredients);
-            get_reviews(drink.review_ids)
+            setDrinkImg(drink.img);
+            get_reviews(drink.review_ids);
+            console.log(drink.img);
         }
 
         get_drink(drink_id);
@@ -92,7 +95,7 @@ const SingleDrinkPage = (props) =>{
                     </Link>
                 </div>
                 <div className="column right">
-                    <h2 >Reviews: </h2>
+                    <h2 className = "margin20">Reviews: </h2>
                     {
                         ReviewsLoaded ? <ReviewList review = {DrinkReviewArray}/> : <div>LOADING...</div>
 

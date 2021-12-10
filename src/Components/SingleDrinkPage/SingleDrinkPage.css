@@ -32,6 +32,14 @@
   font-weight: bold;
 }
 
+.center{
+  text-align: center;
+}
+
+.margin20{
+  margin-left: 20px;
+}
+
 .mousepointer {
   cursor: pointer;
 }
