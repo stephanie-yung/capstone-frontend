@@ -17,7 +17,7 @@ function Create(props) {
     const [syrup3, SetSyrup3] = useState('None')
     const [num3, SetNum3] = useState('0')
     const [add,SetAdd] = useState('None')
-    const [img,SetImg] = useState('')
+    const [img,SetImg] = useState("https://globalassets.starbucks.com/assets/d51e67249b7c4d5383fc68b3be1d62eb.jpg?impolicy=1by1_wide_topcrop_630")
     const [des,SetDes] = useState('')
 
     const handleSubmit = async (e) => {
@@ -52,6 +52,7 @@ function Create(props) {
                         <option value="Tall">Tall</option>
                         <option value="Grande">Grande</option>
                         <option value="Venti">Venti</option>
+                        <option value="Trenta">Trenta</option>
                     </select>
                 <label required>What type of milk?</label>
                     <select value={milk} onChange={(e)=> SetMilk(e.target.value)}>
