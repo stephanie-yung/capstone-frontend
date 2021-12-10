@@ -10,7 +10,7 @@ const ReviewList = ({review}) => {
 
     //map reviewList into each reviewbox.
     return(
-        <div>
+        <div className="drinkListContainer">
             {
                 reviewList.map((comment, i) => {
                     return <ReviewBox key={i} comment={review[i]}/>

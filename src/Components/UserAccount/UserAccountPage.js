@@ -107,7 +107,7 @@ const UserAccount = (props) => {
            <h1>My Drinks:</h1>
            <div >
                 {
-                    DrinksLoaded ? <UserDrinkList drink = {Drink2DArray} propsToken = {PropsToken}/> : <div>LOADING...</div>
+                    DrinksLoaded ? <UserDrinkList drink = {Drink2DArray} propsToken = {PropsToken}/> : <div></div>
                 }
            </div>
 
@@ -116,7 +116,7 @@ const UserAccount = (props) => {
            <h1>My Reviews:</h1>
            <div> 
                 {
-                    ReviewsLoaded ? <UserReviewList review = {Reviews2DArray} propsToken = {PropsToken}/> : <div>LOADING...</div>
+                    ReviewsLoaded ? <UserReviewList review = {Reviews2DArray} propsToken = {PropsToken}/> : <div></div>
                 }
            </div>
 

@@ -9,7 +9,7 @@ const Card = ({name, img, id , des}) => {
         height: '50%',
     }
     return (
-      
+ 
         <Link to= {{
             pathname: `/capstone-frontend/drinkreview/${id}`
         }} className="db link tc">
@@ -21,6 +21,7 @@ const Card = ({name, img, id , des}) => {
                 </div>
             </div>
         </Link>
+
     )
 }
 

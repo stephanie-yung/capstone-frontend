@@ -96,6 +96,7 @@ const SingleDrinkPage = (props, image) =>{
                 </div>
                 <div className="column right">
                     <h2 className = "margin20">Reviews: </h2>
+                    <div className="line"></div>
                     {
                         ReviewsLoaded ? <ReviewList review = {DrinkReviewArray}/> : <div>LOADING...</div>
 
