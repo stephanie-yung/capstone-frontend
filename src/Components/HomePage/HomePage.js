@@ -30,13 +30,15 @@ function HomePage(){
 
   }
   ,[])
-
+  const filteredDrinks = drinks.filter(drinks => {
+      return drinks.name.toLowerCase().includes(search.toLowerCase());
+  })
 
   return (
     <div className = "tc">
       <SearchBox  searchChange={onSearchChange}/>  
       {/* SearchBox takes in a searchChange function described above which can be used to filter drinks */}
-      <CardList c = {drinks}/> 
+      <CardList c = {filteredDrinks}/> 
       {/* Cardlists takes the card componenet and information to put in those cards, right now using dummy data */}
     </div>
   );
