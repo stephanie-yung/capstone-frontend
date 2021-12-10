@@ -44,7 +44,7 @@ const UserDrinkBox = ({d, propsToken}) => {
                     </button>
                     <h1>Drink Name: {dName}</h1>
                 </div>
-                <div> {IngredientsItems} </div>
+                <div className='drinkpage-list'> {IngredientsItems} </div>
             </div>
         </div>
     )
