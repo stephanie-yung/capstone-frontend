@@ -4,26 +4,32 @@ import { useEffect } from 'react/cjs/react.development';
 import starbucks from "./starbucks.json"
 // console.log(starbucks)
 //using google maps api and react hooks, I simply found a json file with locations of all starbucks within Manhattan and mapped over the json file to create a mark at the starbucks with a info window displaying the store ID
-function Map() {
+
+
+function Map(props) {
     const [selectedStore, setSelectedStore] = useState()
-    const [currentCoords, setCoords] = useState({ lat: 40.768538, lng :-73.964741});
-
-
-
-    useEffect(async () => {
-        const getPosition = (options) => {
-            return new Promise((resolve, reject) => 
-                navigator.geolocation.getCurrentPosition(resolve, reject, options)
-            );
-        }
-        const pos = await getPosition()
-    })
-
-    console.log(currentCoords)
+    const [coords, setCoords] = useState({ lat: 40.768538, lng :-73.964741})
+    const getLocation = async () => {
+        const pos = await getPosition();
+        const coords = { lat: pos.coords.latitude, lng: pos.coords.longitude};
+        setCoords(coords)
+        console.log(coords)
+    }
+    const getPosition = (options) => {
+        return new Promise((resolve, reject) => 
+        {
+            // if(navigator.geolocation){
+            //    // timeout at 60000 milliseconds (60 seconds)
+            //    var options = {timeout:600};
+               navigator.geolocation.getCurrentPosition(resolve, reject, options)
+            // }
+        });
+    }
     return (
-        <div >
+        <div>
+            <button onClick={getLocation}>Find Your Location on the map</button>
                 <GoogleMap defaultZoom={16}
-                    defaultCenter= {currentCoords}>
+                    defaultCenter= {coords}>
                         {starbucks.map((store)=> (
                             <Marker key={store.id} position={{lat:store.Latitude, lng:store.Longitude}} 
                                 onClick ={()=> {
@@ -42,15 +48,19 @@ function Map() {
                                     <h3>{selectedStore.Postcode}</h3>
                                 </div>
                             </InfoWindow> 
-                            : console.log("no info")
+                            : null
                         }
                 </GoogleMap>
         </div>
     );
 }
-const WrappedMap = withScriptjs(withGoogleMap(Map));
+const WrappedMap = withScriptjs(withGoogleMap((props) => <Map coords={props.coords}/>));
 // This is just the container in which the map is displayed
+
 export default function Location() {
+    const [currentCoords, setCoords] = useState({ lat: 40.768538, lng :-73.964741});
+    
+    
         return(
             <div className="center">
                 <div style={{  width:"90vh", height:'90vh', borderStyle: 'solid'}}>
