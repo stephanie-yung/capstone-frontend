@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect} from 'react';
 import HomePage from './Components/HomePage/HomePage';
 import Locations from './Components/Locations/Locations.js';
 import Navbar from './Components/Navbar/Navbar';
@@ -16,6 +16,7 @@ import About from './Components/About/About';
 import ReviewForm from "./Components/ReviewForm/ReviewForm";
 import ReviewBoxComponent from "./Components/SingleDrinkPage/ReviewBoxComponent.js"
 import UserAccount from './Components/UserAccount/UserAccountPage';
+import jwtDecode from 'jwt-decode';
 
 
 class App extends Component{
@@ -29,7 +30,27 @@ class App extends Component{
       //This state function has no functionality at the moment besides checking which page the suer is on, will use this for user auth
     }
   }
-  
+
+  componentDidMount(){
+    if (localStorage.authToken){
+      let decoded = jwtDecode(localStorage.authToken) //decode token that is in localStorage
+      const currentTime = Date.now() / 1000 //get current time
+
+      //check if token has expired
+      if (decoded.exp < currentTime){
+
+        //clear local storage
+        localStorage.removeItem("authToken");
+
+      }
+      else{ //go here if token is valid
+        const token = localStorage.authToken;
+        const {sub} = decoded;
+        this.onRouteChange("home", token, sub);
+      }
+    }
+  }
+
 //Below is the function to determine the page
    onRouteChange = (route, token, user) => {
     this.setState({
@@ -38,7 +59,9 @@ class App extends Component{
     });
      if (route ==='signout') {
        this.setState({isSignedIn : false})
+       localStorage.removeItem("authToken");
      }else if (route === 'home') {
+       localStorage.setItem("authToken", token);
        this.setState({isSignedIn:true})
      }
     this.setState({route: route});
