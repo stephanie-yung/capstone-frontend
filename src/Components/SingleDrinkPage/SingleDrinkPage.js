@@ -85,7 +85,7 @@ const SingleDrinkPage = (props, image) =>{
             
             <div className="row">
                 <div className="column left drinkImg">
-                <img src={DrinkImg}/>
+                  <img src={DrinkImg}/>
                     {DrinkRating === -1 ? <h2>No ratings yet!</h2> : <h2>Rating: {DrinkRating}</h2>}
 
                     <Link to= {{
@@ -95,11 +95,13 @@ const SingleDrinkPage = (props, image) =>{
                     </Link>
                 </div>
                 <div className="column right">
-                    <h2 className="">Reviews: </h2>
-                    {
-                        ReviewsLoaded ? <ReviewList review = {DrinkReviewArray}/> : <div>LOADING...</div>
+                    <h2 className = "margin20">Reviews: </h2>
+                      <div className="line"></div>
 
-                    }
+                      {
+                          ReviewsLoaded ? <ReviewList review = {DrinkReviewArray}/> : <div>LOADING...</div>
+
+                      }
                 </div>
             </div>
         </div>
