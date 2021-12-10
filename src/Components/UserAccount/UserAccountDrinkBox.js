@@ -32,7 +32,6 @@ const UserDrinkBox = ({d, propsToken}) => {
     }
     //delete a drink
     let delete_drink = async(drink_id) => {
-        console.log(propsToken)
         const { data } = await axios.delete(`${BASE_URL}/drinks/${drink_id}`, {headers: headers})
     }
 

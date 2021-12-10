@@ -1,14 +1,29 @@
 import React, {useState} from 'react';
 import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from 'react-google-maps';
+import { useEffect } from 'react/cjs/react.development';
 import starbucks from "./starbucks.json"
 // console.log(starbucks)
 //using google maps api and react hooks, I simply found a json file with locations of all starbucks within Manhattan and mapped over the json file to create a mark at the starbucks with a info window displaying the store ID
 function Map() {
     const [selectedStore, setSelectedStore] = useState()
+    const [currentCoords, setCoords] = useState({ lat: 40.768538, lng :-73.964741});
+
+
+
+    useEffect(async () => {
+        const getPosition = (options) => {
+            return new Promise((resolve, reject) => 
+                navigator.geolocation.getCurrentPosition(resolve, reject, options)
+            );
+        }
+        const pos = await getPosition()
+    })
+
+    console.log(currentCoords)
     return (
         <div >
                 <GoogleMap defaultZoom={16}
-                    defaultCenter= {{ lat: 40.768538, lng :-73.964741}}>
+                    defaultCenter= {currentCoords}>
                         {starbucks.map((store)=> (
                             <Marker key={store.id} position={{lat:store.location.latitude, lng:store.location.longitude}} 
                                 onClick ={()=> {
