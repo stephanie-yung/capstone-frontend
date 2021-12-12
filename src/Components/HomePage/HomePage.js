@@ -19,7 +19,7 @@ function HomePage(){
     SetSearch(event.target.value)
   }
 
-  useEffect(async () => {
+  useEffect(() => {
     let get_drink = async() => {
       var { data } = await axios.get(`${BASE_URL}/drinks`)
       SetDrink(data.data);
