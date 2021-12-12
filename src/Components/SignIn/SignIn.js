@@ -23,16 +23,16 @@ const Signin = ({onRouteChange}) => {
         }
         try{
             const { data } = await axios.post(`${BASE_URL}/users/login`, params);
-            console.log("posted user info: ", data)
+            // console.log("posted user info: ", data)
             onRouteChange('home', data.data.token , data.data.user);
         }
         catch(error){
-            console.log(error.response.data.data)
+            // console.log(error.response.data.data)
             var errorData = error.response.data.data;
 
             if("email" in errorData){
                 setReceivedErrorEmail(errorData["email"]);
-                console.log("received error email",ReceivedErrorEmail)
+                // console.log("received error email",ReceivedErrorEmail)
             }
             if("pw" in errorData){
                 setReceivedErrorPW(errorData["pw"]);
