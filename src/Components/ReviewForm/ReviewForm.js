@@ -88,7 +88,6 @@ function ReviewForm(props){
             'Authorization': `Bearer ${props.token}`
          };
         const { data } = await axios.post(`${BASE_URL}/reviews`, params, {headers: headers});
-        console.log("addReview", data.data);
         //submitted confirmation
         document.getElementById('submitted').textContent="Your review has been submitted. Thank you!"
 

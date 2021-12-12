@@ -20,11 +20,9 @@ const Register = ({onRouteChange}) => {
         };
         try {
             const { data } = await axios.post(`https://brewers-backend.herokuapp.com/users`, params);
-            // console.log("Signed Up", data.data);
             onRouteChange('home', data.data.token, data.data.user)
         }
         catch(error) {
-            // console.log(error.response.data.data)
             let errors = error.response.data.data;
 
             if ("pw" in errors)
