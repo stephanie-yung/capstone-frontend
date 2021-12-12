@@ -27,7 +27,7 @@ function HomePage(){
     }
     get_drink();
 
-  })
+  }, [])
   const filteredDrinks = drinks.filter(drinks => {
       return drinks.name.toLowerCase().includes(search.toLowerCase());
   })
