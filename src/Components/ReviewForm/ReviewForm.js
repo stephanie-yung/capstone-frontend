@@ -53,9 +53,6 @@ function ReviewForm(props){
         setMsgValue(value);
     };
 
-    function handleChange(event){
-        console.log(event.target.value);
-    }
 
     //get single drink data
     let get_drink = async(drink_id) => {
@@ -85,7 +82,6 @@ function ReviewForm(props){
             comment: msgValue,
             rating: currentValue
         };
-        console.log(params)
 
         const headers = {
             // 'Content-Type': 'application/x-www-form-urlencoded',
@@ -104,11 +100,6 @@ function ReviewForm(props){
             {/* drink id section */}
             <h1>Review for {drinkName} by {creatorEmail}</h1>
             <h2>{drinkDesc}</h2>
-            {/* <div className="" style={styles.textareaEmail}>
-                <label className="db fw6 lh-copy f6" htmlFor="email-address">Drink ID</label>
-                <input className="pa2 input-reset ba bg-transparent w-100" onChange={e => setDrinkIDValue(e.target.value)}/>
-                {params}
-            </div> */}
             {/* star rating section */}
             <div style = {styles.stars}>
                 {stars.map((_, index) =>{
