@@ -78,7 +78,7 @@ const SingleDrinkPage = (props, image) =>{
                     {DrinkRating === -1 ? <h2>No ratings yet!</h2> : <h2>Rating: {DrinkRating}</h2>}
 
                     <Link to= {{
-                        pathname: `/capstone-frontend/reviewForm/${drink_id}`
+                        pathname: `/reviewForm/${drink_id}`
                     }}>
                         <button className="mousepointer" style={styles.button}>Leave a Review! </button>
                     </Link>
