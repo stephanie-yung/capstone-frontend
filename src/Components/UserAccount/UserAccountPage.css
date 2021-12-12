@@ -18,3 +18,10 @@
     
 
   }
+  
+.line {
+    border-top: 3px solid rgb(0, 117, 74);
+    padding: 0px 22px;
+    width: 100px;
+    margin: -10px 0px 20px 20px;
+}
