@@ -5,31 +5,23 @@ import starbucks from "./starbucks.json"
 // console.log(starbucks)
 //using google maps api and react hooks, I simply found a json file with locations of all starbucks within Manhattan and mapped over the json file to create a mark at the starbucks with a info window displaying the store ID
 
-
-function Map(props) {
+export const Map = () => {
     const [selectedStore, setSelectedStore] = useState()
-    const [coords, setCoords] = useState({ lat: 40.768538, lng :-73.964741})
-    const getLocation = async () => {
-        const pos = await getPosition();
-        const coords = { lat: pos.coords.latitude, lng: pos.coords.longitude};
-        setCoords(coords)
-        console.log(coords)
-    }
-    const getPosition = (options) => {
-        return new Promise((resolve, reject) => 
-        {
-            // if(navigator.geolocation){
-            //    // timeout at 60000 milliseconds (60 seconds)
-            //    var options = {timeout:600};
-               navigator.geolocation.getCurrentPosition(resolve, reject, options)
-            // }
-        });
-    }
+    const [ currentPosition, setCurrentPosition ] = useState({});
+    const success = position => {
+      const currentPosition = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      }
+      setCurrentPosition(currentPosition);
+    };
+    useEffect(() => {
+      navigator.geolocation.getCurrentPosition(success);
+    })
     return (
         <div>
-            <button onClick={getLocation}>Find Your Location on the map</button>
-                <GoogleMap defaultZoom={16}
-                    defaultCenter= {coords}>
+                <GoogleMap defaultZoom={13}
+                    center= {currentPosition}>
                         {starbucks.map((store)=> (
                             <Marker key={store.id} position={{lat:store.Latitude, lng:store.Longitude}} 
                                 onClick ={()=> {
@@ -42,7 +34,7 @@ function Map(props) {
                             />
                         ))}
                         {selectedStore != null ? 
-                            <InfoWindow position={{lat:selectedStore.Latitude, lng:selectedStore.Longitude}} onCloseClick={()=>{setSelectedStore(null);}}>
+                            <InfoWindow position={{lat:selectedStore.Latitude, lng:selectedStore.Longitude}} onCloseClick={()=>{setSelectedStore({})}}>
                                 <div>
                                     <h2>{selectedStore["Store Number"]}</h2>
                                     <h3>{selectedStore.Postcode}</h3>
@@ -58,9 +50,6 @@ const WrappedMap = withScriptjs(withGoogleMap((props) => <Map coords={props.coor
 // This is just the container in which the map is displayed
 
 export default function Location() {
-    const [currentCoords, setCoords] = useState({ lat: 40.768538, lng :-73.964741});
-    
-    
         return(
             <div className="center">
                 <div style={{  width:"90vh", height:'90vh', borderStyle: 'solid'}}>
@@ -69,8 +58,27 @@ export default function Location() {
                                 mapElement={<div style={{ height: `100%` }} />}/>
                 </div>
                 <div>
-                    <h2 className="ma3">This Map shows all cuurent Starbucks Location in New York!</h2>
-                    <h2 className="ma3">Not just New York City!</h2>
+                    <div className="center bg-white br3 pa5 pa4-ns mv5 ba b--black-10">
+                        <div className="tc">
+                            <img src="https://i.pinimg.com/originals/92/87/24/92872451654fc0cb7a8a14cdf31f2d82.png" className="br-100 h3 w3 dib" title="Photo of a kitty staring at you"/>
+                            <h1 className="f4">Starbucks around NYC</h1>
+                            <hr className="mw3 bb bw1 b--black-10"/>
+                        </div>
+                        <p className=" pa4 lh-copy measure center f6 black-70">
+                            The map to the left will show all starbucks locations around NYC, give it some time to load!
+                        </p>
+                    </div>
+                    <div className="center bg-white br3 pa5 pa4-ns mv5 ba b--black-10">
+                        <div className="tc">
+                            <img src="https://i.pinimg.com/originals/92/87/24/92872451654fc0cb7a8a14cdf31f2d82.png" className="br-100 h3 w3 dib" title="Photo of a kitty staring at you"/>
+                            <h1 className="f4">Starbucks around NYC</h1>
+                            <hr className="mw3 bb bw1 b--black-10"/>
+                        </div>
+                        <p className=" pa4 lh-copy measure center f6 black-70">
+                            The map to the left will also be centered around your current Location. If you want more information about a specific starbucks,
+                            click the icon to find out the store's unique ID number as well as the postal code. 
+                        </p>
+                    </div>
                 </div>
             </div>
         );
