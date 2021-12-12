@@ -96,11 +96,11 @@ body {
   height: 36px;
   border-radius: 5px;
   outline: none;
-  color: #9dbfaf;
+  color: #666;
 }
 
 .searchTerm:focus {
-  color: #00b4cc;
+  color: #212121;
 }
 
 /*Resize the wrap to see the search bar change!*/
@@ -109,7 +109,7 @@ body {
   position: relative;
   top: 4px;
   float: right;
-  margin-right: 40px;
+  margin-right: 140px;
 }
 
 .drinkListContainer {
