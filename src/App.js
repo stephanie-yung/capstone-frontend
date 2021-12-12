@@ -1,15 +1,12 @@
-import React, { Component, useState, useEffect} from 'react';
+import React, { Component } from 'react';
 import HomePage from './Components/HomePage/HomePage';
 import Locations from './Components/Locations/Locations.js';
 import Navbar from './Components/Navbar/Navbar';
-import {BrowserRouter as Router, Switch, Route, Link, Redirect, withRouter, useParams} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import './App.css';
-import { render } from '@testing-library/react';
 import Navigation from './Components/Navigation/Navigation';
-import Logo from './Components/Logo/Logo';
 import Signin from './Components/SignIn/SignIn';
 import Register from './Components/Register/Register';
-import Card from './Components/Card/Card';
 import SingleDrinkPage from './Components/SingleDrinkPage/SingleDrinkPage';
 import Create from './Components/Create/Create';
 import About from './Components/About/About';
@@ -17,7 +14,6 @@ import ReviewForm from "./Components/ReviewForm/ReviewForm";
 import ReviewBoxComponent from "./Components/SingleDrinkPage/ReviewBoxComponent.js"
 import UserAccount from './Components/UserAccount/UserAccountPage';
 import jwtDecode from 'jwt-decode';
-// npm i jwt-decode
 
 class App extends Component{
   constructor(){
@@ -67,7 +63,6 @@ class App extends Component{
     this.setState({route: route});
    }
   render(){
-    const { token, user } = this.state;
     return (
       <div className="App">
         <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange}/>

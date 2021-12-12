@@ -14,7 +14,7 @@ const UserDrinkList = ({drink, propsToken}) => {
     return(
         <div>
             {
-                drinkList.map((drink1, i) => {
+                drink.map((drink1, i) => {
                     return <UserDrinkBox key={i} d={drink1} propsToken={propsToken} />
                 })
             }

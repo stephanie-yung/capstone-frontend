@@ -58,7 +58,7 @@ export default function Location() {
                 <div>
                     <div className="center bg-white br3 pa5 pa4-ns mv5 ba b--black-10">
                         <div className="tc">
-                            <img src="https://i.pinimg.com/originals/92/87/24/92872451654fc0cb7a8a14cdf31f2d82.png" className="br-100 h3 w3 dib" title="Photo of a kitty staring at you"/>
+                            <img alt="" src="https://i.pinimg.com/originals/92/87/24/92872451654fc0cb7a8a14cdf31f2d82.png" className="br-100 h3 w3 dib" title="Photo of a kitty staring at you"/>
                             <h1 className="f4">Starbucks around NYC</h1>
                             <hr className="mw3 bb bw1 b--black-10"/>
                         </div>
@@ -68,7 +68,7 @@ export default function Location() {
                     </div>
                     <div className="center bg-white br3 pa5 pa4-ns mv5 ba b--black-10">
                         <div className="tc">
-                            <img src="https://i.pinimg.com/originals/92/87/24/92872451654fc0cb7a8a14cdf31f2d82.png" className="br-100 h3 w3 dib" title="Photo of a kitty staring at you"/>
+                            <img alt="" src="https://i.pinimg.com/originals/92/87/24/92872451654fc0cb7a8a14cdf31f2d82.png" className="br-100 h3 w3 dib" title="Photo of a kitty staring at you"/>
                             <h1 className="f4">Starbucks around NYC</h1>
                             <hr className="mw3 bb bw1 b--black-10"/>
                         </div>
