@@ -122,3 +122,13 @@ body {
   width: 100px;
   margin: -10px 0px 20px 20px;
 }
+
+.slogan {
+  position: fixed;
+  margin: 30px;
+}
+
+.slogan h1 {
+  color: rgb(0, 117, 74);
+  font-weight: 600;
+}
