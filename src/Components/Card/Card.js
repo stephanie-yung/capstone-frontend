@@ -1,6 +1,5 @@
 import React from 'react'
-import { FaCentercode } from 'react-icons/fa';
-import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 // Card Component -- params passed in to display drinks on cards.
 const Card = ({name, img, id , description}) => {

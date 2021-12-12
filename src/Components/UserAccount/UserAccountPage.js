@@ -1,15 +1,11 @@
-import React ,{useState, useEffect}from 'react'
-import { FaCentercode } from 'react-icons/fa';
-import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
-import "./UserAccountPage.css";
+import React ,{useState, useEffect}from 'react';
 import axios from 'axios';
 import UserDrinkList from "./UserAccountDrinkList";
 import UserReviewList from './UserAccountReviewList';
+import qs from "querystring";
+import "./UserAccountPage.css";
 
 const BASE_URL = "https://brewers-backend.herokuapp.com";
-const headers = {
-    'Content-Type': 'application/x-www-form-urlencoded'
- };
 
  //userAccount component
 const UserAccount = (props) => {
@@ -19,79 +15,65 @@ const UserAccount = (props) => {
     const [LastName, setLastName] = useState(0);
     const [Email, setEmail] = useState(0);
 
-    const [Reviews2DArray, setReviews2DArray] = useState(0);
-    const [Drink2DArray, setDrink2DArray] = useState(0);
+    const [Reviews2DArray, setReviews2DArray] = useState([]);
+    const [Drink2DArray, setDrink2DArray] = useState([]);
 
     //wait for drinks and reviews to be loaded
     const [DrinksLoaded, setDrinksLoaded] = useState(0);
     const [ReviewsLoaded, setReviewsLoaded] = useState(0);
-
     const [PropsToken, setPropsToken] = useState("");
 
-    //drinks and review arrays
-    let drinksArray = [];
-    let reviewsArray = [];
-    let drinks2DArray = [[]];
-    let reviews2DArray = [[]];
-    drinks2DArray.pop();
-    reviews2DArray.pop();
-
-    //get user data
-    let get_user = async(email) =>{
-        // email = "andy@gmail.com"; //remove and replace 
-        const { data } = await axios.get(`${BASE_URL}/users/${email}`);
-        setFirstName(data.data.fname);
-        setLastName(data.data.lname);
-        setEmail(data.data.email);
-        get_drinks(data.data.drink_ids);
-        get_reviews(data.data.review_ids);
-    }
-
-    //get user drinks
-    let get_drinks = async(drink_ids) => {
-        for(let i = 0; i < drink_ids.length ;i++) {
-            const { data } = await axios.get(`${BASE_URL}/drinks/${drink_ids[i]}`);
-            const drinks = data.data;
-
-            //push drink keys to arr
-            drinksArray.push(drinks.name);
-            drinksArray.push(drinks.ingredients);
-            drinksArray.push(drinks._id);
-            drinks2DArray.push(drinksArray);
-            drinksArray = [];
+    useEffect(() => {
+        //get user data
+        let get_user = async (email) =>{
+            const { data } = await axios.get(`${BASE_URL}/users/${email}`);
+            setFirstName(data.data.fname);
+            setLastName(data.data.lname);
+            setEmail(data.data.email);
+            get_drinks(data.data.drink_ids);
+            get_reviews(data.data.review_ids);
         }
-        setDrink2DArray(drinks2DArray); //set 2D Drink array
-        setDrinksLoaded(true); //drinks array loaded
-    }
 
-    //get user reviews
-    let get_reviews = async (review_ids) => {
-        for (let i = 0; i < review_ids.length; i++) {
-            const { data } = await axios.get(`${BASE_URL}/reviews/${review_ids[i]}`)
-            const review = data.data;
+        //get user drinks
+        let get_drinks = async (drink_ids) => {
+            if (drink_ids.length === 0) {
+                setDrinksLoaded(true);
+                return;
+            }
 
-            //push review objects to arr
-            reviewsArray.push(review.drink_name);
-            reviewsArray.push(review.comment);
-            reviewsArray.push(review._id);
-            
-            reviews2DArray.push(reviewsArray);
-            reviewsArray = [];
+            const queryParams = qs.encode({
+                _ids: drink_ids
+            });
+            const { data } = await axios.get(`${BASE_URL}/drinks?${queryParams}`);
+            let drinks2DArray = data.data.map((drink) => [drink.name, drink.ingredients, drink._id]);
+            setDrink2DArray(drinks2DArray);
+            setDrinksLoaded(true);
         }
-        setReviews2DArray(reviews2DArray); //set 2D review array
-        setReviewsLoaded(true); //reviews array loaded
-    }
 
-    useEffect(() => { 
+        // get reviews for passed in drink id
+        let get_reviews = async (review_ids) => {
+            if (review_ids.length === 0) {
+                setReviewsLoaded(true);
+                return;
+            }
+
+            const queryParams = qs.encode({ _ids: review_ids });
+            const { data } = await axios.get(`${BASE_URL}/reviews?${queryParams}`);
+            let reviews2DArray = data.data.map((review) => [review.drink_name, review.comment, review._id]);
+            console.log(reviews2DArray)
+            setReviews2DArray(reviews2DArray); //set 2D review array
+            setReviewsLoaded(true); //reviews array loaded
+        }
+
         setPropsToken(props.token);
         get_user(props.user.email);
     
-    }, [props]);
+    }, [props.user.email, props.token]);
 
     return (
        <div className="margin2">
            <h1>{FirstName} {LastName}</h1>
-           <h3>{Email}</h3>
+           <h3>Email: {Email}</h3>
            <br></br>
            <br></br>
 
@@ -109,7 +91,7 @@ const UserAccount = (props) => {
            <div className="lineUser"></div>
            <div> 
                 {
-                    ReviewsLoaded ? Reviews2DArray.length === 0 ? <h2> No Reviews yet! </h2> : <UserReviewList review = {Reviews2DArray} propsToken = {PropsToken}/> : <div></div>
+                    (ReviewsLoaded && Reviews2DArray.length !== 0) ? <UserReviewList reviews = {Reviews2DArray} propsToken = {PropsToken}/> : <h2>No Reviews yet!</h2>
                 }
            </div>
 
