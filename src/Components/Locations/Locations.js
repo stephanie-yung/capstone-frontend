@@ -15,7 +15,7 @@ export const Map = () => {
     };
     useEffect(() => {
       navigator.geolocation.getCurrentPosition(success);
-    })
+    }, [])
     return (
         <div>
                 <GoogleMap defaultZoom={13}
