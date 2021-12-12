@@ -109,7 +109,7 @@ body {
   position: relative;
   top: 4px;
   float: right;
-  margin-right: 140px;
+  margin-right: 100px;
 }
 
 .drinkListContainer {
@@ -121,4 +121,8 @@ body {
   padding: 0px 22px;
   width: 100px;
   margin: -10px 0px 20px 20px;
+}
+
+.marginL20{
+  margin-left: 3%
 }
