@@ -58,8 +58,27 @@ export default function Location() {
                                 mapElement={<div style={{ height: `100%` }} />}/>
                 </div>
                 <div>
-                    <h2 className="ma3">This Map shows all cuurent Starbucks Location in New York!</h2>
-                    <h2 className="ma3">Not just New York City!</h2>
+                    <div className="center bg-white br3 pa5 pa4-ns mv5 ba b--black-10">
+                        <div className="tc">
+                            <img src="https://i.pinimg.com/originals/92/87/24/92872451654fc0cb7a8a14cdf31f2d82.png" className="br-100 h3 w3 dib" title="Photo of a kitty staring at you"/>
+                            <h1 className="f4">Starbucks around NYC</h1>
+                            <hr className="mw3 bb bw1 b--black-10"/>
+                        </div>
+                        <p className=" pa4 lh-copy measure center f6 black-70">
+                            The map to the left will show all starbucks locations around NYC, give it some time to load!
+                        </p>
+                    </div>
+                    <div className="center bg-white br3 pa5 pa4-ns mv5 ba b--black-10">
+                        <div className="tc">
+                            <img src="https://i.pinimg.com/originals/92/87/24/92872451654fc0cb7a8a14cdf31f2d82.png" className="br-100 h3 w3 dib" title="Photo of a kitty staring at you"/>
+                            <h1 className="f4">Starbucks around NYC</h1>
+                            <hr className="mw3 bb bw1 b--black-10"/>
+                        </div>
+                        <p className=" pa4 lh-copy measure center f6 black-70">
+                            The map to the left will also be centered around your current Location. If you want more information about a specific starbucks,
+                            click the icon to find out the store's unique ID number as well as the postal code. 
+                        </p>
+                    </div>
                 </div>
             </div>
         );
