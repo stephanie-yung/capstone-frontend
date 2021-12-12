@@ -19,14 +19,14 @@ function HomePage(){
     SetSearch(event.target.value)
   }
 
-  useEffect(async () => {
-    let get_drink = async() => {
+  useEffect(() => {
+    const get_drink = async () => {
       var { data } = await axios.get(`${BASE_URL}/drinks`)
       SetDrink(data.data);
       return data.data;
-
     }
-    await get_drink();
+    
+    get_drink();
 
   }
   ,[])

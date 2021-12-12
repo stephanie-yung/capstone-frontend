@@ -31,9 +31,9 @@ const SingleDrinkPage = (props, image) =>{
 
     
     //get endpoint data and set states. 
-    useEffect(async () => {
+    useEffect(() => {
         //get single drink data
-        let get_drink = async(drink_id) => {
+        const get_drink = async (drink_id) => {
             // drink_id = "619063b464aa0703a8fe7584";
             // drink_id = "619062bf64aa0703a8fe7572";
             const { data } = await axios.get(`${BASE_URL}/drinks/${drink_id}`)
@@ -62,7 +62,7 @@ const SingleDrinkPage = (props, image) =>{
             setDrinkReviewArray(reviewsArray); //set DrinkReviewArray state
             setReviewsLoaded(true); //set loaded reviews to true
         }
-    }, []);
+    });
 
     // Add ingredients to list 
     for(let i = 0; i< DrinkIngredients.length; i++){
