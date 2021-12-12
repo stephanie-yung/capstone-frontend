@@ -91,7 +91,6 @@ body {
 .searchTerm {
   width: 100%;
   border: 3px solid rgb(0, 117, 74);
-  border-right: none;
   padding: 5px;
   height: 36px;
   border-radius: 5px;
