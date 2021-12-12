@@ -131,7 +131,7 @@ function Create(props) {
                         <option value="None" >None</option>
                     </select>
                 <label>Why should people try your Drink? (Keep it short and sweet!)</label>
-                <input type ="text" maxlength="75" required value={des} onChange={(e) => SetDes(e.target.value)}></input>
+                <input type ="text" maxLength="75" required value={des} onChange={(e) => SetDes(e.target.value)}></input>
                 <label>Add an image showing off your drink! Use any of the preselected images to display your drink</label>
                     <select value={img} onChange={(e)=> SetImg(e.target.value)}>
                         <option value="https://globalassets.starbucks.com/assets/d51e67249b7c4d5383fc68b3be1d62eb.jpg?impolicy=1by1_wide_topcrop_630">Hot White Chocolate</option>
