@@ -31,7 +31,7 @@ const SingleDrinkPage = (props, image) =>{
 
     
     //get endpoint data and set states. 
-    useEffect(async () => {
+    useEffect(() => {
         //get single drink data
         let get_drink = async(drink_id) => {
             // drink_id = "619063b464aa0703a8fe7584";

@@ -18,3 +18,8 @@
     
 
   }
+  
+.lineUser {
+    border-top: 3px solid rgb(0, 117, 74);
+    width: 180px;
+}
