@@ -26,7 +26,7 @@ function HomePage(){
       return data.data;
 
     }
-    await get_drink();
+    get_drink();
 
   }
   ,[])
