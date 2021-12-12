@@ -11,7 +11,7 @@ const Card = ({name, img, id , description}) => {
     return (
  
         <Link to= {{
-            pathname: `/capstone-frontend/drinkreview/${id}`
+            pathname: `/drinkreview/${id}`
         }} className="db link tc">
             <div style={{background: '#1f3933', color: '#fff', padding: '20px', textAlign:'left'}}    className ='tc bg-light-blue dib br1 fl w-30 pa2 ma3 grow bw2 shadow-5'>
                 <img src= {img} style = {myStyle}alt=''></img>
