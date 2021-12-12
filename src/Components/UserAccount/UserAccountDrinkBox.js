@@ -1,11 +1,8 @@
-import React ,{useState, useEffect} from "react";
+import React from "react";
 import "./UserAccountPage.css";
 import axios from "axios";
 
 const BASE_URL = "https://brewers-backend.herokuapp.com";
-const headers = {
-    'Content-Type': 'application/x-www-form-urlencoded'
- };
 
 const UserDrinkBox = ({d, propsToken}) => {
     //get drink keys: name, ingredients
@@ -16,15 +13,15 @@ const UserDrinkBox = ({d, propsToken}) => {
     //push and format drink ingredients to list
     var dIngredientsList = [];
     for(let i = 0; i< dIngredients.length; i++){
-        if(!(dIngredients[i][1] == "None" || dIngredients[i][1] == "0")){
+        if(!(dIngredients[i][1] === "None" || dIngredients[i][1] === "0")){
             var ingredientsFull = dIngredients[i][0]+": "+ dIngredients[i][1];
             dIngredientsList.push(ingredientsFull);
         }
     }
 
     //map items w/ li tag
-    const IngredientsItems = dIngredientsList.map((ingredient) =>
-        <li>{ingredient}</li>
+    const IngredientsItems = dIngredientsList.map((ingredient, idx) =>
+        <li key={idx}>{ingredient}</li>
     );
 
 
@@ -33,7 +30,7 @@ const UserDrinkBox = ({d, propsToken}) => {
     }
     //delete a drink
     let delete_drink = async(drink_id) => {
-        const { data } = await axios.delete(`${BASE_URL}/drinks/${drink_id}`, {headers: headers})
+        await axios.delete(`${BASE_URL}/drinks/${drink_id}`, {headers: headers})
         window.location.href="/capstone-frontend/userAccount";
         // window.location.reload(false);
     }
