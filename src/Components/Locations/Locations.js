@@ -34,7 +34,7 @@ export const Map = () => {
                             />
                         ))}
                         {selectedStore != null ? 
-                            <InfoWindow position={{lat:selectedStore.Latitude, lng:selectedStore.Longitude}} onCloseClick={()=>{setSelectedStore({})}}>
+                            <InfoWindow position={{lat:selectedStore.Latitude, lng:selectedStore.Longitude}} clickable={true} onCloseClick={() => setSelectedStore({})}>
                                 <div>
                                     <h2>{selectedStore["Store Number"]}</h2>
                                     <h3>{selectedStore.Postcode}</h3>
