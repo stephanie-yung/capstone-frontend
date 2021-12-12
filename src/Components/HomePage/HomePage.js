@@ -25,7 +25,6 @@ function HomePage(){
 
     }
     get_drink();
-
   }, []);
   
   const filteredDrinks = drinks.filter(drinks => {
