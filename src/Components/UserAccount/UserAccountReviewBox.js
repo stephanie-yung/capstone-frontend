@@ -18,7 +18,7 @@ const UserReviewBox = ({r, propsToken}) =>{
     //delete a review
     let delete_review = async(review_id) => {
         await axios.delete(`${BASE_URL}/reviews/${review_id}`, {headers: headers})
-        window.location.href="/capstone-frontend/userAccount";
+        window.location.href="/userAccount";
     }
     
     return(

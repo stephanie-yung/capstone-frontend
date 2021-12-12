@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import HomePage from './Components/HomePage/HomePage';
 import Locations from './Components/Locations/Locations.js';
 import Navbar from './Components/Navbar/Navbar';
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import {HashRouter as Router, Switch, Route} from "react-router-dom";
 import './App.css';
 import Navigation from './Components/Navigation/Navigation';
 import Signin from './Components/SignIn/SignIn';
@@ -71,19 +71,19 @@ class App extends Component{
           <div>
             {/* <Logo/> */}
             {/* <Card/> */}
-            <Router>
+            <Router basename="/">
               <Navbar/>
                 <Switch>
-                  <Route exact path="/capstone-frontend" component={HomePage} />
-                  <Route exact path="/capstone-frontend/reviewbox" component={ReviewBoxComponent} />
-                  <Route exact path="/capstone-frontend/locations" component={Locations} />
-                  <Route exact path="/capstone-frontend/drinkreview/:id" render={(props) => (<SingleDrinkPage token={this.state.token} user={this.state.user}/>)}/>
-                  <Route exact path="/capstone-frontend/drinkForm" render={(props) => (<Create token={this.state.token} user={this.state.user}/>)}/>
-                  <Route exact path="/capstone-frontend/about" component={About} />
-                  {/* <Route exact path="/capstone-frontend/reviewForm" component={ReviewForm} /> */}
-                  <Route exact path="/capstone-frontend/reviewForm/:id" render={(props) => (<ReviewForm token={this.state.token} user={this.state.user}/>)}/>
-                  {/* <Route exact path="/capstone-frontend/userAccount" component={UserAccount} /> */}
-                  <Route exact path="/capstone-frontend/userAccount" render={(props) => (<UserAccount token={this.state.token} user={this.state.user}/>)} />
+                  <Route exact path="/" component={HomePage} />
+                  <Route exact path="/reviewbox" component={ReviewBoxComponent} />
+                  <Route exact path="/locations" component={Locations} />
+                  <Route exact path="/drinkreview/:id" render={(props) => (<SingleDrinkPage token={this.state.token} user={this.state.user}/>)}/>
+                  <Route exact path="/drinkForm" render={(props) => (<Create token={this.state.token} user={this.state.user}/>)}/>
+                  <Route exact path="/about" component={About} />
+                  {/* <Route exact path="/reviewForm" component={ReviewForm} /> */}
+                  <Route exact path="/reviewForm/:id" render={(props) => (<ReviewForm token={this.state.token} user={this.state.user}/>)}/>
+                  {/* <Route exact path="/userAccount" component={UserAccount} /> */}
+                  <Route exact path="/userAccount" render={(props) => (<UserAccount token={this.state.token} user={this.state.user}/>)} />
                 </Switch>
             </Router>
           </div> : 

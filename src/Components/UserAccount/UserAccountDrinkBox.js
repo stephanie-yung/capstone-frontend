@@ -31,7 +31,7 @@ const UserDrinkBox = ({d, propsToken}) => {
     //delete a drink
     let delete_drink = async(drink_id) => {
         await axios.delete(`${BASE_URL}/drinks/${drink_id}`, {headers: headers})
-        window.location.href="/capstone-frontend/userAccount";
+        window.location.href="/userAccount";
         // window.location.reload(false);
     }
 
