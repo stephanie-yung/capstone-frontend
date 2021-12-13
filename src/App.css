@@ -109,7 +109,7 @@ body {
   position: relative;
   top: 4px;
   float: right;
-  margin-right: 140px;
+  margin-right: 100px;
 }
 
 .drinkListContainer {
@@ -126,9 +126,13 @@ body {
 .slogan {
   position: fixed;
   margin: 30px;
+  top: 0px;
+  left: 0px;
 }
 
 .slogan h1 {
   color: rgb(0, 117, 74);
   font-weight: 600;
+  line-height: 1.1;
+  margin-bottom: 6px;
 }

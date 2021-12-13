@@ -48,6 +48,8 @@ const Signin = ({onRouteChange}) => {
         <article style={{border: "1px solid #212121"}} className="br3 ba b--white-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
         
         <main className="pa4">
+        <div className="slogan"> <h1>The Brewers</h1>
+        <span>Welcome to our RateMyStarbucks app!</span></div>
             <div className="measure" >
                 <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
                 <legend className="f1 fw6 ph0 mh0" style={{color: "#00754a"}}>Sign In</legend>

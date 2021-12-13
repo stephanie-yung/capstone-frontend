@@ -70,8 +70,7 @@ class App extends Component{
     const { token, user } = this.state;
     return (
       <div className="App">
-        <div className="slogan"> <h1>The Brewers</h1>
-        <span>Welcome to our RateMyStarbucks app!</span></div>
+       
         <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange}/>
         {this.state.route === 'home' ?
           <div>
