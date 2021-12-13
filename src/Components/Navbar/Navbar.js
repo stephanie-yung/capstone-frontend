@@ -28,7 +28,7 @@ function Navbar(){
                 </Link>
                 <Link to="/drinkForm">
                     <ul className= "dim">
-                        Create your Own
+                        Create Your Own
                     </ul>
                 </Link>
                 <Link to="/userAccount">
