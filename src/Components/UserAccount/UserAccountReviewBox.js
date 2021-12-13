@@ -1,7 +1,7 @@
 import React , {useState} from "react";
 import "./UserAccountPage.css";
 import axios from "axios";
-import {Link, Redirect} from "react-router-dom";
+import {Redirect} from "react-router-dom";
 
 const BASE_URL = "https://brewers-backend.herokuapp.com";
 
