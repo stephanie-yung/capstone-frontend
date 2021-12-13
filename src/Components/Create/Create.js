@@ -34,7 +34,7 @@ function Create(props) {
 
         await axios.post('https://brewers-backend.herokuapp.com/drinks', new_drink, {headers : headers})
         coffeeInfo.push(new_drink)
-        document.getElementById('submitted').textContent="Your drink has been created, go to the homepage to check it out"
+        document.getElementById('submitted').textContent="Your drink has been created, go to Account page to check it out!"
     }
     return (
         <div className='create'>

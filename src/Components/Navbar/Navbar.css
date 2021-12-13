@@ -28,3 +28,15 @@ a {
   text-decoration: none;
   font-size: 16px;
 }
+
+.slogan {
+  position: static;
+  /* margin: 30px; */
+  margin-left: 1px;
+  margin-bottom: 20px;
+}
+
+.slogan h1 {
+  color: rgb(0, 117, 74);
+  font-weight: 600;
+}
