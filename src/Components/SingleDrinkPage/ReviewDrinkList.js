@@ -1,19 +1,13 @@
 import React from "react";
 import ReviewBox from "./ReviewDrinkBox"
 
-const ReviewList = ({review}) => {
-    //push reviews to reviewList to map
-    var reviewList = []
-    for (let i = 0; i< review.length ; i++){
-        reviewList.push(review[i]);
-    }
-
+const ReviewList = ({reviews}) => {
     //map reviewList into each reviewbox.
     return(
         <div className="drinkListContainer">
             {
-                reviewList.map((comment, i) => {
-                    return <ReviewBox key={i} comment={review[i]}/>
+                reviews.map((review, i) => {
+                    return <ReviewBox key={i} comment={review.comment} rating={review.rating} email={review.user_email}/>
                 })
             }
         </div>

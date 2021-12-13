@@ -60,7 +60,6 @@ const UserAccount = (props) => {
             const queryParams = qs.encode({ _ids: review_ids });
             const { data } = await axios.get(`${BASE_URL}/reviews?${queryParams}`);
             let reviews2DArray = data.data.map((review) => [review.drink_name, review.comment, review._id]);
-            console.log(reviews2DArray)
             setReviews2DArray(reviews2DArray); //set 2D review array
             setReviewsLoaded(true); //reviews array loaded
         }

@@ -41,10 +41,15 @@ const SingleDrinkPage = (props, image) =>{
 
         // get reviews for passed in drink id
         let get_reviews = async (review_ids) => {
+            if (review_ids.length === 0) {
+                setReviewsLoaded(true);
+                return;
+            }
+
             const queryParams = qs.encode({ _ids: review_ids });
             const { data } = await axios.get(`${BASE_URL}/reviews?${queryParams}`);
-            let reviews = data.data.map((el) => el.comment);
-            setDrinkReviewArray(reviews);
+            // let reviews = data.data.map((el) => el.comment);
+            setDrinkReviewArray(data.data);
             setReviewsLoaded(true);
         }
 
@@ -89,7 +94,7 @@ const SingleDrinkPage = (props, image) =>{
 
                       {
                         //   reviewsArray.length === 0? <h2 className = "marginleft20"> No reviews yet!</h2> : ReviewsLoaded ? <ReviewList review = {DrinkReviewArray}/> : <div>LOADING...</div>
-                        ReviewsLoaded ? <ReviewList review = {DrinkReviewArray}/> : <div>LOADING...</div>
+                        (ReviewsLoaded && DrinkReviewArray.length !== 0) ? <ReviewList reviews = {DrinkReviewArray}/> : <h2 className = "marginleft20"> No reviews yet!</h2>
 
                       }
                 </div>
