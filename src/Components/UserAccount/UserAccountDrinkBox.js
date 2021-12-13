@@ -1,10 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import "./UserAccountPage.css";
 import axios from "axios";
+import {Link, Redirect} from "react-router-dom";
 
 const BASE_URL = "https://brewers-backend.herokuapp.com";
 
 const UserDrinkBox = ({d, propsToken}) => {
+    const [shouldRedirect, setRedirect] = useState(false);
+
+
     //get drink keys: name, ingredients
     let dName = d[0];
     let dIngredients = d[1];
@@ -24,28 +28,39 @@ const UserDrinkBox = ({d, propsToken}) => {
         <li key={idx}>{ingredient}</li>
     );
 
-
     const headers = {
         Authorization: `Bearer ${propsToken}`
     }
     //delete a drink
     let delete_drink = async(drink_id) => {
         await axios.delete(`${BASE_URL}/drinks/${drink_id}`, {headers: headers})
-        window.location.href="/userAccount";
-        // window.location.reload(false);
+        setRedirect(true)
+        // window.location.href="/userAccount";
+        // // window.location.reload(false);
     }
 
+    if (shouldRedirect)
+        return <Redirect to="/userAccount"/>
+
     return(
-        <div>
-            <div className="contentBox">
-                <div>
-                    <button className="deleteButton" onClick={() => {delete_drink(dID)}}>
-                        Delete
-                    </button>
-                    <h1>Drink Name: {dName}</h1>
-                </div>
-                <div className='drinkpage-list'> {IngredientsItems} </div>
+
+        <div className="contentBox">
+            <div>
+                <button className="deleteButton" onClick={() => delete_drink(dID)}>
+                    Delete
+                </button>
+
+                
+                <Link to =  {{
+                    pathname: `/drinkreview/${dID}`
+                }}>
+                    <button className="viewDrink" >
+                    View This Drink
+                </button>
+                </Link>
+                <h1>Drink Name: {dName}</h1>
             </div>
+            <div className='drinkpage-list'> {IngredientsItems} </div>
         </div>
     )
 }

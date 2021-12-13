@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CardList from '../Card/CardList';
 import SearchBox from '../Searchbox/SearchBox';
 import axios from 'axios';
+import qs from "querystring";
 
 const BASE_URL = "https://brewers-backend.herokuapp.com";
 
@@ -14,7 +15,11 @@ function HomePage(){
 
   useEffect(() => {
     let get_drink = async() => {
-      var { data } = await axios.get(`${BASE_URL}/drinks`)
+      const queryParams = qs.encode({
+        sample: 1000,
+      });
+      var { data } = await axios.get(`${BASE_URL}/drinks?${queryParams}`);
+
       SetDrink(data.data);
       return data.data;
 

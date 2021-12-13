@@ -1,11 +1,14 @@
-import React from "react";
+import React , {useState} from "react";
 import "./UserAccountPage.css";
 import axios from "axios";
+import {Link, Redirect} from "react-router-dom";
 
 const BASE_URL = "https://brewers-backend.herokuapp.com";
 
 ///need to add token to useraccount reviewbox and useraccount drinkbox
 const UserReviewBox = ({r, propsToken}) =>{
+
+    const [shouldRedirect, setRedirect] = useState(false);
 
     //get review keys: drink name, review comment, and review id.
     let dName = r[0];
@@ -18,7 +21,11 @@ const UserReviewBox = ({r, propsToken}) =>{
     //delete a review
     let delete_review = async(review_id) => {
         await axios.delete(`${BASE_URL}/reviews/${review_id}`, {headers: headers})
-        window.location.href="/userAccount";
+        setRedirect(true);
+    }
+
+    if (shouldRedirect){
+        return <Redirect to="/userAccount"/>
     }
     
     return(
