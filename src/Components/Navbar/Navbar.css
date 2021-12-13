@@ -29,14 +29,14 @@ a {
   font-size: 16px;
 }
 
-.slogan {
-  position: static;
+.logo {
+  position: static !important;
   /* margin: 30px; */
-  margin-left: 1px;
-  margin-bottom: 20px;
+  margin-left: -20px !important;
+  margin-bottom: 10px !important;
 }
 
-.slogan h1 {
+.logo h1 {
   color: rgb(0, 117, 74);
   font-weight: 600;
 }

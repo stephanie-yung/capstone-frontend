@@ -104,7 +104,7 @@ body {
   position: relative;
   top: 4px;
   float: right;
-  margin-right: 45px;
+  margin-right: 100px;
 }
 
 .drinkListContainer {
@@ -116,11 +116,6 @@ body {
   padding: 0px 22px;
   width: 100px;
   margin: -10px 0px 20px 20px;
-}
-
-
-.heightCard300{
-  height: 300px;
 }
 
 .slogan {
@@ -135,8 +130,4 @@ body {
   font-weight: 600;
   line-height: 1.1;
   margin-bottom: 6px;
-}
-
-.widthSpaced31{
-  width: 31%;
 }

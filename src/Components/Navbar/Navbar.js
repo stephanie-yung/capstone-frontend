@@ -12,7 +12,7 @@ function Navbar(){
                 <Logo/>
             </Link>
             {/* Links to tabs on NavBar */}
-            <div className="slogan">
+            <div className="logo">
                 <h1>The Brewers</h1>
             </div>
             <div className="rightButtons no-underline">
