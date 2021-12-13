@@ -12,7 +12,7 @@ const Card = ({name, img, id , description}) => {
         <Link to= {{
             pathname: `/drinkreview/${id}`
         }} className="db link tc">
-            <div style={{background: '#1f3933', color: '#fff', padding: '20px', textAlign:'left'}}    className ='tc bg-light-blue dib br1 fl w-30 pa2 ma3 grow bw2 shadow-5'>
+            <div style={{background: '#1f3933', color: '#fff', padding: '20px', textAlign:'left'}}    className ='tc bg-light-blue dib br1 fl pa2 ma3 grow bw2 shadow-5 heightCard300 widthSpaced31'>
                 <img src= {img} style = {myStyle}alt=''></img>
                 <div>
                     <h2>{name}</h2>
