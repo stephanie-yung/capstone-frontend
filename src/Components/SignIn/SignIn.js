@@ -1,18 +1,11 @@
 import axios from "axios";
-import React, {useState, useEffect}from "react";
-
-let token = "Random token value"
+import React, {useState}from "react";
 
 const BASE_URL = "https://brewers-backend.herokuapp.com";
-const headers = {
-    'Content-Type': 'application/x-www-form-urlencoded',
-    // 'Authorization': `Bearer ${token}`
- };
 
 const Signin = ({onRouteChange}) => {
-    const [UserEmail, setUserEmail] = useState(0);
-    const [UserPassword, setUserPassword] = useState(0);
-    const [ReceivedError, setReceivedError] = useState(0);
+    const [UserEmail, setUserEmail] = useState("");
+    const [UserPassword, setUserPassword] = useState("");
     const [ReceivedErrorEmail, setReceivedErrorEmail] = useState("");
     const [ReceivedErrorPW, setReceivedErrorPW] = useState("");
 
@@ -23,22 +16,17 @@ const Signin = ({onRouteChange}) => {
         }
         try{
             const { data } = await axios.post(`${BASE_URL}/users/login`, params);
-            // console.log("posted user info: ", data)
             onRouteChange('home', data.data.token , data.data.user);
         }
         catch(error){
-            // console.log(error.response.data.data)
             var errorData = error.response.data.data;
 
             if("email" in errorData){
                 setReceivedErrorEmail(errorData["email"]);
-                // console.log("received error email",ReceivedErrorEmail)
             }
             if("pw" in errorData){
                 setReceivedErrorPW(errorData["pw"]);
             }
-
-            setReceivedError(1);
         }
     }
 

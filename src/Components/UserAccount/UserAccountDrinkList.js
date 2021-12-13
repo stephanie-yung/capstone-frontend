@@ -2,7 +2,6 @@ import React from "react";
 import UserDrinkBox from "./UserAccountDrinkBox"
 
 const UserDrinkList = ({drink, propsToken}) => {
-    // console.log("USER DRINK LIST",propsToken)
     //push drinks to list
     var drinkList = [[]];
     drinkList.pop();
@@ -15,7 +14,7 @@ const UserDrinkList = ({drink, propsToken}) => {
     return(
         <div>
             {
-                drinkList.map((drink1, i) => {
+                drink.map((drink1, i) => {
                     return <UserDrinkBox key={i} d={drink1} propsToken={propsToken} />
                 })
             }

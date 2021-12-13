@@ -3,7 +3,6 @@ import "./ReviewForm.css";
 import {FaStar} from "react-icons/fa";
 import axios from "axios";
 import {useParams} from "react-router-dom";
-let token = "Random token value"
 
 const BASE_URL = "https://brewers-backend.herokuapp.com";
 
@@ -22,7 +21,6 @@ function ReviewForm(props){
     const [currentValue, setCurrentValue] = useState(0);
     const [hoverValue, setHoverValue] = useState(undefined);
     const [msgValue, setMsgValue] = useState(msg);
-    const [emailValue, setEmailValue] = useState(msg);
     const [drinkIDValue, setDrinkIDValue] = useState(msg);
     const [drinkName, setDrinkName] = useState("");
     const [drinkDesc, setDrinkDesc] = useState("");
@@ -41,39 +39,21 @@ function ReviewForm(props){
         setHoverValue(undefined)
     };
 
-    const updateDrinkID = (value)=>{
-        setDrinkIDValue(value);
-    };
-
-    const updateEmail = (value)=>{
-        setEmailValue(value);
-    };
-
-    const updateMsg = (value)=>{
-        setMsgValue(value);
-    };
-
-    function handleChange(event){
-        console.log(event.target.value);
-    }
-
-    //get single drink data
-    let get_drink = async(drink_id) => {
-        // drink_id = "619063b464aa0703a8fe7584";
-        // drink_id = "619062bf64aa0703a8fe7572";
-        const { data } = await axios.get(`${BASE_URL}/drinks/${drink_id}`)
-        const drink = data.data
-
-        //set drink states
-        setDrinkName(drink.name);
-        setDrinkDesc(drink.des);
-        setCreatorEmail(drink.user_email);
-    }
-
     useEffect(() => {
+        //get single drink data
+        let get_drink = async (drink_id) => {
+            const { data } = await axios.get(`${BASE_URL}/drinks/${drink_id}`)
+            const drink = data.data
+
+            //set drink states
+            setDrinkName(drink.name);
+            setDrinkDesc(drink.des);
+            setCreatorEmail(drink.user_email);
+        }
+
         setDrinkIDValue(params.id)
         get_drink(params.id);
-    }, [])
+    }, [params.id]);
 
     //post review to DB
     let post_review_submit = async() => {
@@ -85,14 +65,13 @@ function ReviewForm(props){
             comment: msgValue,
             rating: currentValue
         };
-        console.log(params)
 
         const headers = {
             // 'Content-Type': 'application/x-www-form-urlencoded',
             'Authorization': `Bearer ${props.token}`
          };
-        const { data } = await axios.post(`${BASE_URL}/reviews`, params, {headers: headers});
-        console.log("addReview", data.data);
+        await axios.post(`${BASE_URL}/reviews`, params, {headers: headers});
+        // console.log("addReview", data.data);
         //submitted confirmation
         document.getElementById('submitted').textContent="Your review has been submitted. Thank you!"
 
@@ -104,11 +83,6 @@ function ReviewForm(props){
             {/* drink id section */}
             <h1>Review for {drinkName} by {creatorEmail}</h1>
             <h2>{drinkDesc}</h2>
-            {/* <div className="" style={styles.textareaEmail}>
-                <label className="db fw6 lh-copy f6" htmlFor="email-address">Drink ID</label>
-                <input className="pa2 input-reset ba bg-transparent w-100" onChange={e => setDrinkIDValue(e.target.value)}/>
-                {params}
-            </div> */}
             {/* star rating section */}
             <div style = {styles.stars}>
                 {stars.map((_, index) =>{
