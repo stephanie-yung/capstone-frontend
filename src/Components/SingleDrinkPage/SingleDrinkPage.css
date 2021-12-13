@@ -69,5 +69,6 @@
 .drinkpage-list li {
   min-width: 200px;
   list-style: revert;
+  margin: 10px;
 }
 

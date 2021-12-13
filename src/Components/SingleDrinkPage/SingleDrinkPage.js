@@ -93,7 +93,6 @@ const SingleDrinkPage = (props, image) =>{
                       <div className="line"></div>
 
                       {
-                        //   reviewsArray.length === 0? <h2 className = "marginleft20"> No reviews yet!</h2> : ReviewsLoaded ? <ReviewList review = {DrinkReviewArray}/> : <div>LOADING...</div>
                         (ReviewsLoaded && DrinkReviewArray.length !== 0) ? <ReviewList reviews = {DrinkReviewArray}/> : <h2 className = "marginleft20"> No reviews yet!</h2>
 
                       }
