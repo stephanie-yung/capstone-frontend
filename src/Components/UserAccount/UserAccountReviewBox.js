@@ -3,9 +3,6 @@ import "./UserAccountPage.css";
 import axios from "axios";
 
 const BASE_URL = "https://brewers-backend.herokuapp.com";
-const headers = {
-    'Content-Type': 'application/x-www-form-urlencoded'
- };
 
 ///need to add token to useraccount reviewbox and useraccount drinkbox
 const UserReviewBox = ({r, propsToken}) =>{
@@ -20,9 +17,8 @@ const UserReviewBox = ({r, propsToken}) =>{
     }
     //delete a review
     let delete_review = async(review_id) => {
-        const { data } = await axios.delete(`${BASE_URL}/reviews/${review_id}`, {headers: headers})
-        // console.log("Review has been successfully deleted:", data);
-        window.location.href="/capstone-frontend/userAccount";
+        await axios.delete(`${BASE_URL}/reviews/${review_id}`, {headers: headers})
+        window.location.href="/userAccount";
     }
     
     return(

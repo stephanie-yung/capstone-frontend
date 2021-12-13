@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from 'react-google-maps';
 import starbucks from "./starbucks.json"
+import new_starbucks from "./new-starbucks.json"
 //using google maps api and react hooks, I simply found a json file with locations of all starbucks within Manhattan and mapped over the json file to create a mark at the starbucks with a info window displaying the store ID
 
 export const Map = () => {
-    const [selectedStore, setSelectedStore] = useState()
-    const [ currentPosition, setCurrentPosition ] = useState({});
+    const [selectedStore, setSelectedStore] = useState(null)
+    const [currentPosition, setCurrentPosition] = useState({lat: 40.768538, lng: -73.964741});
+
     const success = position => {
       const currentPosition = {
         lat: position.coords.latitude,
@@ -13,29 +15,49 @@ export const Map = () => {
       }
       setCurrentPosition(currentPosition);
     };
+
     useEffect(() => {
       navigator.geolocation.getCurrentPosition(success);
-    }, [])
+    }, []);
+
+    const markers = starbucks.map((store, idx)=> (
+        <Marker key={idx} position={{lat:store.Latitude, lng:store.Longitude}} 
+            onClick ={()=> {
+                setSelectedStore(store);
+            }}
+            icon={{
+                url: "https://i.pinimg.com/originals/92/87/24/92872451654fc0cb7a8a14cdf31f2d82.png",
+                scaledSize: new window.google.maps.Size( 35, 35)
+            }}
+        />
+    ));
+
+    const new_markers = new_starbucks.map((store) => (
+        <Marker
+            key={store["Store Number"]}
+            position={{lat: store["Latitude"], lng: store["Longitude"]}}
+            onClick={() => setSelectedStore(store)}
+            icon={{
+                url: "https://i.pinimg.com/originals/92/87/24/92872451654fc0cb7a8a14cdf31f2d82.png",
+                scaledSize: new window.google.maps.Size(35, 35)
+            }}
+        />
+    ));
+
     return (
         <div>
                 <GoogleMap defaultZoom={13}
                     center= {currentPosition}>
-                        {starbucks.map((store)=> (
-                            <Marker key={store.id} position={{lat:store.Latitude, lng:store.Longitude}} 
-                                onClick ={()=> {
-                                    setSelectedStore(store);
-                                }}
-                                icon={{
-                                    url: "https://i.pinimg.com/originals/92/87/24/92872451654fc0cb7a8a14cdf31f2d82.png",
-                                    scaledSize: new window.google.maps.Size( 35, 35)
-                                }}
-                            />
-                        ))}
-                        {selectedStore != null ? 
-                            <InfoWindow position={{lat:selectedStore.Latitude, lng:selectedStore.Longitude}} clickable={true} onCloseClick={() => setSelectedStore({})}>
+                        {new_markers}
+                        {selectedStore !== null ? 
+                            <InfoWindow
+                                position={{lat:selectedStore.Latitude, lng:selectedStore.Longitude}}
+                                clickable={true}
+                                onCloseClick={() => setSelectedStore(null)}
+                            >
                                 <div>
-                                    <h2>{selectedStore["Store Number"]}</h2>
-                                    <h3>{selectedStore.Postcode}</h3>
+                                    <h3>Address: {selectedStore["Address"]}</h3>
+                                    <h3>Phone #: {selectedStore["Phone Number"]}</h3>
                                 </div>
                             </InfoWindow> 
                             : null
@@ -58,7 +80,7 @@ export default function Location() {
                 <div>
                     <div className="center bg-white br3 pa5 pa4-ns mv5 ba b--black-10">
                         <div className="tc">
-                            <img src="https://i.pinimg.com/originals/92/87/24/92872451654fc0cb7a8a14cdf31f2d82.png" className="br-100 h3 w3 dib" title="Photo of a kitty staring at you"/>
+                            <img alt="" src="https://i.pinimg.com/originals/92/87/24/92872451654fc0cb7a8a14cdf31f2d82.png" className="br-100 h3 w3 dib" title="Photo of a kitty staring at you"/>
                             <h1 className="f4">Starbucks around NYC</h1>
                             <hr className="mw3 bb bw1 b--black-10"/>
                         </div>
@@ -68,7 +90,7 @@ export default function Location() {
                     </div>
                     <div className="center bg-white br3 pa5 pa4-ns mv5 ba b--black-10">
                         <div className="tc">
-                            <img src="https://i.pinimg.com/originals/92/87/24/92872451654fc0cb7a8a14cdf31f2d82.png" className="br-100 h3 w3 dib" title="Photo of a kitty staring at you"/>
+                            <img alt="" src="https://i.pinimg.com/originals/92/87/24/92872451654fc0cb7a8a14cdf31f2d82.png" className="br-100 h3 w3 dib" title="Photo of a kitty staring at you"/>
                             <h1 className="f4">Starbucks around NYC</h1>
                             <hr className="mw3 bb bw1 b--black-10"/>
                         </div>

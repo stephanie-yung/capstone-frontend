@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
-import { render } from '@testing-library/react';
 import CardList from '../Card/CardList';
-import {coffeeInfo} from '../Coffee/Coffee'
 import SearchBox from '../Searchbox/SearchBox';
 import axios from 'axios';
 
 const BASE_URL = "https://brewers-backend.herokuapp.com";
-const headers = {
-    'Content-Type': 'application/x-www-form-urlencoded'
- };
 
 function HomePage(){
   const [search,SetSearch] = useState('') ;
@@ -27,7 +21,8 @@ function HomePage(){
     }
     get_drink();
 
-  }, [])
+  }, []);
+  
   const filteredDrinks = drinks.filter(drinks => {
       return drinks.name.toLowerCase().includes(search.toLowerCase());
   })
